@@ -1,0 +1,156 @@
+/* User Avatar */
+.user-avatar {
+    text-align: center; /* Center the image */
+    margin-bottom: 20px;
+    width: 100%; /* Ensure the avatar container takes full width */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+  }
+  
+  .user-avatar img {
+    width: 100%; /* Fill the width of the aside */
+    height: 350px; /* Fixed height */
+    object-fit: cover; /* Ensure the image scales properly */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    display: block; /* Remove any inline spacing */
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 90%;
+    background-color: #ffffff;
+    padding: 20px; /* Add padding to the sidebar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-left: 30px;
+    margin-right: 20px;
+    overflow: hidden; /* Ensure no overflow issues */
+  }
+  
+  /* Remove padding for the user-avatar container only */
+  .sidebar .user-avatar {
+    margin: -20px -20px 20px -20px; /* Counteract the sidebar padding */
+    width: calc(100% + 40px); /* Expand to fill the full width */
+  }
+  
+  /* Rest of the styles */
+  .user-info h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .user-info p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .user-info button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+/* CV Section */
+.cv-section {
+  margin-top: 30px;
+  text-align: left; /* Center align the content */
+}
+
+/* Image preview */
+.cv-image-preview {
+  width: 500%; /* Full width */
+  max-width: 150px; /* Set a max width for the image */
+  height: auto;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+/* Upload button */
+.cv-upload-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+  margin-left: 100px;
+}
+
+.cv-upload-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Upload icon */
+.cv-upload-button .upload-icon {
+  margin-right: 5px; /* Add space between icon and text */
+  font-size: 16px;
+}
+
+  
+  .information {
+    margin-top: 40px;
+  }
+  
+  .information h3 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .information p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .information h4 {
+    margin-top: 25px;
+    color: #333;
+  }
+  
+/* Add thin line between sections */
+.sidebar > .user-info,
+.sidebar > .cv-section,
+.sidebar > .information {
+    border-top: 1.5px solid #dad9d9; /* Thin line */
+    padding-top: 20px; /* Add space above the content */
+    margin-top: 20px; /* Add space below the line */
+}
+
+/* Specific adjustments to prevent the first section from having extra space */
+.sidebar > .user-info {
+    border-top: none; /* Remove top border for the first section */
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.information h4 {
+  border-top: 1.5px solid #dad9d9; /* Thin line */
+  padding-top: 20px; /* Add space above the content */
+  margin-top: 20px; /* Add space below the line */
+}
+/* Thin line divider between items */
+.section-divider {
+  border-top: 1.5px solid #dad9d9; /* Thin gray line */
+  margin: 10px 0; /* Space above and below the line */
+}
+/* Highlighted text */
+.highlighted-text {
+  text-align: center; /* Center the text */
+  font-weight: bold; /* Make the text bold */
+  font-size: 16px; /* Slightly larger font size */
+  background-color: #f4f4f4; /* Light gray background for highlighting */
+  color: #333; /* Dark text color for contrast */
+  padding: 10px 20px; /* Add padding for emphasis */
+  border-radius: 5px; /* Add rounded corners */
+  display: inline-block; /* Fit the content width */
+  margin: 10px auto; /* Center vertically and add spacing */
+}

@@ -1,0 +1,69 @@
+.main-content {
+    width: 1000px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-left: 50px;
+  }
+  
+  .summary h2 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between each item */
+  }
+  
+  .summary-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .summary-item h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  .summary-item p {
+    margin: 0 0 10px 0;
+    color: #666;
+  }
+  
+  .add-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .add-button:hover {
+    background-color: #218838;
+  }
+  
+  .video-resume {
+    margin-top: 20px;
+  }
+  
+  .video-resume h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .video-resume button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }

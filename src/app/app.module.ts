@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AppComponent } from './app.component';
+import { ProfileComponent } from './profile/profile/profile.component';
+import { ProfileSidebarComponent } from './profile/profile-sidebar/profile-sidebar.component';
+import { ProfileMainComponent } from './profile/profile-main/profile-main.component';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProfileComponent,
+    ProfileSidebarComponent,
+    ProfileMainComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
