@@ -1,12 +1,10 @@
-/* User Avatar */
 .user-avatar {
-    text-align: center; /* Center the image */
+    text-align: center; 
     margin-bottom: 20px;
-    width: 100%; /* Ensure the avatar container takes full width */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
+    width: 100%; 
+    padding: 0; 
+    margin: 0; 
   }
-  
   .user-avatar img {
     width: 100%; /* Fill the width of the aside */
     height: 350px; /* Fixed height */
@@ -41,7 +39,7 @@
   }
   
   .user-info p {
-    margin: 5px 0;
+    margin: 10px 20px;
     color: #666;
   }
   
@@ -62,12 +60,11 @@
 }
 
 /* Image preview */
-.cv-image-preview {
-  width: 500%; /* Full width */
-  max-width: 150px; /* Set a max width for the image */
-  height: auto;
-  margin-bottom: 10px;
-  margin-left: 10px;
+.cv-image-preview img{
+  width: 80%; /* Full width */
+  height: 200px;
+  margin-bottom: 0px;
+  margin-left: 30px;
 }
 
 /* Upload button */
@@ -81,7 +78,7 @@
   display: inline-block;
   font-size: 14px;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 0px;
   text-decoration: none;
   margin-left: 100px;
 }
@@ -143,14 +140,138 @@
   margin: 10px 0; /* Space above and below the line */
 }
 /* Highlighted text */
-.highlighted-text {
-  text-align: center; /* Center the text */
-  font-weight: bold; /* Make the text bold */
-  font-size: 16px; /* Slightly larger font size */
-  background-color: #f4f4f4; /* Light gray background for highlighting */
-  color: #333; /* Dark text color for contrast */
-  padding: 10px 20px; /* Add padding for emphasis */
-  border-radius: 5px; /* Add rounded corners */
-  display: inline-block; /* Fit the content width */
-  margin: 10px auto; /* Center vertically and add spacing */
+
+/* Highlighted text with dropdown */
+.highlighted-text.dropdown {
+  margin-left: 30px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Highlighted text with dropdown */
+.highlighted-text.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 300px; /* Fixed width for the dropdown container */
+}
+
+.highlighted-text .selected-option {
+  text-align: center; /* Center the text horizontally */
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  width: 100%; /* Take full width of the parent container */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.highlighted-text .dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%; /* Match the width of the parent container */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.highlighted-text .dropdown-options li {
+  padding: 10px 20px;
+  list-style: none;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center; /* Center the text in dropdown options */
+}
+
+.highlighted-text .dropdown-options li:hover {
+  background-color: #f4f4f4;
+}
+/* Username container */
+.username-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between username and edit icon */
+}
+
+/* Edit icon */
+.edit-icon {
+  cursor: pointer;
+  font-size: 16px;
+  color: #007bff; /* Blue color for the icon */
+}
+
+.edit-icon:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Edit username input and button */
+.edit-username {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-username input {
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 200px; /* Adjust width as needed */
+}
+
+.edit-username button {
+  background-color: #28a745; /* Green color for the save button */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-username button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Add this to your profile-sidebar.component.css */
+input {
+  width: 90%;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.edit-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 1rem;
 }

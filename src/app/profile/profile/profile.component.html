@@ -1,4 +1,9 @@
 <div class="profile-container">
-    <app-profile-sidebar></app-profile-sidebar>
-    <app-profile-main></app-profile-main>
-  </div>
+  <app-profile-sidebar 
+  [username]="userData.sidebar.username" 
+  [selectedOption]="userData.sidebar.selectedOption"
+  [info]="userData.sidebar.info"
+  [address]="userData.sidebar.address">
+  </app-profile-sidebar>
+  <app-profile-main [summaryData]="userData.summary"></app-profile-main>
+</div>

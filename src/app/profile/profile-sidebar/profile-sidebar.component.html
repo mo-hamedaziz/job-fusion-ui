@@ -1,38 +1,93 @@
 <aside class="sidebar">
-    <div class="user-avatar">
-      <img src="../../../assets/default.png" alt="User Avatar" />
+  <!-- User Avatar Section -->
+  <div class="user-avatar">
+    <img src="../../../assets/default.png" alt="User Avatar" />
+  </div>
+
+  <!-- User Info Section -->
+  <div class="user-info">
+    <div class="username-container">
+      <h2>{{ username }}</h2>
+      <span class="edit-icon" (click)="toggleEditUsername()">✏️</span>
     </div>
-  
-    <div class="user-info">
-      <h2>Imtiez Mrad</h2>
-      <p class="highlighted-text">Looking for a new opportunity</p>
-      <hr class="section-divider">
-      <button>+ Add new social link</button>
+    <div class="edit-username" *ngIf="isEditingUsername">
+      <input
+        [(ngModel)]="username"
+        placeholder="Enter new username"
+        (keyup.enter)="updateUsername()"
+      />
+      <button (click)="updateUsername()">Save</button>
     </div>
-  
-    <div class="cv-section">
-      <h3>CV</h3>
-      <!-- Image preview container -->
-      <div class="cv-image-preview">
-        <img id="cv-image" src="../../../assets/upload_cv.png" alt="CV Preview" />
+    <div class="highlighted-text dropdown">
+      <div class="selected-option" (click)="toggleDropdown()">
+        {{ selectedOption }}
       </div>
-      <!-- Upload button -->
-      <input type="file" id="cv-upload" accept=".pdf,.doc,.docx" style="display: none;" />
-      <label for="cv-upload" class="cv-upload-button">
-        <span class="upload-icon">⬆</span> Upload File
-      </label>
+      <ul class="dropdown-options" *ngIf="isDropdownOpen">
+        <li *ngFor="let option of options" (click)="selectOption(option)">
+          {{ option }}
+        </li>
+      </ul>
     </div>
-    
-  
-    <div class="information">
-      <h3>Information</h3>
-      <p>Add birthday date</p>
-      <p>Imtiez</p>
-      <p>Tunisie</p>
-      <h4>Address</h4>
-      <p>Country: Tunisie</p>
-      <p>Region: Please select a region</p>
-      <p>Street: Please provide an address</p>
-      <p>Phone: 56074333</p>
+  </div>
+
+  <!-- CV Section -->
+  <div class="cv-section">
+    <h3>CV</h3>
+    <div class="cv-image-preview">
+      <img id="cv-image" src="../../../assets/uploadcv.webp" alt="CV Preview" />
     </div>
-  </aside>
+    <input type="file" id="cv-upload" accept=".pdf,.doc,.docx" style="display: none" />
+    <label for="cv-upload" class="cv-upload-button">
+      <span class="upload-icon">⬆</span> Upload File
+    </label>
+  </div>
+
+  <!-- Information Section -->
+  <div class="information">
+    <h3>
+      Information
+      <span class="edit-icon" (click)="toggleEditInfo()">✏️</span>
+    </h3>
+    <div *ngIf="!isEditingInfo">
+      <p>📅 {{info.birthdate }}</p>
+      <p>📧 {{info.email }}</p>
+      <p>🌍 {{info.nationality }}</p>
+    </div>
+    <div *ngIf="isEditingInfo">
+      <p>
+        📅 <input [(ngModel)]="info.birthdate" placeholder="Birthdate" />
+      </p>
+      <p>
+        📧 <input [(ngModel)]="info.email" placeholder="Email" />
+      </p>
+      <p>
+        🌍 <input [(ngModel)]="info.nationality" placeholder="Nationality" />
+      </p>
+      <button (click)="updateInfo()">Save</button>
+    </div>
+    <h4>
+      Address
+      <span class="edit-icon" (click)="toggleEditAddress()">✏️</span>
+    </h4>
+    <div *ngIf="!isEditingAddress">
+      <p>Country: {{ address.country }}</p>
+      <p>Region: {{ address.region }}</p>
+      <p>Phone: {{ address.phone }}</p>
+    </div>
+    <div *ngIf="isEditingAddress">
+      <p>
+        Country:
+        <input [(ngModel)]="address.country" placeholder="Country" />
+      </p>
+      <p>
+        Region:
+        <input [(ngModel)]="address.region" placeholder="Region" />
+      </p>
+      <p>
+        Phone:
+        <input [(ngModel)]="address.phone" placeholder="Phone" />
+      </p>
+      <button (click)="updateAddress()">Save</button>
+    </div>
+  </div>
+</aside>

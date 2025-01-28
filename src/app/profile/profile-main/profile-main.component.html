@@ -1,42 +1,52 @@
 <main class="main-content">
-    <section class="summary">
-      <h2>Summary</h2>
-      <div class="summary-list">
-        <div class="summary-item">
-          <h3>Summary</h3>
-          <p>This is the Summary part.</p>
-          <button class="add-button">Add another Summary</button>
-        </div>
-        <div class="summary-item">
-          <h3>Work Experiences</h3>
-          <p>This is the Work Experiences part.</p>
-          <button class="add-button">Add another Work Experience</button>
-        </div>
-        <div class="summary-item">
-          <h3>Studies / Academic Background</h3>
-          <p>This is the Studies / Academic background part.</p>
-          <button class="add-button">Add another Study</button>
-        </div>
-        <div class="summary-item">
-          <h3>Projects</h3>
-          <p>This is the Projects part.</p>
-          <button class="add-button">Add another Project</button>
-        </div>
-        <div class="summary-item">
-          <h3>Languages</h3>
-          <p>This is the Languages part.</p>
-          <button class="add-button">Add another Language</button>
-        </div>
-        <div class="summary-item">
-          <h3>Certifications</h3>
-          <p>This is the Certifications part.</p>
-          <button class="add-button">Add another Certification</button>
-        </div>
-        <div class="summary-item">
-          <h3>Interests</h3>
-          <p>This is the Interests part.</p>
-          <button class="add-button">Add another Interest</button>
+  <section class="summary">
+    <div class="summary-list">
+      <div class="summary-item" *ngFor="let item of summaryData; let i = index">
+        <h3>{{ item.title }}</h3>
+
+        <!-- Show a text area when editing -->
+        <ng-container *ngIf="editedIndex === i; else viewMode">
+          <textarea [(ngModel)]="editContent" class="edit-textarea"></textarea>
+          <button class="save-button" (click)="saveEdit(i)">Save</button>
+        </ng-container>
+
+        <!-- Default view mode -->
+        <ng-template #viewMode>
+          <p style="white-space: pre-wrap;">{{ item.content }}</p>
+          <button class="edit-button" (click)="startEditing(i, item.content)">Edit</button>
+        </ng-template>
+
+        <!-- Add button for "Work Experiences" and "Studies" -->
+        <button *ngIf="item.title === 'Work Experiences' || item.title === 'Studies'" 
+                class="add-button" 
+                (click)="toggleAddForm(item)">
+          Add another {{ item.title }}
+        </button>
+
+        <!-- Add form -->
+        <div *ngIf="showAddForm && currentAddItem === item">
+          <form (ngSubmit)="addNewEntry(item)">
+            <label>
+              <!-- Different label for Work Experiences or Studies -->
+              {{ item.title === 'Work Experiences' ? 'Company' : 'Institution' }}:
+              <input type="text" [(ngModel)]="newEntry.companyOrInstitution" name="companyOrInstitution" required />
+            </label>
+            <label>
+              {{ item.title === 'Work Experiences' ? 'Role' : 'Degree' }}:
+              <input type="text" [(ngModel)]="newEntry.roleOrDegree" name="roleOrDegree" required />
+            </label>
+            <label>
+              From:
+              <input type="text" [(ngModel)]="newEntry.from" name="from" required />
+            </label>
+            <label>
+              To:
+              <input type="text" [(ngModel)]="newEntry.to" name="to" required />
+            </label>
+            <button type="submit" class="save-button">Save</button>
+          </form>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
