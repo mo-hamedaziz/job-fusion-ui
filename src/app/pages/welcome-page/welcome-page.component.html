@@ -1,2 +1,9 @@
-<h1>Welcome!</h1>
-<app-job-offers></app-job-offers>
+<div class="welcome-page">
+    <div class="sidebar">
+      <app-job-offers-filter (filterChange)="jobOffers.onFilterChange($event)"></app-job-offers-filter>
+    </div>
+    <div class="main-content">
+      <app-job-offers #jobOffers></app-job-offers>
+    </div>
+  </div>
+  
