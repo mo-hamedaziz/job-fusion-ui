@@ -1,0 +1,16 @@
+.welcome-page {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 25%;
+    border-right: 1px solid #ddd;
+    background-color: #f9f9f9;
+  }
+  
+  .main-content {
+    width: 75%;
+    padding: 1rem;
+  }
+  
