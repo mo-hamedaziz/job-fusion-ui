@@ -1,33 +1,49 @@
-<div class="filter-container">
-    <h3>Filter Job Offers</h3>
-    <div class="filter-item">
-      <label for="title">Title:</label>
-      <input id="title" type="text" [(ngModel)]="filter.title" (input)="onFilterChange()" />
-    </div>
-    <div class="filter-item">
-      <label for="location">Location:</label>
-      <input id="location" type="text" [(ngModel)]="filter.location" (input)="onFilterChange()" />
-    </div>
-    <div class="filter-item">
-      <label for="employmentType">Employment Type:</label>
-      <select id="employmentType" [(ngModel)]="filter.employmentType" (change)="onFilterChange()">
-        <option value="">All</option>
-        <option value="Full-time">Full-time</option>
-        <option value="Part-time">Part-time</option>
-        <option value="Contract">Contract</option>
-        <option value="Internship">Internship</option>
-        <option value="Temporary">Temporary</option>
-      </select>
-    </div>
-    <div class="filter-item">
-      <label for="experienceLevel">Experience Level:</label>
-      <select id="experienceLevel" [(ngModel)]="filter.experienceLevel" (change)="onFilterChange()">
-        <option value="">All</option>
-        <option value="Entry">Entry</option>
-        <option value="Mid">Mid</option>
-        <option value="Senior">Senior</option>
-      </select>
-    </div>
-    <button class="reset-btn" (click)="resetFilters()">Reset Filters</button>
-  </div>
-  
+<div class="job-offers-filter-container">
+  <h2>Filter Job Offers</h2>
+
+  <label for="title">Job Title</label>
+  <input
+    type="text"
+    id="title"
+    [(ngModel)]="filter.title"
+    placeholder="Enter job title"
+    (ngModelChange)="onFilterChange()"
+  />
+
+  <label for="location">Location</label>
+  <input
+    type="text"
+    id="location"
+    [(ngModel)]="filter.location"
+    placeholder="Enter location"
+    (ngModelChange)="onFilterChange()"
+  />
+
+  <label for="employmentType">Employment Type</label>
+  <select
+    id="employmentType"
+    [(ngModel)]="filter.employmentType"
+    (ngModelChange)="onFilterChange()"
+  >
+    <option value="">Any</option>
+    <option value="Full-time">Full-time</option>
+    <option value="Part-time">Part-time</option>
+    <option value="Contract">Contract</option>
+    <option value="Internship">Internship</option>
+    <option value="Temporary">Temporary</option>
+  </select>
+
+  <label for="experienceLevel">Experience Level</label>
+  <select
+    id="experienceLevel"
+    [(ngModel)]="filter.experienceLevel"
+    (ngModelChange)="onFilterChange()"
+  >
+    <option value="">Any</option>
+    <option value="Entry">Entry</option>
+    <option value="Mid">Mid</option>
+    <option value="Senior">Senior</option>
+  </select>
+
+  <button (click)="onFilterChange()">Apply Filters</button>
+</div>
