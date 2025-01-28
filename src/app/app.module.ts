@@ -6,13 +6,16 @@ import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { JobOffersComponent } from './components/job-offers/job-offers.component';
-
+import { JobOfferDetailsComponent } from './components/job-offer-details/job-offer-details.component';
+import { ApplyForJobComponent } from './components/apply-for-job/apply-for-job.component';
 @NgModule({
   declarations: [
     AppComponent,
     WelcomePageComponent,
     NavbarComponent,
-    JobOffersComponent
+    JobOffersComponent,
+    JobOfferDetailsComponent,
+    ApplyForJobComponent
   ],
   imports: [
     BrowserModule,
