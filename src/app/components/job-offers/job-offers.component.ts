@@ -8,17 +8,21 @@ import { JobOffer, JobOfferService } from 'src/app/services/job-offers.service';
 })
 export class JobOffersComponent {
   jobOffers: JobOffer[] = [];
+  selectedJobOffer: JobOffer | null = null;
 
   constructor (private jobOfferService: JobOfferService) {}
 
   ngOnInit(): void {
-    this.loadJobOffers();
+    this.jobOfferService.getJobOffers().subscribe((offers) => {
+      this.jobOffers = offers;
+    });
   }
 
-  // Load job offers from the service
-  loadJobOffers(): void {
-    this.jobOfferService.getJobOffers().subscribe((data) => {
-      this.jobOffers = data;
-    });
+  openJobOfferDetails(jobOffer: JobOffer) {
+    this.selectedJobOffer = jobOffer;
+  }
+
+  closePopup() {
+    this.selectedJobOffer = null;
   }
 }

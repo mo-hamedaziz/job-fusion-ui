@@ -1,0 +1,12 @@
+<div class="overlay" (click)="onOverlayClick($event)">
+    <div class="popup">
+      <button class="close-btn" (click)="onClose()">✖</button>
+      <h2>{{ jobOffer.title }}</h2>
+      <p><strong>Company:</strong> {{ jobOffer.company }}</p>
+      <p><strong>Location:</strong> {{ jobOffer.location }}</p>
+      <p><strong>Description:</strong> {{ jobOffer.description }}</p>
+
+      <button class="apply-btn" (click)="onApply()">Apply</button>
+    </div>
+  </div>
+  

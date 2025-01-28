@@ -1,15 +1,21 @@
+<!-- job-offers.component.html -->
 <div class="job-offer-container">
-    <h2>Open Job Offers</h2>
-    <div class="job-offer-list" *ngIf="jobOffers.length > 0; else noOffers">
-      <div *ngFor="let offer of jobOffers" class="job-offer">
-        <h3>{{ offer.title }}</h3>
-        <p><strong>Company:</strong> {{ offer.company }}</p>
-        <p><strong>Location:</strong> {{ offer.location }}</p>
-        <p><strong>Description:</strong> {{ offer.description }}</p>
-      </div>
+  <h2>Open Job Offers</h2>
+  <div class="job-offer-list" *ngIf="jobOffers.length > 0; else noOffers">
+    <div *ngFor="let offer of jobOffers" class="job-offer" (click)="openJobOfferDetails(offer)">
+      <h3>{{ offer.title }}</h3>
+      <p><strong>Company:</strong> {{ offer.company }}</p>
+      <p><strong>Location:</strong> {{ offer.location }}</p>
     </div>
-    <ng-template #noOffers>
-      <p>No job offers available.</p>
-    </ng-template>
   </div>
-  
+  <ng-template #noOffers>
+    <p>No job offers available.</p>
+  </ng-template>
+
+  <!-- Job Offer Details Popup -->
+  <app-job-offer-details
+    *ngIf="selectedJobOffer"
+    [jobOffer]="selectedJobOffer"
+    (close)="closePopup()">
+  </app-job-offer-details>
+</div>
