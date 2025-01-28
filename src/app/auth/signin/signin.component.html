@@ -1,0 +1,54 @@
+<div class="signin" >
+  <form #signinForm="ngForm">
+
+    <label for="email">
+      Email
+    </label>
+    <input
+      email
+      required
+      type="email"
+      ngModel
+      name="email"
+      class="form-control"
+      id="email"
+      #emailInput="ngModel"
+    >
+    <div class="alert alert-danger" *ngIf="emailInput.invalid && emailInput.dirty">
+      Please enter a valid email address.
+    </div>
+  
+    <label for="password">
+      Password
+    </label>
+    <input
+      required
+      minlength="6"
+      type="password"
+      ngModel
+      name="password"
+      class="form-control"
+      id="password"
+      #passwordInput="ngModel"
+    >
+    <div class="alert alert-danger" *ngIf="passwordInput.invalid && passwordInput.touched">
+      Password must be at least 6 characters long.
+    </div>
+  
+  
+  
+    <button
+      [disabled]="signinForm.invalid"
+      class="btn btn-primary"
+      (click)="signin(signinForm)"
+    >
+      Signin
+    </button>
+
+    <p class="mt-3 text-center">
+      Don't have an account? 
+      <a routerLink="/signup" class="text-primary">signup</a>
+    </p>
+  </form>
+  
+</div>
