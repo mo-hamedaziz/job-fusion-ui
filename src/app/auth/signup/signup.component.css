@@ -108,3 +108,51 @@ p.text-center a:hover {
   color: #0056b3;
   text-decoration: underline; 
 }
+
+
+
+
+/* Style for the role label */
+.signup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style for the select dropdown */
+.signup select.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Focused style for the select element */
+.signup select.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Error message styling */
+.signup .alert {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #d9534f;
+}
+
+/* Disabled placeholder option style */
+.signup select.form-control option[disabled] {
+  color: #999;
+}
+
+/* Custom spacing between the role and other form fields */
+.signup label[for="role"],
+.signup select {
+  margin-top: 15px;
+}

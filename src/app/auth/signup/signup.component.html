@@ -104,6 +104,35 @@
     <div class="alert alert-danger" *ngIf="passwordInput.value !== confirmPasswordInput.value && confirmPasswordInput.dirty">
       Passwords do not match.
     </div>
+
+
+    
+
+    <label for="role">Role</label>
+    <select
+      required
+      ngModel
+      name="role"
+      class="form-control"
+      id="role"
+      #roleInput="ngModel"
+    >
+      <option value="" disabled selected>Select your role</option>
+      <option value="recruiter">Recruiter</option>
+      <option value="familiarUser">Familiar User</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="roleInput.invalid && roleInput.touched">
+      Role is required.
+    </div>
+
+
+
+
+
+
+
+
+
   
     <button
       [disabled]="signupForm.invalid"
