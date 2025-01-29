@@ -89,7 +89,7 @@ input {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #e28743;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -99,7 +99,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #eab676;
 }
 
 /* CV Section */
@@ -110,7 +110,7 @@ button:hover {
 
 /* Center the button specifically */
 .cv-upload-button {
-  background-color: #28a745;
+  background-color: #e28743;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -135,7 +135,7 @@ button:hover {
 
 /* Hover effect for button */
 .cv-upload-button:hover {
-  background-color: #218838;
+  background-color: #eab676;
 }
 
 /* Icon next to the upload button */
@@ -178,7 +178,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   padding: 12px 20px;
-  background-color: #fff;
+  background-color: #e28743;
   color: #333;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
@@ -198,7 +198,7 @@ button:hover {
   top: 100%;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #eab676;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -240,7 +240,7 @@ button:hover {
 }
 
 .edit-username button {
-  background-color: #28a745;
+  background-color: #e28743;
   color: white;
   padding: 8px 15px;
   border-radius: 6px;
@@ -248,13 +248,13 @@ button:hover {
 }
 
 .edit-username button:hover {
-  background-color: #218838;
+  background-color: #eab676;
 }
 
 /* Hover Effects */
 button:hover,
 .cv-upload-button:hover {
-  background-color: #0056b3;
+  background-color: #eab676;
 }
 
 .edit-icon:hover {
