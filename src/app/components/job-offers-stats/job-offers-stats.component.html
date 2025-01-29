@@ -1,34 +1,36 @@
 <div class="stats-container">
-  <h3>Statistics</h3>
+  <h3 class="section-title">Job Statistics</h3>
 
   <div class="stat-item">
     <h4><i class="fas fa-briefcase"></i> Total Job Offers</h4>
-    <p class="count">{{ stats.totalOffers }}</p>
+    <p class="stat-number">{{ stats.totalOffers }}</p>
   </div>
 
   <div class="stat-item">
     <h4><i class="fas fa-cogs"></i> Employment Type Distribution</h4>
-    <ul>
-      <li><strong>Full-time:</strong> {{ stats.byEmploymentType['Full-time'] }}</li>
-      <li><strong>Part-time:</strong> {{ stats.byEmploymentType['Part-time'] }}</li>
-      <li><strong>Contract:</strong> {{ stats.byEmploymentType['Contract'] }}</li>
-      <li><strong>Internship:</strong> {{ stats.byEmploymentType['Internship'] }}</li>
-      <li><strong>Temporary:</strong> {{ stats.byEmploymentType['Temporary'] }}</li>
-    </ul>
+    <div class="stat-list">
+      <div class="stat-row"><strong>Full-time:</strong> <span class="stat-number">{{ stats.byEmploymentType['Full-time'] }}</span></div>
+      <div class="stat-row"><strong>Part-time:</strong> <span class="stat-number">{{ stats.byEmploymentType['Part-time'] }}</span></div>
+      <div class="stat-row"><strong>Contract:</strong> <span class="stat-number">{{ stats.byEmploymentType['Contract'] }}</span></div>
+      <div class="stat-row"><strong>Internship:</strong> <span class="stat-number">{{ stats.byEmploymentType['Internship'] }}</span></div>
+      <div class="stat-row"><strong>Temporary:</strong> <span class="stat-number">{{ stats.byEmploymentType['Temporary'] }}</span></div>
+    </div>
   </div>
 
   <div class="stat-item">
     <h4><i class="fas fa-user-tie"></i> Experience Level Distribution</h4>
-    <ul>
-      <li><strong>Entry:</strong> {{ stats.byExperienceLevel['Entry'] }}</li>
-      <li><strong>Mid:</strong> {{ stats.byExperienceLevel['Mid'] }}</li>
-      <li><strong>Senior:</strong> {{ stats.byExperienceLevel['Senior'] }}</li>
-    </ul>
+    <div class="stat-list">
+      <div class="stat-row"><strong>Entry:</strong> <span class="stat-number">{{ stats.byExperienceLevel['Entry'] }}</span></div>
+      <div class="stat-row"><strong>Mid:</strong> <span class="stat-number">{{ stats.byExperienceLevel['Mid'] }}</span></div>
+      <div class="stat-row"><strong>Senior:</strong> <span class="stat-number">{{ stats.byExperienceLevel['Senior'] }}</span></div>
+    </div>
   </div>
 
   <div class="stat-item">
     <h4><i class="fas fa-laptop-house"></i> Remote Option</h4>
-    <p><strong>Yes:</strong> {{ stats.remoteOption.yes }}</p>
-    <p><strong>No:</strong> {{ stats.remoteOption.no }}</p>
+    <div class="stat-list">
+      <div class="stat-row"><strong>Yes:</strong> <span class="stat-number">{{ stats.remoteOption.yes }}</span></div>
+      <div class="stat-row"><strong>No:</strong> <span class="stat-number">{{ stats.remoteOption.no }}</span></div>
+    </div>
   </div>
 </div>

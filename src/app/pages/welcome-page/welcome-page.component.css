@@ -2,20 +2,21 @@
   display: flex;
 }
 
+.welcome-abroad-text {
+  text-align: center;
+}
+
 .left-sidebar {
-  width: 15%;
-  padding: 10px;
-  margin: 0 auto;
+  width: 20%;
+  margin-right: 20px;
 }
 
 .main-content {
-  width: 70%;
-  padding: 10px;
-  margin: 0 auto;
+  width: 60%;
+  margin: 0 20px;
 }
 
 .right-sidebar {
-  width: 15%;
-  padding: 10px;
-  margin: 0 auto;
+  width: 20%;
+  margin-left: 20px;
 }

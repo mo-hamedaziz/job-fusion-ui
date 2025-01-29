@@ -8,7 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class SortJobOffersComponent {
   sortFields = ['title', 'company', 'location', 'employmentType', 'experienceLevel', 'postedDate'];
   selectedField: string = 'postedDate';
-  sortOrder: 'asc' | 'desc' = 'asc';
+  sortOrder: 'asc' | 'desc' = 'desc';
 
   @Output() sortChange = new EventEmitter<{ field: string, order: 'asc' | 'desc' }>();
 

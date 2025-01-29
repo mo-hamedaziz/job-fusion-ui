@@ -1,14 +1,18 @@
 <div class="sort-job-offers">
   <h3>Sort Job Offers</h3>
 
-  <label for="sortField">Sort by:</label>
-  <select id="sortField" [(ngModel)]="selectedField" (change)="onSortChange()">
-    <option *ngFor="let field of sortFields" [value]="field">{{ getFieldDisplayName(field) }}</option>
-  </select>
+  <div class="sort-field">
+    <label for="sortField">Sort by:</label>
+    <select id="sortField" [(ngModel)]="selectedField" (change)="onSortChange()">
+      <option *ngFor="let field of sortFields" [value]="field">{{ getFieldDisplayName(field) }}</option>
+    </select>
+  </div>
 
-  <label for="sortOrder">Order:</label>
-  <select id="sortOrder" [(ngModel)]="sortOrder" (change)="onSortChange()">
-    <option value="asc">Ascending</option>
-    <option value="desc">Descending</option>
-  </select>
+  <div class="sort-order">
+    <label for="sortOrder">Order:</label>
+    <select id="sortOrder" [(ngModel)]="sortOrder" (change)="onSortChange()">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </div>
 </div>

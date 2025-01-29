@@ -4,6 +4,7 @@
     <app-job-offers-filter (filterChange)="jobOffers.onFilterChange($event)"></app-job-offers-filter>
   </div>
   <div class="main-content">
+    <h2 class="welcome-abroad-text">Welcome abroad {{ username }}</h2>
     <app-job-offers-search-bar (filterChange)="jobOffers.onFilterChange({ title: $event })"></app-job-offers-search-bar>
     <app-job-offers #jobOffers></app-job-offers>
   </div>
