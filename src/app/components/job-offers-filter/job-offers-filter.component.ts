@@ -3,16 +3,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-job-offers-filter',
   templateUrl: './job-offers-filter.component.html',
-  styleUrls: ['./job-offers-filter.component.css']
+  styleUrls: ['./job-offers-filter.component.css'],
 })
 export class JobOffersFilterComponent {
   @Output() filterChange = new EventEmitter<{ [key: string]: any }>();
 
   filter = {
-    title: '',
     location: '',
     employmentType: '',
-    experienceLevel: ''
+    requirements: '',
+    experienceLevel: '',
+    remoteOption: '',
+    dateOfCreation: '',
   };
 
   onFilterChange() {
@@ -21,10 +23,12 @@ export class JobOffersFilterComponent {
 
   resetFilters() {
     this.filter = {
-      title: '',
       location: '',
       employmentType: '',
-      experienceLevel: ''
+      requirements: '',
+      experienceLevel: '',
+      remoteOption: '',
+      dateOfCreation: '',
     };
     this.onFilterChange();
   }
