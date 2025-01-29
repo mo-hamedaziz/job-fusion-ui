@@ -1,0 +1,106 @@
+.stats-container {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fc;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.stat-item {
+  background-color: #ffffff;
+  padding: 10px; /* Reduced padding */
+  border-radius: 12px;
+  margin-bottom: 16px; /* Reduced margin-bottom */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #3498db;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item h4 {
+  font-size: 1.1rem; /* Smaller font size */
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 12px; /* Reduced margin-bottom */
+  display: flex;
+  align-items: center;
+}
+
+.stat-item h4 i {
+  margin-right: 8px; /* Adjusted icon spacing */
+  font-size: 1.1rem; /* Smaller icon size */
+  color: #3498db;
+}
+
+.stat-item ul,
+.stat-item p {
+  margin: 0;
+  font-size: 0.95rem; /* Smaller font size */
+  color: #555;
+}
+
+.stat-item li {
+  margin-bottom: 8px; /* Reduced margin-bottom */
+}
+
+.stat-item .label {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.stat-item .count {
+  font-weight: 700;
+  font-size: 1.2rem; /* Slightly smaller font size */
+  color: #2c3e50;
+}
+
+.stat-item .count.highlight {
+  color: #e74c3c;
+}
+
+.stat-item .count.success {
+  color: #27ae60;
+}
+
+.stat-item .count.info {
+  color: #2980b9;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .stats-container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-item ul {
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .stat-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .stat-item h4 {
+    font-size: 1.05rem; /* Even smaller font size on small screens */
+  }
+
+  .stat-item .count {
+    font-size: 1.1rem; /* Slightly smaller count font size */
+  }
+}

@@ -1,0 +1,23 @@
+.sort-job-offers {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .sort-job-offers label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .sort-job-offers select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .sort-job-offers select:focus {
+    border-color: #4e73df;
+  }
+  
