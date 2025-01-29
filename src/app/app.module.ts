@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { ProfileComponent } from './profile/profile/profile.component';
+import { ProfileSidebarComponent } from './profile/profile-sidebar/profile-sidebar.component';
+import { ProfileMainComponent } from './profile/profile-main/profile-main.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { JobOffersComponent } from './components/job-offers/job-offers.component';
@@ -16,6 +18,9 @@ import { JobOffersStatsComponent } from './components/job-offers-stats/job-offer
 @NgModule({
   declarations: [
     AppComponent,
+    ProfileComponent,
+    ProfileSidebarComponent,
+    ProfileMainComponent,
     WelcomePageComponent,
     NavbarComponent,
     JobOffersComponent,
@@ -32,6 +37,6 @@ import { JobOffersStatsComponent } from './components/job-offers-stats/job-offer
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
