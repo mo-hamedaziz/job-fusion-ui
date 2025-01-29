@@ -455,7 +455,6 @@ export class JobOfferService {
 
   constructor() {}
 
-  // Method to get job offers as an observable
   getJobOffers(): Observable<JobOffer[]> {
     return of(this.jobOffers);
   }

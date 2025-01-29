@@ -31,12 +31,21 @@ export class JobOffersComponent {
   onFilterChange(filter: { [key: string]: any }) {
     this.filteredJobOffers = this.jobOffers.filter((offer) => {
       return (
-        (!filter['title'] || offer.title.toLowerCase().includes(filter['title'].toLowerCase())) &&
         (!filter['location'] || offer.location.toLowerCase().includes(filter['location'].toLowerCase())) &&
         (!filter['employmentType'] || offer.employmentType === filter['employmentType']) &&
-        (!filter['experienceLevel'] || offer.experienceLevel === filter['experienceLevel'])
+        (!filter['experienceLevel'] || offer.experienceLevel === filter['experienceLevel']) &&
+        (!filter['remoteOption'] || offer.remoteOption === filter['remoteOption']) &&
+        (!filter['requirements'] || this.matchRequirements(offer.requirements, filter['requirements'])) &&
+        (!filter['dateOfCreation'] || offer.postedDate >= filter['dateOfCreation'])
       );
     });
   }
-  
+
+  // Checks if job offer includes required skills/keywords
+  private matchRequirements(jobRequirements: string[], filterRequirements: string): boolean {
+    const requiredKeywords = filterRequirements.toLowerCase().split(',').map(req => req.trim());
+    return requiredKeywords.every(keyword => 
+      jobRequirements.some(req => req.toLowerCase().includes(keyword))
+    );
+  }
 }
