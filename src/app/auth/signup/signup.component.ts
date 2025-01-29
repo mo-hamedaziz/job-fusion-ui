@@ -11,6 +11,7 @@ export class SignupComponent {
   constructor(private authService: AuthService) {}
 
   signup(signupForm: NgForm) {
+    
     if (signupForm.invalid) {
       return;
     }

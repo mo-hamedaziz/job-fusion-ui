@@ -1,0 +1,96 @@
+<div class="container">
+  <h2>Create/Edit Job Offer</h2>
+  <form [formGroup]="jobForm" (ngSubmit)="submitForm()">
+    
+    <label>Title:</label>
+    <input type="text" formControlName="title" required />
+
+    <label>Company:</label>
+    <input type="text" formControlName="company" required />
+
+    <label>Location:</label>
+    <input type="text" formControlName="location" required />
+
+    <label>Description:</label>
+    <textarea formControlName="description"></textarea>
+
+    <label>Employment Type:</label>
+    <select formControlName="employmentType">
+      <option>Full-time</option>
+      <option>Part-time</option>
+      <option>Contract</option>
+      <option>Internship</option>
+      <option>Temporary</option>
+    </select>
+
+    <label>Experience Level:</label>
+    <select formControlName="experienceLevel">
+      <option>Entry</option>
+      <option>Mid</option>
+      <option>Senior</option>
+    </select>
+
+    <label>Education Level (Optional):</label>
+    <input type="text" formControlName="educationLevel" />
+
+    <label>Application Deadline (Optional):</label>
+    <input type="date" formControlName="applicationDeadline" />
+
+    <label>Remote Option:</label>
+    <input type="checkbox" formControlName="remoteOption" />
+
+    <label>Industry (Optional):</label>
+    <input type="text" formControlName="industry" />
+
+    <label>Posted Date:</label>
+    <input type="date" formControlName="postedDate" required />
+
+    <label>Contact Email (Optional):</label>
+    <input type="email" formControlName="contactEmail" />
+
+    <label>Application URL (Optional):</label>
+    <input type="text" formControlName="applicationUrl" />
+
+    <label>Company Logo URL (Optional):</label>
+    <input type="text" formControlName="companyLogoUrl" />
+
+    <!-- Dynamic Lists -->
+    <div>
+      <label>Requirements:</label>
+      <div *ngFor="let req of requirements.controls; let i = index">
+        <input type="text" [formControlName]="i" />
+        <button type="button" (click)="removeRequirement(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addRequirement()">+ Add Requirement</button>
+    </div>
+
+    <div>
+      <label>Benefits:</label>
+      <div *ngFor="let benefit of benefits.controls; let i = index">
+        <input type="text" [formControlName]="i" />
+        <button type="button" (click)="removeBenefit(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addBenefit()">+ Add Benefit</button>
+    </div>
+
+    <div>
+      <label>Responsibilities:</label>
+      <div *ngFor="let resp of responsibilities.controls; let i = index">
+        <input type="text" [formControlName]="i" />
+        <button type="button" (click)="removeResponsibility(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addResponsibility()">+ Add Responsibility</button>
+    </div>
+
+    <div>
+      <label>Keywords:</label>
+      <div *ngFor="let keyword of keywords.controls; let i = index">
+        <input type="text" [formControlName]="i" />
+        <button type="button" (click)="removeKeyword(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addKeyword()">+ Add Keyword</button>
+    </div>
+
+    <button type="submit" [disabled]="jobForm.invalid">Submit Job Offer</button>
+  </form>
+</div>

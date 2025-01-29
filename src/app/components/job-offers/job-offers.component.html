@@ -1,0 +1,19 @@
+<div class="job-offer-container">
+  <!-- <h2>Open Job Offers</h2> -->
+  <div class="job-offer-list" *ngIf="filteredJobOffers.length > 0; else noOffers">
+    <div *ngFor="let offer of filteredJobOffers" class="job-offer" (click)="openJobOfferDetails(offer)">
+      <h3>{{ offer.title }}</h3>
+      <p><strong>Company:</strong> {{ offer.company }}</p>
+      <p><strong>Location:</strong> {{ offer.location }}</p>
+    </div>
+  </div>
+  <ng-template #noOffers>
+    <p>No job offers available.</p>
+  </ng-template>
+
+  <app-job-offer-details
+    *ngIf="selectedJobOffer"
+    [jobOffer]="selectedJobOffer"
+    (close)="closePopup()">
+  </app-job-offer-details>
+</div>

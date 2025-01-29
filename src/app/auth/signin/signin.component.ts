@@ -28,8 +28,7 @@ export class SigninComponent {
         // Store token or user info in localStorage or sessionStorage
         localStorage.setItem('authToken', response.token); // Assuming your backend returns a token
         
-        // Redirect to a protected route (e.g., dashboard)
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/profile']);
       },
       error: (error) => {
         console.error('Login failed', error);

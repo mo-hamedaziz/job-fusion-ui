@@ -1,0 +1,21 @@
+.welcome-page {
+  display: flex;
+}
+
+.left-sidebar {
+  width: 15%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.main-content {
+  width: 70%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.right-sidebar {
+  width: 15%;
+  padding: 10px;
+  margin: 0 auto;
+}
