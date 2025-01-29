@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-recruiter-job-form',
@@ -7,80 +6,59 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./recruiter-job-form.component.css']
 })
 export class RecruiterJobFormComponent {
-  jobForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
-    this.jobForm = this.fb.group({
-      id: [null],
-      title: ['', Validators.required],
-      company: ['', Validators.required],
-      location: ['', Validators.required],
-      description: ['', Validators.required],
-      employmentType: ['Full-time', Validators.required],
-      requirements: this.fb.array([]), 
-      benefits: this.fb.array([]),
-      experienceLevel: ['Entry', Validators.required],
-      educationLevel: [''],
-      applicationDeadline: [''],
-      remoteOption: [false],
-      industry: [''],
-      postedDate: [new Date(), Validators.required],
-      responsibilities: this.fb.array([]),
-      keywords: this.fb.array([]),
-      contactEmail: ['', [Validators.email]],
-      applicationUrl: [''],
-      companyLogoUrl: ['']
-    });
-  }
-
-  // Getter for FormArray controls
-  get requirements(): FormArray {
-    return this.jobForm.get('requirements') as FormArray;
-  }
-  get benefits(): FormArray {
-    return this.jobForm.get('benefits') as FormArray;
-  }
-  get responsibilities(): FormArray {
-    return this.jobForm.get('responsibilities') as FormArray;
-  }
-  get keywords(): FormArray {
-    return this.jobForm.get('keywords') as FormArray;
-  }
+  job = {
+    title: '',
+    company: '',
+    location: '',
+    description: '',
+    employmentType: 'Full-time',
+    experienceLevel: 'Entry',
+    educationLevel: '',
+    applicationDeadline: '',
+    remoteOption: false,
+    industry: '',
+    postedDate: new Date(),
+    contactEmail: '',
+    applicationUrl: '',
+    companyLogoUrl: '',
+    requirements: [''],
+    benefits: [''],
+    responsibilities: [''],
+    keywords: ['']
+  };
 
   addRequirement() {
-    this.requirements.push(this.fb.control(''));
+    this.job.requirements.push('');
   }
   addBenefit() {
-    this.benefits.push(this.fb.control(''));
+    this.job.benefits.push('');
   }
   addResponsibility() {
-    this.responsibilities.push(this.fb.control(''));
+    this.job.responsibilities.push('');
   }
   addKeyword() {
-    this.keywords.push(this.fb.control(''));
+    this.job.keywords.push('');
   }
 
   removeRequirement(index: number) {
-    this.requirements.removeAt(index);
+    this.job.requirements.splice(index, 1);
   }
   removeBenefit(index: number) {
-    this.benefits.removeAt(index);
+    this.job.benefits.splice(index, 1);
   }
   removeResponsibility(index: number) {
-    this.responsibilities.removeAt(index);
+    this.job.responsibilities.splice(index, 1);
   }
   removeKeyword(index: number) {
-    this.keywords.removeAt(index);
+    this.job.keywords.splice(index, 1);
   }
 
-  submitForm() {
-    if (this.jobForm.valid) {
-      console.log('Job Offer Submitted:', this.jobForm.value);
+  submitForm(form: any) {
+    if (form.valid) {
+      console.log('Job Offer Submitted:', this.job);
       // Here, you can send the form data to the backend
     } else {
       console.log('Form is invalid');
     }
   }
-
-
 }
