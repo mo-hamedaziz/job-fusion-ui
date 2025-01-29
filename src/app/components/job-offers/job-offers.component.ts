@@ -36,12 +36,12 @@ export class JobOffersComponent {
         (!filter['experienceLevel'] || offer.experienceLevel === filter['experienceLevel']) &&
         (!filter['remoteOption'] || offer.remoteOption === filter['remoteOption']) &&
         (!filter['requirements'] || this.matchRequirements(offer.requirements, filter['requirements'])) &&
-        (!filter['dateOfCreation'] || offer.postedDate >= filter['dateOfCreation'])
+        (!filter['dateOfCreation'] || offer.postedDate >= filter['dateOfCreation']) &&
+        (!filter['title'] || offer.title.toLowerCase().includes(filter['title'].toLowerCase()))
       );
     });
   }
 
-  // Checks if job offer includes required skills/keywords
   private matchRequirements(jobRequirements: string[], filterRequirements: string): boolean {
     const requiredKeywords = filterRequirements.toLowerCase().split(',').map(req => req.trim());
     return requiredKeywords.every(keyword => 

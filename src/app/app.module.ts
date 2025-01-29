@@ -10,6 +10,8 @@ import { JobOffersComponent } from './components/job-offers/job-offers.component
 import { JobOfferDetailsComponent } from './components/job-offer-details/job-offer-details.component';
 import { ApplyForJobComponent } from './components/apply-for-job/apply-for-job.component';
 import { JobOffersFilterComponent } from './components/job-offers-filter/job-offers-filter.component';
+import { JobOffersSearchBarComponent } from './components/job-offers-search-bar/job-offers-search-bar.component';
+import { SortJobOffersComponent } from './components/sort-job-offers/sort-job-offers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { JobOffersFilterComponent } from './components/job-offers-filter/job-off
     JobOffersComponent,
     JobOfferDetailsComponent,
     ApplyForJobComponent,
-    JobOffersFilterComponent
+    JobOffersFilterComponent,
+    JobOffersSearchBarComponent,
+    SortJobOffersComponent
   ],
   imports: [
     BrowserModule,
