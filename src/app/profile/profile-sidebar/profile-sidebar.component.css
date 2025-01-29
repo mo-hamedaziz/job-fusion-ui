@@ -1,188 +1,208 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Sidebar Hover Effect */
+.sidebar:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* User Avatar Section */
 .user-avatar {
-    text-align: center; 
-    margin-bottom: 20px;
-    width: 100%; 
-    padding: 0; 
-    margin: 0; 
-  }
-  .user-avatar img {
-    width: 100%; /* Fill the width of the aside */
-    height: 350px; /* Fixed height */
-    object-fit: cover; /* Ensure the image scales properly */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-    border-radius: 8px; /* Optional: Add rounded corners */
-    display: block; /* Remove any inline spacing */
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 90%;
-    background-color: #ffffff;
-    padding: 20px; /* Add padding to the sidebar */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-left: 30px;
-    margin-right: 20px;
-    overflow: hidden; /* Ensure no overflow issues */
-  }
-  
-  /* Remove padding for the user-avatar container only */
-  .sidebar .user-avatar {
-    margin: -20px -20px 20px -20px; /* Counteract the sidebar padding */
-    width: calc(100% + 40px); /* Expand to fill the full width */
-  }
-  
-  /* Rest of the styles */
-  .user-info h2 {
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .user-info p {
-    margin: 10px 20px;
-    color: #666;
-  }
-  
-  .user-info button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.change-pic-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-pic-btn span {
+  font-size: 18px;
+  color: #007bff;
+}
+
+/* User Info Section */
+.user-info h2 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.user-info p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.edit-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.edit-icon:hover {
+  color: #0056b3;
+}
+
+/* Edit Inputs and Buttons */
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
 /* CV Section */
+/* Ensure the parent container is a flexbox */
 .cv-section {
-  margin-top: 30px;
-  text-align: left; /* Center align the content */
+  display: block; /* Default behavior for content, no global centering */
 }
 
-/* Image preview */
-.cv-image-preview img{
-  width: 80%; /* Full width */
-  height: 200px;
-  margin-bottom: 0px;
-  margin-left: 30px;
-}
-
-/* Upload button */
+/* Center the button specifically */
 .cv-upload-button {
   background-color: #28a745;
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 1rem;
   display: inline-block;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 0px;
   text-decoration: none;
-  margin-left: 100px;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 80px;
+  margin-right: auto; /* This centers the button */
 }
 
+/* Ensuring the image preview is set */
+.cv-image-preview img {
+  width: 80%;
+  height: 200px;
+  /*margin-bottom: 15px;*/
+  margin-left: 20px;
+}
+
+/* Hover effect for button */
 .cv-upload-button:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #218838;
 }
 
-/* Upload icon */
+/* Icon next to the upload button */
 .cv-upload-button .upload-icon {
-  margin-right: 5px; /* Add space between icon and text */
+  margin-right: 8px;
   font-size: 16px;
 }
 
-  
-  .information {
-    margin-top: 40px;
-  }
-  
-  .information h3 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .information p {
-    margin: 5px 0;
-    color: #666;
-  }
-  
-  .information h4 {
-    margin-top: 25px;
-    color: #333;
-  }
-  
-/* Add thin line between sections */
-.sidebar > .user-info,
-.sidebar > .cv-section,
-.sidebar > .information {
-    border-top: 1.5px solid #dad9d9; /* Thin line */
-    padding-top: 20px; /* Add space above the content */
-    margin-top: 20px; /* Add space below the line */
+
+/* Information Section */
+.information h3 {
+  color: #333;
+  font-size: 1.4rem;
 }
 
-/* Specific adjustments to prevent the first section from having extra space */
-.sidebar > .user-info {
-    border-top: none; /* Remove top border for the first section */
-    margin-top: 0;
-    padding-top: 0;
+.information p {
+  color: #666;
 }
 
 .information h4 {
-  border-top: 1.5px solid #dad9d9; /* Thin line */
-  padding-top: 20px; /* Add space above the content */
-  margin-top: 20px; /* Add space below the line */
+  margin-top: 25px;
+  color: #333;
+  font-size: 1.2rem;
 }
-/* Thin line divider between items */
+
 .section-divider {
-  border-top: 1.5px solid #dad9d9; /* Thin gray line */
-  margin: 10px 0; /* Space above and below the line */
-}
-/* Highlighted text */
-
-/* Highlighted text with dropdown */
-.highlighted-text.dropdown {
-  margin-left: 30px;
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
+  border-top: 1px solid #dad9d9;
+  margin: 20px 0;
 }
 
-/* Highlighted text with dropdown */
+/* Dropdown Menu */
 .highlighted-text.dropdown {
   position: relative;
-  display: inline-block;
-  cursor: pointer;
-  width: 300px; /* Fixed width for the dropdown container */
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .highlighted-text .selected-option {
-  text-align: center; /* Center the text horizontally */
-  font-weight: bold;
-  font-size: 16px;
-  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  background-color: #fff;
   color: #333;
-  padding: 10px 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
-  width: 100%; /* Take full width of the parent container */
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 
 .highlighted-text .dropdown-options {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%; /* Match the width of the parent container */
+  width: 100%;
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
   margin-top: 5px;
 }
 
@@ -190,88 +210,53 @@
   padding: 10px 20px;
   list-style: none;
   color: #333;
-  font-size: 14px;
+  font-size: 1rem;
   cursor: pointer;
-  text-align: center; /* Center the text in dropdown options */
+  text-align: center;
 }
 
 .highlighted-text .dropdown-options li:hover {
   background-color: #f4f4f4;
 }
-/* Username container */
+
+/* Username Section */
 .username-container {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between username and edit icon */
+  gap: 12px;
 }
 
-/* Edit icon */
-.edit-icon {
-  cursor: pointer;
-  font-size: 16px;
-  color: #007bff; /* Blue color for the icon */
-}
-
-.edit-icon:hover {
-  color: #0056b3; /* Darker blue on hover */
-}
-
-/* Edit username input and button */
 .edit-username {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .edit-username input {
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  font-size: 14px;
-  width: 200px; /* Adjust width as needed */
+  border-radius: 6px;
+  width: 80%;
 }
 
 .edit-username button {
-  background-color: #28a745; /* Green color for the save button */
+  background-color: #28a745;
   color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 .edit-username button:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #218838;
 }
 
-/* Add this to your profile-sidebar.component.css */
-input {
-  width: 90%;
-  padding: 0.5rem;
-  margin-top: 0.2rem;
-  margin-bottom: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
+/* Hover Effects */
+button:hover,
+.cv-upload-button:hover {
   background-color: #0056b3;
 }
 
-.edit-icon {
-  cursor: pointer;
-  margin-left: 10px;
-  font-size: 1rem;
+.edit-icon:hover {
+  color: #0056b3;
 }

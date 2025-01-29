@@ -59,19 +59,28 @@
     </div>
 
     <!-- Languages Section -->
-    <div class="summary-item">
-      <h3>Languages</h3>
+    <!-- Languages Section -->
+<div class="summary-item">
+  <h3>Languages</h3>
 
-      <ul>
-        <li *ngFor="let language of mainData.Languages">{{ language }}</li>
-      </ul>
-       <!-- Languages Dropdown -->
-       <div>
-        <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
-          <option aria-placeholder="Select new Language" *ngFor="let language of availableLanguages" [value]="language">{{ language }}</option>
-        </select>
-        <button (click)="addLanguage()">➕ Add Language</button>
-      </div>
-    </div>
+  <ul>
+    <li *ngFor="let language of mainData.Languages">
+      <strong>{{ language }}</strong>
+      <button class="delete-language-button" (click)="deleteLanguage(language)">
+        🗑️
+      </button>
+    </li>
+  </ul>
+
+  <!-- Languages Dropdown -->
+  <div>
+    <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
+      <option value="" disabled selected>Select another language</option>
+      <option *ngFor="let language of availableLanguages" [value]="language">{{ language }}</option>
+    </select>
+    <button (click)="addLanguage()">➕ Add Language</button>
+  </div>
+</div>
+
   </section>
 </main>

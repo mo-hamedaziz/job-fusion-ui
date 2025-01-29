@@ -122,4 +122,21 @@ export class ProfileMainComponent {
   onLanguageChange() {
     // Handle any additional actions when the language changes if needed
   }
+  // Delete a language
+deleteLanguage(language: string) {
+  const index = this.mainData.Languages.indexOf(language);
+  if (index !== -1) {
+    this.mainData.Languages.splice(index, 1); // Remove the language from the list
+    // Optionally, notify the server to update the profile with the new languages list
+    this.profileService.deleteLanguage(language).subscribe({
+      next: (response) => {
+        console.log('Language deleted:', response);
+      },
+      error: (err) => {
+        console.error('Error deleting language:', err);
+      },
+    });
+  }
+}
+
 }

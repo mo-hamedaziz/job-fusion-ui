@@ -1,7 +1,20 @@
 <aside class="sidebar">
   <!-- User Avatar Section -->
   <div class="user-avatar">
-    <img src="../../../assets/default.png" alt="User Avatar" />
+    <img [src]="profilePicture" alt="User Avatar" />
+  
+    <!-- Small Icon Button to Change Profile Picture -->
+    <label for="profile-pic-upload" class="change-pic-btn">
+      <span>📷</span>
+    </label>
+  
+    <input
+      type="file"
+      id="profile-pic-upload"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+      hidden
+    />
   </div>
 
   <!-- User Info Section -->
@@ -30,6 +43,9 @@
     </div>
   </div>
 
+  <!-- Divider Line -->
+  <div class="section-divider"></div>
+
   <!-- CV Section -->
   <div class="cv-section">
     <h3>CV</h3>
@@ -41,6 +57,9 @@
       <span class="upload-icon">⬆</span> Upload File
     </label>
   </div>
+
+  <!-- Divider Line -->
+  <div class="section-divider"></div>
 
   <!-- Information Section -->
   <div class="information">
@@ -65,6 +84,8 @@
       </p>
       <button (click)="updateInfo()">Save</button>
     </div>
+    <div class="section-divider"></div>
+
     <h4>
       Address
       <span class="edit-icon" (click)="toggleEditAddress()">✏️</span>

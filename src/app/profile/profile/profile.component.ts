@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProfileMainComponent } from '../profile-main/profile-main.component';
 import { ProfileSidebarComponent } from '../profile-sidebar/profile-sidebar.component';
+import { ProfileService } from '../service/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +10,7 @@ import { ProfileSidebarComponent } from '../profile-sidebar/profile-sidebar.comp
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   userData = {
     "sidebar": {
       "username": "John Doe",
@@ -32,6 +33,28 @@ export class ProfileComponent {
       Languages:["Arabic","English","French"]
       }
    }
+   ngOnInit(): void {
+     
+   }
+   /*
+    userData: any; // Variable to hold the fetched profile data
+
+  // Inject ProfileService
+  constructor(private profileService: ProfileService) {}
+
+  ngOnInit() {
+    // Fetch the user profile data when the component is initialized
+    this.profileService.getProfile().subscribe(
+      (data) => {
+        // Store the fetched data into the userData variable
+        this.userData = data;
+        console.log('User profile fetched:', this.userData);
+      },
+      (error) => {
+        console.error('Error fetching profile:', error);
+      }
+    );
+  }*/ 
  };
 
   

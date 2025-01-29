@@ -110,4 +110,26 @@ export class ProfileSidebarComponent {
       );
     }
   }
+
+
+  profilePicture: string = '../../../assets/default.png'; // Default image
+
+  onFileSelected(event: Event) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput.files && fileInput.files[0]) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = (e) => {
+        this.profilePicture = e.target?.result as string; // Update preview
+        this.profileService.updateProfilePicture(this.profilePicture).subscribe({
+          next: (response) => console.log('Profile picture updated:', response),
+          error: (error) => console.error('Update failed:', error),
+        });
+      };
+  
+      reader.readAsDataURL(file);
+    }
+  }
+
 }
