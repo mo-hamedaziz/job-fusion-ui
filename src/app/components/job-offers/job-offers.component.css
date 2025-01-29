@@ -1,8 +1,8 @@
 .job-offer-container {
   display: flex;
   flex-direction: column;
-  height: 75vh;
-  width: 90%;
+  height: 80vh;
+  width: 100%;
   padding: 10px;
   box-sizing: border-box;
 }

@@ -1,16 +1,13 @@
 <div class="welcome-page">
   <div class="left-sidebar">
-    <app-job-offers-filter (filterChange)="jobOffers.onFilterChange($event)"></app-job-offers-filter>
     <app-sort-job-offers (sortChange)="jobOffers.onSortChange($event)"></app-sort-job-offers>
+    <app-job-offers-filter (filterChange)="jobOffers.onFilterChange($event)"></app-job-offers-filter>
   </div>
   <div class="main-content">
     <app-job-offers-search-bar (filterChange)="jobOffers.onFilterChange({ title: $event })"></app-job-offers-search-bar>
     <app-job-offers #jobOffers></app-job-offers>
   </div>
   <div class="right-side-bar">
-    USER INFO<br>
-    +<br>
-    BRIEF STATS ABOUT THEIR APPLICATIONS<br>
-    HERE
+    <app-job-offers-stats></app-job-offers-stats>
   </div>
 </div>

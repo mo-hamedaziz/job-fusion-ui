@@ -1,16 +1,21 @@
 .welcome-page {
   display: flex;
-  height: 100vh;
 }
 
 .left-sidebar {
   width: 15%;
+  padding: 10px;
+  margin: 0 auto;
 }
 
 .main-content {
   width: 70%;
+  padding: 10px;
+  margin: 0 auto;
 }
 
-.left-sidebar {
+.right-sidebar {
   width: 15%;
+  padding: 10px;
+  margin: 0 auto;
 }

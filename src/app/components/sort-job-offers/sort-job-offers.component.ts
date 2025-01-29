@@ -15,4 +15,16 @@ export class SortJobOffersComponent {
   onSortChange() {
     this.sortChange.emit({ field: this.selectedField, order: this.sortOrder });
   }
+
+  getFieldDisplayName(field: string): string {
+    const fieldMap: { [key: string]: string } = {
+      title: 'Title',
+      company: 'Company',
+      location: 'Location',
+      employmentType: 'Employment Type',
+      experienceLevel: 'Experience Level',
+      postedDate: 'Date of creation'
+    };
+    return fieldMap[field] || field;
+  }
 }

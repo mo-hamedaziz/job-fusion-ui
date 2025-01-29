@@ -1,5 +1,5 @@
 <div class="job-offers-filter-container">
-  <h2>Filter Job Offers</h2>
+  <h3>Filter Job Offers</h3>
 
   <div class="filter-group">
     <label for="location">Location</label>
@@ -66,11 +66,11 @@
   <div class="filter-group remote-option">
     <label>
       <input type="checkbox" [(ngModel)]="filter.remoteOption" (change)="onFilterChange()" />
-      Remote Only
+      Remote Option
     </label>
   </div>
 
   <div class="filter-buttons">
-    <button class="reset-btn" (click)="resetFilters()">Reset</button>
+    <button class="reset-btn" (click)="resetFilters()">Reset Filter</button>
   </div>
 </div>

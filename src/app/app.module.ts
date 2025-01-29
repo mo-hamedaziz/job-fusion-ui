@@ -12,6 +12,7 @@ import { ApplyForJobComponent } from './components/apply-for-job/apply-for-job.c
 import { JobOffersFilterComponent } from './components/job-offers-filter/job-offers-filter.component';
 import { JobOffersSearchBarComponent } from './components/job-offers-search-bar/job-offers-search-bar.component';
 import { SortJobOffersComponent } from './components/sort-job-offers/sort-job-offers.component';
+import { JobOffersStatsComponent } from './components/job-offers-stats/job-offers-stats.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { SortJobOffersComponent } from './components/sort-job-offers/sort-job-of
     ApplyForJobComponent,
     JobOffersFilterComponent,
     JobOffersSearchBarComponent,
-    SortJobOffersComponent
+    SortJobOffersComponent,
+    JobOffersStatsComponent
   ],
   imports: [
     BrowserModule,
