@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { JobOffersComponent } from './components/job-offers/job-offers.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomePageComponent,
     NavbarComponent,
-    JobOffersComponent
+    JobOffersComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

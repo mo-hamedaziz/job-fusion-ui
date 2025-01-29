@@ -1,0 +1,35 @@
+.landing-container {
+    text-align: center;
+    padding: 50px;
+   
+  }
+  
+  header {
+    background: #abdbe3;
+    color: black; 
+    padding: 10%;
+    border-radius: 10px;
+  }
+  
+  button {
+    background: white;
+    color: #f7b46e;
+    padding: 10px 20px;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+  }
+  
+  .feature {
+    width: 30%;
+    padding: 20px;
+    background: #f7b46e ;
+    border-radius: 8px;
+  }
+  
