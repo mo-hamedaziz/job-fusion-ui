@@ -11,18 +11,30 @@ import { ProfileSidebarComponent } from '../profile-sidebar/profile-sidebar.comp
 })
 export class ProfileComponent {
   userData = {
-    sidebar: {
-      username: 'John Doe',
-      selectedOption: 'option1',
-      info: { birthdate: '01-01-1990', email: 'johndoe@example.com', nationality: 'American' },
-      address: { country: 'USA', region: 'California', phone: '123-456-7890' },
+    "sidebar": {
+      "username": "John Doe",
+      "selectedOption": "option1",
+      "info": {
+        "birthdate": "01-01-1990",
+        "email": "johndoe@example.com",
+        "nationality": "American"
+      },
+      "address": {
+        "country": "USA",
+        "region": "California",
+        "phone": "123-456-7890"
+      }
     },
-    summary: [
-      { title: 'Summary', content: 'I am a motivated professional with experience in software development and network engineering. Passionate about leveraging cutting-edge technologies to solve real-world challenges.' },
-      { title: 'Work Experiences', content: 'Company: TechCorp\nRole: Software Engineer\nStart: 2017\nEnd: 2021\n' },
-      { title: 'Studies', content: 'Institution: INSAT\nDegree: Engineering in Networks and Telecommunications\nFrom: 2021\nTo: 2026' },
-      { title: 'Languages', content: 'Arabic, English, French.' },
-    ],
-  };
+    "main":{
+      Summary:"I am a motivated professional with experience in software development and network engineering. Passionate about leveraging cutting-edge technologies to solve real-world challenges.",
+      WorkExperiences:[{company: "TechCorp", role: "Software Engineer", start: "2017", end: "2021"}],
+      Studies:[{institution: "INSAT",degree: "Engineering in Networks and Telecommunications",from: "2021",to: "2026"}],
+      Languages:["Arabic","English","French"]
+      }
+   }
+ };
+
   
-}
+
+
+  

@@ -1,9 +1,12 @@
 <div class="profile-container">
+  <!-- Sidebar Component -->
   <app-profile-sidebar 
-  [username]="userData.sidebar.username" 
-  [selectedOption]="userData.sidebar.selectedOption"
-  [info]="userData.sidebar.info"
-  [address]="userData.sidebar.address">
+    [username]="userData.sidebar.username" 
+    [selectedOption]="userData.sidebar.selectedOption"
+    [info]="userData.sidebar.info"
+    [address]="userData.sidebar.address">
   </app-profile-sidebar>
-  <app-profile-main [summaryData]="userData.summary"></app-profile-main>
+
+  <!-- Main Component -->
+  <app-profile-main [mainData]="userData.main"></app-profile-main>
 </div>

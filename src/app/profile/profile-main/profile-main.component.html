@@ -1,51 +1,76 @@
 <main class="main-content">
   <section class="summary">
-    <div class="summary-list">
-      <div class="summary-item" *ngFor="let item of summaryData; let i = index">
-        <h3>{{ item.title }}</h3>
+    <!-- Summary Section -->
+    <div class="summary-item">
+      <h3>Summary 
+        <button class="edit-button" (click)="editSummary()">✏️</button>
+      </h3>
+      <div *ngIf="isEditing">
+        <textarea [(ngModel)]="editableSummary" class="edit-textarea"></textarea>
+        <button class="save-button" (click)="saveSummary()">Save</button>
+      </div>
+      <p *ngIf="!isEditing" style="white-space: pre-wrap;">{{ mainData.Summary }}</p>
+    </div>
 
-        <!-- Show a text area when editing -->
-        <ng-container *ngIf="editedIndex === i; else viewMode">
-          <textarea [(ngModel)]="editContent" class="edit-textarea"></textarea>
-          <button class="save-button" (click)="saveEdit(i)">Save</button>
-        </ng-container>
+    <!-- Work Experiences Section -->
+    <div class="summary-item">
+      <h3>Work Experience</h3>
+      <ul>
+        <li *ngFor="let experience of mainData.WorkExperiences">
+          <strong>{{ experience.company }}</strong> - {{ experience.role }} ({{ experience.start }} - {{ experience.end }})
+        </li>
+      </ul>
 
-        <!-- Default view mode -->
-        <ng-template #viewMode>
-          <p style="white-space: pre-wrap;">{{ item.content }}</p>
-          <button class="edit-button" (click)="startEditing(i, item.content)">Edit</button>
-        </ng-template>
+      <!-- Add Work Experience Button -->
+      <button (click)="addWorkExperience()">➕ Add Work Experience</button>
 
-        <!-- Add button for "Work Experiences" and "Studies" -->
-        <button *ngIf="item.title === 'Work Experiences' || item.title === 'Studies'" 
-                class="add-button" 
-                (click)="toggleAddForm(item)">
-          Add another {{ item.title }}
-        </button>
+      <!-- Work Experience Input Form -->
+      <div *ngIf="isAddingWorkExperience">
+        <input type="text" placeholder="Company" [(ngModel)]="newWorkExperience.company" required />
+        <input type="text" placeholder="Role" [(ngModel)]="newWorkExperience.role" required />
+        <input type="text" placeholder="Start year" [(ngModel)]="newWorkExperience.start" />
+        <input type="text" placeholder="End year" [(ngModel)]="newWorkExperience.end" />
+        <button (click)="saveWorkExperience()">✅ Save</button>
+        <button (click)="isAddingWorkExperience = false">Cancel</button>
+      </div>
+    </div>
 
-        <!-- Add form -->
-        <div *ngIf="showAddForm && currentAddItem === item">
-          <form (ngSubmit)="addNewEntry(item)">
-            <label>
-              <!-- Different label for Work Experiences or Studies -->
-              {{ item.title === 'Work Experiences' ? 'Company' : 'Institution' }}:
-              <input type="text" [(ngModel)]="newEntry.companyOrInstitution" name="companyOrInstitution" required />
-            </label>
-            <label>
-              {{ item.title === 'Work Experiences' ? 'Role' : 'Degree' }}:
-              <input type="text" [(ngModel)]="newEntry.roleOrDegree" name="roleOrDegree" required />
-            </label>
-            <label>
-              From:
-              <input type="text" [(ngModel)]="newEntry.from" name="from" required />
-            </label>
-            <label>
-              To:
-              <input type="text" [(ngModel)]="newEntry.to" name="to" required />
-            </label>
-            <button type="submit" class="save-button">Save</button>
-          </form>
-        </div>
+    <!-- Studies Section -->
+    <div class="summary-item">
+      <h3>Studies</h3>
+      <ul>
+        <li *ngFor="let study of mainData.Studies">
+          <strong>{{ study.institution }}</strong> - {{ study.degree }} ({{ study.from }} - {{ study.to }})
+        </li>
+      </ul>
+
+      <!-- Add Study Form -->
+      <div *ngIf="isAddingStudy" class="add-study-form">
+        <input type="text" placeholder="Institution" [(ngModel)]="newStudy.institution" />
+        <input type="text" placeholder="Degree" [(ngModel)]="newStudy.degree" />
+        <input type="text" placeholder="From" [(ngModel)]="newStudy.from" />
+        <input type="text" placeholder="To" [(ngModel)]="newStudy.to" />
+        <button (click)="saveStudy()">✅ Save</button>
+        <button (click)="isAddingStudy = false">Cancel</button>
+      </div>
+
+      <!-- Add Study Button -->
+      <button *ngIf="!isAddingStudy" (click)="isAddingStudy = true">➕ Add Study</button>
+    </div>
+
+    <!-- Languages Section -->
+    <div class="summary-item">
+      <h3>Languages</h3>
+
+      <ul>
+        <li *ngFor="let language of mainData.Languages">{{ language }}</li>
+      </ul>
+       <!-- Languages Dropdown -->
+       <div>
+        <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
+          <option aria-placeholder="Select new Language" *ngFor="let language of availableLanguages" [value]="language">{{ language }}</option>
+        </select>
+        <button (click)="addLanguage()">➕ Add Language</button>
       </div>
     </div>
   </section>

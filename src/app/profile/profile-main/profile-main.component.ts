@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ProfileService } from '../service/profile.service';
 
 @Component({
   selector: 'app-profile-main',
@@ -10,41 +11,115 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./profile-main.component.css']
 })
 export class ProfileMainComponent {
-  @Input() summaryData: { title: string; content: string }[] = [];
+  constructor(private profileService: ProfileService) {}
 
-  editedIndex: number | null = null; // Track which item is being edited
-  editContent: string = ''; // Temporary storage for the content being edited
-  showAddForm = false; // Tracks if the add form is visible
-  currentAddItem: any = null; // Tracks which section is being added to
-  newEntry = { companyOrInstitution: '', roleOrDegree: '', from: '', to: '' }; // Temporary storage for new entries
+  @Input() mainData: {
+    Summary: string;
+    WorkExperiences: { company: string; role: string; start: string; end: string }[];
+    Studies: { institution: string; degree: string; from: string; to: string }[];
+    Languages: string[];
+  } = {
+    Summary: '',
+    WorkExperiences: [],
+    Studies: [],
+    Languages: []
+  };
 
-  startEditing(index: number, currentContent: string): void {
-    this.editedIndex = index;
-    this.editContent = currentContent;
+  // Predefined list of languages
+  availableLanguages: string[] = ['English', 'French', 'Spanish', 'German', 'Arabic', 'Chinese', 'Japanese'];
+  selectedLanguage: string = '';
+
+  isEditing = false;
+  editableSummary = '';
+
+  // Edit the summary
+  editSummary() {
+    this.isEditing = true;
+    this.editableSummary = this.mainData.Summary;
   }
 
-  saveEdit(index: number): void {
-    if (this.editedIndex !== null) {
-      this.summaryData[index].content = this.editContent;
-      this.editedIndex = null;
-      this.editContent = '';
+  // Save summary to the server
+  saveSummary() {
+    this.profileService.updateProfile1(this.editableSummary).subscribe((response) => {
+      console.log('Summary update response:', response);
+      if (response.status === 'success') {
+        this.mainData.Summary = this.editableSummary;
+        this.isEditing = false;
+      }
+    });
+  }
+
+  // State for adding a new work experience
+  newWorkExperience = { company: '', role: '', start: '', end: '' };
+  isAddingWorkExperience = false;
+
+  // Enable work experience input fields
+  addWorkExperience() {
+    this.isAddingWorkExperience = true;
+  }
+
+  // Save new work experience
+  saveWorkExperience() {
+    if (this.newWorkExperience.company && this.newWorkExperience.role) {
+      this.profileService.addWorkExperience(this.newWorkExperience).subscribe({
+        next: (response) => {
+          console.log('Response from server:', response);
+          if (response.status === 'success') {
+            this.mainData.WorkExperiences.push({ ...this.newWorkExperience });
+            this.newWorkExperience = { company: '', role: '', start: '', end: '' };
+            this.isAddingWorkExperience = false;
+          }
+        },
+        error: (err) => {
+          console.error('Error adding work experience:', err);
+        },
+      });
     }
   }
 
-  toggleAddForm(item: any): void {
-    this.showAddForm = this.currentAddItem === item ? !this.showAddForm : true;
-    this.currentAddItem = item;
-    this.newEntry = { companyOrInstitution: '', roleOrDegree: '', from: '', to: '' }; // Reset form fields
+  // State for adding a new study
+  newStudy = { institution: '', degree: '', from: '', to: '' };
+  isAddingStudy = false;
+
+  // Save new study
+  saveStudy() {
+    if (this.newStudy.institution && this.newStudy.degree) {
+      this.profileService.addStudy(this.newStudy).subscribe({
+        next: (response) => {
+          console.log('Response from server:', response);
+          if (response.status === 'success') {
+            this.mainData.Studies.push({ ...this.newStudy });
+            this.newStudy = { institution: '', degree: '', from: '', to: '' };
+            this.isAddingStudy = false;
+          }
+        },
+        error: (err) => {
+          console.error('Error adding study:', err);
+        },
+      });
+    }
   }
 
-  addNewEntry(item: any): void {
-    const isWorkExperience = item.title === 'Work Experiences';
-    const newContent = isWorkExperience
-      ? `Company: ${this.newEntry.companyOrInstitution}\nRole: ${this.newEntry.roleOrDegree}\nFrom: ${this.newEntry.from}\nTo: ${this.newEntry.to}`
-      : `Institution: ${this.newEntry.companyOrInstitution}\nDegree: ${this.newEntry.roleOrDegree}\nFrom: ${this.newEntry.from}\nTo: ${this.newEntry.to}`;
+  // Add a selected language
+  addLanguage() {
+    if (this.selectedLanguage && !this.mainData.Languages.includes(this.selectedLanguage)) {
+      this.profileService.addLanguage(this.selectedLanguage).subscribe({
+        next: (response) => {
+          console.log('Language added:', response);
+          if (response.status === 'success') {
+            this.mainData.Languages.push(this.selectedLanguage);
+            this.selectedLanguage = ''; // Clear the selected language
+          }
+        },
+        error: (err) => {
+          console.error('Error adding language:', err);
+        },
+      });
+    }
+  }
 
-    item.content += `\n\n${newContent}`; // Append new entry under the previous ones
-    this.showAddForm = false; // Hide the add form
-    this.currentAddItem = null;
+  // Update the selected language
+  onLanguageChange() {
+    // Handle any additional actions when the language changes if needed
   }
 }
