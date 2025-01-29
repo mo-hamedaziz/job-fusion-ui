@@ -2,10 +2,9 @@
   display: flex;
   flex-direction: column;
   height: 75vh;
-  width: 100%;
-  padding: 1rem;
+  width: 90%;
+  padding: 10px;
   box-sizing: border-box;
-  margin: 0 auto;
 }
 
 .job-offer-list {
