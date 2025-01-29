@@ -1,12 +1,14 @@
 /* General container styling */
 .container {
   max-width: 700px;
+  max-height: 80vh; /* Set a maximum height for the container */
   margin: 40px auto;
   padding: 25px;
   border-radius: 10px;
   background: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 /* Form elements */
@@ -92,3 +94,5 @@ input[type="checkbox"] {
 .submit-btn:hover {
   background: #218838;
 }
+
+
