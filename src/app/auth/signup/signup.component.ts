@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +9,7 @@ import { AuthService } from '../../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   signup(signupForm: NgForm) {
     if (signupForm.invalid) {
@@ -28,6 +29,7 @@ export class SignupComponent {
       next: (response) => {
         console.log('Signup successful', response);
         alert('Signup successful!'); // Optional: Navigate to login or dashboard
+        this.router.navigate(['/validation']);
       },
       error: (error) => {
         console.error('Signup failed', error);
