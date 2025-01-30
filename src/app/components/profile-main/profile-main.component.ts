@@ -36,7 +36,7 @@ export class ProfileMainComponent {
 
   // Save summary to the server
   saveSummary() {
-    this.profileService.updateProfile1(this.editableSummary).subscribe((response) => {
+    this.profileService.updateProfile1({Summary : this.editableSummary}).subscribe((response) => {
       console.log('Summary update response:', response);
       if (response.status === 'success') {
         this.mainData.Summary = this.editableSummary;
