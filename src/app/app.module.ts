@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './profile/profile/profile.component';
-import { ProfileSidebarComponent } from './profile/profile-sidebar/profile-sidebar.component';
-import { ProfileMainComponent } from './profile/profile-main/profile-main.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
@@ -22,6 +19,9 @@ import { RecruiterComponent } from './pages/recruiter/recruiter.component';
 import { RecruiterJobFormComponent } from './components/recruiter-job-form/recruiter-job-form/recruiter-job-form.component';
 
 import { DefaultCompanyLogoPipe } from './pipes/default-company-logo.pipe';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
+import { ProfileMainComponent } from './components/profile-main/profile-main.component';
 @NgModule({
   declarations: [
     AppComponent,
