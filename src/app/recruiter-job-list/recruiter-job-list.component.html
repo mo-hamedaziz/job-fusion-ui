@@ -1,0 +1,31 @@
+<div class="job-list-container">
+    <h2>My Job Offers</h2>
+    
+    <table class="job-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Date Posted</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let job of jobs" (click)="selectJob(job)" [class.selected]="job === selectedJob">
+          <td>{{ job.title }}</td>
+          <td>{{ job.status }}</td>
+          <td>{{ job.datePosted | date }}</td>
+          <td>
+            <button class="edit-btn" (click)="editJob(job); $event.stopPropagation()">Edit</button>
+            <button class="delete-btn" (click)="deleteJob(job.id); $event.stopPropagation()">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="button-group">
+      <button class="add-btn" (click)="addJob()">➕ Add Job</button>
+      <button class="edit-btn" [disabled]="!selectedJob" (click)="editJob(selectedJob)">📝 Edit Selected Job</button>
+    </div>
+  </div>
+  

@@ -1,5 +1,7 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+  "paths": {
+    "@angular/*": ["node_modules/@angular/*"]
+  },
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
@@ -24,10 +26,11 @@
       "dom"
     ]
   },
-  "angularCompilerOptions": {
+
+/*   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  } */
 }
