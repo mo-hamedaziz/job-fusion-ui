@@ -5,7 +5,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { ApplyForJobComponent } from './components/apply-for-job/apply-for-job.component';
 import { RecruiterComponent } from './pages/recruiter/recruiter.component';
-import { ProfileComponent } from './profile/profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
