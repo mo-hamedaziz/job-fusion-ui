@@ -5,6 +5,7 @@ import { ProfileSidebarComponent } from './profile/profile-sidebar/profile-sideb
 import { ProfileMainComponent } from './profile/profile-main/profile-main.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,6 +16,11 @@ import { JobOffersFilterComponent } from './components/job-offers-filter/job-off
 import { JobOffersSearchBarComponent } from './components/job-offers-search-bar/job-offers-search-bar.component';
 import { SortJobOffersComponent } from './components/sort-job-offers/sort-job-offers.component';
 import { JobOffersStatsComponent } from './components/job-offers-stats/job-offers-stats.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { RecruiterComponent } from './pages/recruiter/recruiter.component';
+import { RecruiterJobFormComponent } from './components/recruiter-job-form/recruiter-job-form/recruiter-job-form.component';
+
 import { DefaultCompanyLogoPipe } from './pipes/default-company-logo.pipe';
 @NgModule({
   declarations: [
@@ -31,12 +37,18 @@ import { DefaultCompanyLogoPipe } from './pipes/default-company-logo.pipe';
     JobOffersSearchBarComponent,
     SortJobOffersComponent,
     JobOffersStatsComponent,
+    SigninComponent,
+    SignupComponent,
+    RecruiterComponent,
+    RecruiterJobFormComponent,
     DefaultCompanyLogoPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
