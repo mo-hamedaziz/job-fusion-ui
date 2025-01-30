@@ -18,17 +18,17 @@ export class SignupComponent {
 
     const user = {
       username: signupForm.value.username,
-      firstname: signupForm.value.firstname,
-      lastname: signupForm.value.lastname,
       email: signupForm.value.email,
       password: signupForm.value.password,
-      role: signupForm.value.role,
+      date_of_birth: signupForm.value.date_of_birth,
+      Recruiter: signupForm.value.Recruiter === 'true', // Convert string to boolean
+      PhoneNumber: signupForm.value.PhoneNumber,
     };
 
     this.authService.signup(user).subscribe({
       next: (response) => {
         console.log('Signup successful', response);
-        alert('Signup successful!'); // Optional: Navigate to login or dashboard
+        alert('Signup successful!'); 
         this.router.navigate(['/validation']);
       },
       error: (error) => {
@@ -37,6 +37,4 @@ export class SignupComponent {
       },
     });
   }
-  
-
 }
