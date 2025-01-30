@@ -1,49 +1,106 @@
 .job-offer-container {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 75vh;
   width: 100%;
-  padding: 10px;
+  padding: 20px 0;
   box-sizing: border-box;
+  background-color: #f8f9fa;
 }
 
 .job-offer-list {
   flex: 1;
   overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .job-offer {
-  border: 1px solid #eee;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 4px;
+  background: white;
+  margin-bottom: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  border: 1px solid #ddd;
 }
 
-.job-offer h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.2rem;
+.job-offer:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.job-offer p {
-  margin: 0.2rem 0;
+.job-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
-/* Customize the scrollbar */
+/* .company-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #f3f3f3;
+} */
+
+.job-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
+
+.company-name {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.job-info p {
+  font-size: 14px;
+  margin: 4px 0;
+  color: #444;
+}
+
+.no-offers {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+}
+
 .job-offer-list::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .job-offer-list::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
+  background-color: #bbb;
+  border-radius: 3px;
 }
 
 .job-offer-list::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa;
+  background-color: #888;
+}
+
+@media (max-width: 768px) {
+  .job-offer {
+    padding: 12px;
+  }
+
+  .job-title {
+    font-size: 16px;
+  }
+
+  .company-name {
+    font-size: 13px;
+  }
+
+  .job-info p {
+    font-size: 13px;
+  }
 }

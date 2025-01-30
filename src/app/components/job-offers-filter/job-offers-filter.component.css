@@ -1,84 +1,86 @@
-/* Overall container */
 .job-offers-filter-container {
-  width: 100%;
-  font-family: 'Arial', sans-serif;
-  background-color: #f8f9fa; /* Light background */
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  max-width: 350px;
-  margin: 15px auto; /* Center the form */
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  margin: 20px auto;
 }
 
-/* Heading */
-.job-offers-filter-container h3 {
-  font-size: 1.25rem; /* Reduced size */
-  color: #333;
-  margin-bottom: 12px; /* Reduced space */
-  font-weight: 600;
-}
+/* .job-offers-filter-container h3 {
+  color: #2c3e50;
+  text-align: center;
+} */
 
-/* Filter group styles */
 .filter-group {
-  margin-bottom: 10px; /* Reduced space */
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
 }
 
-/* Label styles */
 .filter-group label {
-  font-size: 13px; /* Smaller font size */
-  color: #555;
-  margin-bottom: 5px; /* Reduced margin */
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
   display: block;
 }
 
-/* Input and select field styles */
 .filter-group input,
 .filter-group select {
-  padding: 8px; /* Reduced padding */
-  font-size: 14px; /* Slightly smaller font */
-  border: 1px solid #ddd;
-  border-radius: 6px; /* Smaller radius */
-  outline: none;
-  background-color: #fff;
-  transition: all 0.2s ease; /* Smooth transition */
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #d1d3e2;
+  border-radius: 8px;
+  background: #fff;
+  color: #2c3e50;
+  transition: all 0.3s ease;
 }
 
-/* Focus effect */
 .filter-group input:focus,
 .filter-group select:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
 }
 
-/* Remote option styles */
+.filter-group input:hover,
+.filter-group select:hover {
+  border-color: #3498db;
+}
+
 .remote-option {
   display: flex;
   align-items: center;
-  gap: 8px; /* Reduced gap */
+  font-size: 14px;
+  font-weight: 200;
+  color: black;
 }
 
-/* Filter buttons container */
+.remote-option input[type="checkbox"] {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .filter-buttons {
   display: flex;
-  justify-content: flex-start; /* Left align the button */
-  margin-top: 12px; /* Reduced space */
+  justify-content: space-between;
+  margin-top: 8px;
 }
 
-/* Reset button styling */
 .reset-btn {
-  padding: 8px 12px; /* Reduced padding */
-  font-size: 13px; /* Smaller font */
-  font-weight: bold;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
-  background-color: #ccc;
+  border-radius: 8px;
+  background-color: #bdc3c7;
   color: black;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .reset-btn:hover {
-  background-color: #bbb;
+  background-color: #a5b1c2;
 }
+
