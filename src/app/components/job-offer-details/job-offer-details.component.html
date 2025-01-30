@@ -2,7 +2,7 @@
   <div class="popup">
     <button class="close-btn" (click)="onClose()">✖</button>
     <div class="header">
-      <img *ngIf="jobOffer.companyLogoUrl" [src]="jobOffer.companyLogoUrl" alt="Company Logo" class="company-logo" />
+      <img *ngIf="jobOffer.companyLogoUrl" [src]="jobOffer.companyLogoUrl | defaultCompanyLogo" alt="Company Logo" class="company-logo" />
       <h2 class="job-title">{{ jobOffer.title }}</h2>
     </div>
     
