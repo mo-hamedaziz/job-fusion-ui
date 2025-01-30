@@ -1,0 +1,114 @@
+<aside class="sidebar">
+  <!-- User Avatar Section -->
+  <div class="user-avatar">
+    <img [src]="profilePicture" alt="User Avatar" />
+  
+    <!-- Small Icon Button to Change Profile Picture -->
+    <label for="profile-pic-upload" class="change-pic-btn">
+      <span>📷</span>
+    </label>
+  
+    <input
+      type="file"
+      id="profile-pic-upload"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+      hidden
+    />
+  </div>
+
+  <!-- User Info Section -->
+  <div class="user-info">
+    <div class="username-container">
+      <h2>{{ username }}</h2>
+      <span class="edit-icon" (click)="toggleEditUsername()">✏️</span>
+    </div>
+    <div class="edit-username" *ngIf="isEditingUsername">
+      <input
+        [(ngModel)]="username"
+        placeholder="Enter new username"
+        (keyup.enter)="updateUsername()"
+      />
+      <button (click)="updateUsername()">Save</button>
+    </div>
+    <div class="highlighted-text dropdown">
+      <div class="selected-option" (click)="toggleDropdown()">
+        {{ selectedOption }}
+      </div>
+      <ul class="dropdown-options" *ngIf="isDropdownOpen">
+        <li *ngFor="let option of options" (click)="selectOption(option)">
+          {{ option }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Divider Line -->
+  <div class="section-divider"></div>
+
+  <!-- CV Section -->
+  <div class="cv-section">
+    <h3>CV</h3>
+    <div class="cv-image-preview">
+      <img id="cv-image" src="../../../assets/uploadcv.webp" alt="CV Preview" />
+    </div>
+    <input type="file" id="cv-upload" accept=".pdf,.doc,.docx" style="display: none" />
+    <label for="cv-upload" class="cv-upload-button">
+      <span class="upload-icon">⬆</span> Upload File
+    </label>
+  </div>
+
+  <!-- Divider Line -->
+  <div class="section-divider"></div>
+
+  <!-- Information Section -->
+  <div class="information">
+    <h3>
+      Information
+      <span class="edit-icon" (click)="toggleEditInfo()">✏️</span>
+    </h3>
+    <div *ngIf="!isEditingInfo">
+      <p>📅 {{info.birthdate }}</p>
+      <p>📧 {{info.email }}</p>
+      <p>🌍 {{info.nationality }}</p>
+    </div>
+    <div *ngIf="isEditingInfo">
+      <p>
+        📅 <input [(ngModel)]="info.birthdate" placeholder="Birthdate" />
+      </p>
+      <p>
+        📧 <input [(ngModel)]="info.email" placeholder="Email" />
+      </p>
+      <p>
+        🌍 <input [(ngModel)]="info.nationality" placeholder="Nationality" />
+      </p>
+      <button (click)="updateInfo()">Save</button>
+    </div>
+    <div class="section-divider"></div>
+
+    <h4>
+      Address
+      <span class="edit-icon" (click)="toggleEditAddress()">✏️</span>
+    </h4>
+    <div *ngIf="!isEditingAddress">
+      <p>Country: {{ address.country }}</p>
+      <p>Region: {{ address.region }}</p>
+      <p>Phone: {{ address.phone }}</p>
+    </div>
+    <div *ngIf="isEditingAddress">
+      <p>
+        Country:
+        <input [(ngModel)]="address.country" placeholder="Country" />
+      </p>
+      <p>
+        Region:
+        <input [(ngModel)]="address.region" placeholder="Region" />
+      </p>
+      <p>
+        Phone:
+        <input [(ngModel)]="address.phone" placeholder="Phone" />
+      </p>
+      <button (click)="updateAddress()">Save</button>
+    </div>
+  </div>
+</aside>
