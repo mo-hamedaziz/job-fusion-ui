@@ -1,15 +1,21 @@
 .job-offers-filter-container {
-  width: 100%;
-  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  margin: 20px auto;
 }
 
-h2 {
+/* .job-offers-filter-container h3 {
+  color: #2c3e50;
   text-align: center;
-  color: #333;
-}
+} */
 
 .filter-group {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
 }
@@ -17,53 +23,64 @@ h2 {
 .filter-group label {
   font-size: 14px;
   font-weight: bold;
-  color: #555;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  display: block;
 }
 
 .filter-group input,
 .filter-group select {
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
   font-size: 14px;
+  border: 2px solid #d1d3e2;
+  border-radius: 8px;
+  background: #fff;
+  color: #2c3e50;
+  transition: all 0.3s ease;
 }
 
 .filter-group input:focus,
 .filter-group select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+}
+
+.filter-group input:hover,
+.filter-group select:hover {
+  border-color: #3498db;
 }
 
 .remote-option {
   display: flex;
   align-items: center;
-  gap: 10px;
+  font-size: 14px;
+  font-weight: 200;
+  color: black;
+}
+
+.remote-option input[type="checkbox"] {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .filter-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 8px;
 }
 
 .reset-btn {
-  flex: 1;
-  padding: 10px;
-  border: none;
+  padding: 10px 14px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: #bdc3c7;
+  color: black;
   transition: 0.3s;
 }
 
-.reset-btn {
-  background: #ccc;
-  color: black;
+.reset-btn:hover {
+  background-color: #a5b1c2;
 }
 
-.reset-btn:hover {
-  background: #bbb;
-}

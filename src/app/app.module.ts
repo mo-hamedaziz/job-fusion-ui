@@ -15,6 +15,7 @@ import { JobOffersFilterComponent } from './components/job-offers-filter/job-off
 import { JobOffersSearchBarComponent } from './components/job-offers-search-bar/job-offers-search-bar.component';
 import { SortJobOffersComponent } from './components/sort-job-offers/sort-job-offers.component';
 import { JobOffersStatsComponent } from './components/job-offers-stats/job-offers-stats.component';
+import { DefaultCompanyLogoPipe } from './pipes/default-company-logo.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { JobOffersStatsComponent } from './components/job-offers-stats/job-offer
     JobOffersFilterComponent,
     JobOffersSearchBarComponent,
     SortJobOffersComponent,
-    JobOffersStatsComponent
+    JobOffersStatsComponent,
+    DefaultCompanyLogoPipe
   ],
   imports: [
     BrowserModule,
