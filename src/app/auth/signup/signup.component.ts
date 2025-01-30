@@ -29,6 +29,9 @@ export class SignupComponent {
       next: (response) => {
         console.log('Signup successful', response);
         alert('Signup successful!'); 
+        //momkin il verif chtist7a9ilhom fil back!
+        sessionStorage.setItem('email', user.email);
+        sessionStorage.setItem('password', user.password);
         this.router.navigate(['/validation']);
       },
       error: (error) => {

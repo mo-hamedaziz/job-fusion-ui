@@ -25,9 +25,12 @@ export class SigninComponent {
       next: (response) => {
         console.log('Login response:', response);
 
-        if (response.error === 'Invalid credentials') {
+        if (response.message === 'Auhtentifcation failed') {
           alert('Invalid credentials. Please try again.');
-        } else if (response.verified === false) {
+        } else if (response === false) {
+          //hatha 5ater ig il vverif fil back tist7a9hom
+          sessionStorage.setItem('email', credentials.email);
+          sessionStorage.setItem('password', credentials.password);
           alert('Your account is not verified. Redirecting to verification page.');
           this.router.navigate(['/verif-page']);
         } else {
