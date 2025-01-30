@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { ProfileComponent } from './profile/profile/profile.component';
+import { ProfileSidebarComponent } from './profile/profile-sidebar/profile-sidebar.component';
+import { ProfileMainComponent } from './profile/profile-main/profile-main.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { JobOffersComponent } from './components/job-offers/job-offers.component';
@@ -18,9 +21,13 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { RecruiterComponent } from './pages/recruiter/recruiter.component';
 import { RecruiterJobFormComponent } from './components/recruiter-job-form/recruiter-job-form/recruiter-job-form.component';
 
+import { DefaultCompanyLogoPipe } from './pipes/default-company-logo.pipe';
 @NgModule({
   declarations: [
     AppComponent,
+    ProfileComponent,
+    ProfileSidebarComponent,
+    ProfileMainComponent,
     WelcomePageComponent,
     NavbarComponent,
     JobOffersComponent,
@@ -33,7 +40,8 @@ import { RecruiterJobFormComponent } from './components/recruiter-job-form/recru
     SigninComponent,
     SignupComponent,
     RecruiterComponent,
-    RecruiterJobFormComponent
+    RecruiterJobFormComponent,
+    DefaultCompanyLogoPipe
   ],
   imports: [
     BrowserModule,
@@ -43,6 +51,6 @@ import { RecruiterJobFormComponent } from './components/recruiter-job-form/recru
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,3 +1,4 @@
+/* Overlay with fade-in animation */
 .overlay {
   position: fixed;
   top: 0;
@@ -9,36 +10,50 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Popup container */
 .popup {
   background-color: white;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 30px;
   max-width: 800px;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-height: 80vh;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 75vh;
-  overflow: scroll;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  animation: slideUp 0.3s ease-in-out;
 }
 
+/* Close button */
 .close-btn {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 20px;
   position: absolute;
   top: 15px;
   right: 15px;
   cursor: pointer;
+  transition: color 0.2s ease-in-out;
 }
 
+.close-btn:hover {
+  color: red;
+}
+
+/* Header Section */
 .header {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
 }
 
 .company-logo {
@@ -50,22 +65,34 @@
 
 .job-title {
   font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-weight: 700;
+  color: #333;
+  flex: 1;
 }
 
-.job-info p, .job-description p, .job-details p {
+/* Job Information */
+.job-info p,
+.job-description p,
+.job-details p {
   font-size: 16px;
   margin: 5px 0;
+  color: #555;
 }
 
-h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 15px;
-  color: #333;
+/* Section Styling */
+.job-description,
+.job-requirements,
+.job-responsibilities,
+.job-benefits,
+.job-details {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
+/* Lists */
 ul {
   padding-left: 20px;
   font-size: 16px;
@@ -75,31 +102,41 @@ ul li {
   margin-bottom: 8px;
 }
 
+/* Apply Button */
 .apply-btn {
-  background-color: #4CAF50;
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 12px 20px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: background-color 0.3s ease;
   width: 100%;
 }
 
 .apply-btn:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
-.job-description, .job-requirements, .job-responsibilities, .job-benefits, .job-details {
-  background-color: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* Smooth animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.job-info {
-  font-size: 16px;
-  color: #555;
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

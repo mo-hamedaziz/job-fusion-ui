@@ -1,21 +1,79 @@
 .welcome-page {
   display: flex;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  padding: 8px;
+}
+
+.welcome-container {
+  text-align: center;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  margin: 0 auto;
+  width: 90%;
+  margin-bottom: 12px;
+}
+
+.welcome-text {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.username {
+  font-weight: 700;
+  color: #ffdd57;
+}
+
+.welcome-subtext {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.9;
 }
 
 .left-sidebar {
-  width: 15%;
-  padding: 10px;
-  margin: 0 auto;
+  width: 20%;
+  margin-right: 20px;
 }
 
 .main-content {
-  width: 70%;
-  padding: 10px;
-  margin: 0 auto;
+  width: 60%;
+  margin: 0 20px;
 }
 
 .right-sidebar {
-  width: 15%;
-  padding: 10px;
-  margin: 0 auto;
+  width: 20%;
+  margin-left: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-sidebar,
+  .right-sidebar {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .main-content {
+    width: 100%;
+  }
 }

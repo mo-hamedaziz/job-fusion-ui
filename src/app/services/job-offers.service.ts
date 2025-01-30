@@ -456,6 +456,6 @@ export class JobOfferService {
   constructor() {}
 
   getJobOffers(): Observable<JobOffer[]> {
-    return of(this.jobOffers);
-  }
+    return of(this.jobOffers.sort((a, b) => new Date(b.postedDate).getTime() - new Date(a.postedDate).getTime()));
+  }  
 }
