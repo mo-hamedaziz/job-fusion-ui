@@ -5,8 +5,6 @@ import { ProfileService } from '../service/profile.service';
 
 @Component({
   selector: 'app-profile',
-  standalone: true,
-  imports: [ProfileMainComponent, ProfileSidebarComponent],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })

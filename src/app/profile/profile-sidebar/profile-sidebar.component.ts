@@ -7,8 +7,6 @@ import { ProfileService } from '../service/profile.service';
   selector: 'app-profile-sidebar',
   templateUrl: './profile-sidebar.component.html',
   styleUrls: ['./profile-sidebar.component.css'],
-  standalone: true,
-  imports: [CommonModule, FormsModule],
 })
 export class ProfileSidebarComponent {
   @Input() username: string = '';
