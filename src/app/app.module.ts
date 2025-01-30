@@ -16,6 +16,7 @@ import { JobOffersSearchBarComponent } from './components/job-offers-search-bar/
 import { SortJobOffersComponent } from './components/sort-job-offers/sort-job-offers.component';
 import { JobOffersStatsComponent } from './components/job-offers-stats/job-offers-stats.component';
 import { DefaultCompanyLogoPipe } from './pipes/default-company-logo.pipe';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { DefaultCompanyLogoPipe } from './pipes/default-company-logo.pipe';
     JobOffersSearchBarComponent,
     SortJobOffersComponent,
     JobOffersStatsComponent,
+    LandingPageComponent,
     DefaultCompanyLogoPipe
   ],
   imports: [
