@@ -1,0 +1,114 @@
+/* Centering the form */
+.job-application {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Title styling */
+h2 {
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Label styling */
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #34495e;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* Styling for file inputs and text areas */
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border 0.3s ease-in-out;
+}
+
+/* File input hover effect */
+input[type="file"]:hover,
+textarea:hover {
+  border-color: #2980b9;
+}
+
+/* Focus effect */
+input[type="file"]:focus,
+textarea:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Textarea specific styling */
+textarea {
+  resize: vertical;
+  height: 120px;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Submit Button Styling */
+button {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease-in-out, transform 0.2s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  transform: scale(1.02);
+}
+
+/* Disabled button styling */
+button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .job-application {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+
