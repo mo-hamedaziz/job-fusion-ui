@@ -23,6 +23,8 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
 import { ProfileMainComponent } from './components/profile-main/profile-main.component';
+import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,13 +45,16 @@ import { ProfileMainComponent } from './components/profile-main/profile-main.com
     SignupComponent,
     RecruiterComponent,
     RecruiterJobFormComponent,
-    DefaultCompanyLogoPipe
+    DefaultCompanyLogoPipe,
+    ValidationPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
+    
 
   ],
   providers: [],

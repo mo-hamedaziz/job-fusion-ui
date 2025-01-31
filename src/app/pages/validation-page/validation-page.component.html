@@ -1,0 +1,13 @@
+<router-outlet></router-outlet>
+<div class="validation-container">
+    <h2>Enter Your Validation Code</h2>
+    <form [formGroup]="validationForm" (ngSubmit)="submitCode()">
+      <label for="code">Validation Code:</label>
+      <input id="code" type="text" formControlName="code" maxlength="6"/>
+      <div *ngIf="submitted && validationForm.controls['code'].invalid" class="error">
+        Code is required and must be 6 characters.
+      </div>
+      <button type="submit">Verify</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,10 @@
+.validation-container {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+  }
+  .error {
+    color: red;
+    font-size: 14px;
+  }
+  
