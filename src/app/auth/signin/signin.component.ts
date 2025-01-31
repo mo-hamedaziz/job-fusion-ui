@@ -23,12 +23,11 @@ export class SigninComponent {
 
     this.authService.login(credentials).subscribe({
       next: (response) => {
-        console.log('Login response:', response);
-
-        if (response.message === 'Auhtentifcation failed') {
+        console.log('Full Login response:', response); // Debugging
+    
+        if (response?.message === 'Auhtentifcation failed') { 
           alert('Invalid credentials. Please try again.');
-        } else if (response === false) {
-          //hatha 5ater ig il vverif fil back tist7a9hom
+        } else if (response?.verified == false) {
           sessionStorage.setItem('email', credentials.email);
           sessionStorage.setItem('password', credentials.password);
           alert('Your account is not verified. Redirecting to verification page.');
@@ -39,9 +38,10 @@ export class SigninComponent {
         }
       },
       error: (error) => {
-        console.error('Login failed', error);
-        alert('An error occurred during login. Please try again later.');
+        console.error('Login failed:', error);
+        alert('Please verify your credentials.');
       },
     });
-  }
+    
+}
 }
