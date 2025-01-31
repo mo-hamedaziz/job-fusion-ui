@@ -4,14 +4,14 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { ApplyForJobComponent } from './components/apply-for-job/apply-for-job.component';
-import { RecruiterComponent } from './pages/recruiter/recruiter.component';
+import { RecruiterApgeComponent } from './pages/recruiter-apge/recruiter-apge.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'recruiter', component: RecruiterComponent },
+  { path: 'recruiter', component: RecruiterApgeComponent },
   { path: 'candidate/apply/:job_offer_id', component: ApplyForJobComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
