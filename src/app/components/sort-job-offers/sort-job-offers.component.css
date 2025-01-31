@@ -1,0 +1,49 @@
+.sort-job-offers {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  margin: 8px auto;
+}
+
+/* .sort-job-offers h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-align: center;
+} */
+
+.sort-job-offers label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.sort-field, .sort-order {
+  margin-bottom: 12px;
+}
+
+.sort-job-offers select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #d1d3e2;
+  border-radius: 8px;
+  background: #fff;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.sort-job-offers select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+}
+
+.sort-job-offers select:hover {
+  border-color: #3498db;
+}

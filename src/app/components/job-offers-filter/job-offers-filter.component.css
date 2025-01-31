@@ -1,0 +1,86 @@
+.job-offers-filter-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  margin: 20px auto;
+}
+
+/* .job-offers-filter-container h3 {
+  color: #2c3e50;
+  text-align: center;
+} */
+
+.filter-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #d1d3e2;
+  border-radius: 8px;
+  background: #fff;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+}
+
+.filter-group input:hover,
+.filter-group select:hover {
+  border-color: #3498db;
+}
+
+.remote-option {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 200;
+  color: black;
+}
+
+.remote-option input[type="checkbox"] {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.reset-btn {
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #bdc3c7;
+  color: black;
+  transition: 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: #a5b1c2;
+}
+

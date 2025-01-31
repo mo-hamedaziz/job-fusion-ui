@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Job } from '../mochData'; // Adjust the import path if needed
+import { Job } from '../../mochData'; // Adjust the import path if needed
 
 @Component({
   selector: 'app-recruiter-job-list',
