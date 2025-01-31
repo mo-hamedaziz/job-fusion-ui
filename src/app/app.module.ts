@@ -24,6 +24,8 @@ import { ProfileSidebarComponent } from './components/profile-sidebar/profile-si
 import { ProfileMainComponent } from './components/profile-main/profile-main.component';
 import { RecruiterApgeComponent } from './pages/recruiter-apge/recruiter-apge.component';
 import { RecruiterJobListComponent } from './components/recruiter-job-list/recruiter-job-list.component';
+import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,13 +48,16 @@ import { RecruiterJobListComponent } from './components/recruiter-job-list/recru
     RecruiterJobFormComponent,
     DefaultCompanyLogoPipe,
     RecruiterApgeComponent,
-    RecruiterJobListComponent
+    RecruiterJobListComponent,
+    ValidationPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
+    
 
   ],
   providers: [],

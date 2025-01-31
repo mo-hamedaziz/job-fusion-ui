@@ -17,7 +17,7 @@ export class RecruiterJobFormComponent {
     applicationDeadline: '',
     remoteOption: false,
     industry: '',
-    postedDate: new Date(),
+    createdAt: new Date(),
     contactEmail: '',
     applicationUrl: '',
     companyLogoUrl: '',
