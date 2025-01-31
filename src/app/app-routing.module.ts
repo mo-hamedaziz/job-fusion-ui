@@ -7,6 +7,7 @@ import { ApplyForJobComponent } from './components/apply-for-job/apply-for-job.c
 import { RecruiterComponent } from './pages/recruiter/recruiter.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component: ProfileComponent },
   {path:'landing', component: LandingPageComponent},
+  {path:'validation', component: ValidationPageComponent},
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: '**', redirectTo: '/landing' },
 ];

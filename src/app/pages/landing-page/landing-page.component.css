@@ -6,8 +6,9 @@
   }
   
   header {
-    background: #f1ce8a;
+    background: #b8afe9;
     padding: 5%;
+    opacity: 90%;
     border-radius: 10px;
     border-color: black;
     border-width: 2%;
@@ -22,7 +23,7 @@
   
   button {
     background: white;
-    color: #f7b46e;
+    color: #10163e;
     padding: 10px 20px;
     border: none;
     font-size: 22px;
@@ -38,7 +39,7 @@
   .feature {
     width: 30%;
     padding: 20px;
-    background: #f7b46e ;
+    background: #948bcf ;
     border-radius: 8px;
   }
   
