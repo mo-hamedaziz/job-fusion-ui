@@ -52,16 +52,18 @@
   <div class="section-divider"></div>
 
   <!-- CV Section -->
-  <div class="cv-section">
-    <h3>CV</h3>
-    <div class="cv-image-preview">
-      <img id="cv-image" src="../../../assets/uploadcv.webp" alt="CV Preview" />
-    </div>
-    <input type="file" id="cv-upload" accept=".pdf,.doc,.docx" style="display: none" />
-    <label for="cv-upload" class="cv-upload-button">
-      <span class="upload-icon">⬆</span> Upload File
-    </label>
+  <!-- CV Section -->
+<div class="cv-section">
+  <h3>CV</h3>
+  <div class="cv-image-preview">
+    <img id="cv-image" src="../../../assets/uploadcv.webp" alt="CV Preview" />
   </div>
+  <input type="file" id="cv-upload" accept=".pdf" style="display: none" (change)="onCvSelected($event)" />
+  <label for="cv-upload" class="cv-upload-button">
+    <span class="upload-icon">⬆</span> Upload File
+  </label>
+</div>
+
 
   <!-- Divider Line -->
   <div class="section-divider"></div>

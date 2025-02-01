@@ -137,18 +137,72 @@ export class ProfileSidebarComponent {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
-      const reader = new FileReader();
   
-      reader.onload = (e) => {
-        this.profilePicture = e.target?.result as string; // Update preview
-        this.profileService.updateProfilePicture(this.profilePicture).subscribe({
-          next: (response) => console.log('Profile picture updated:', response),
-          error: (error) => console.error('Update failed:', error),
-        });
-      };
+      // Validate file type (only PNG and JPG)
+      const allowedTypes = ['image/png', 'image/jpeg'];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Only PNG and JPG images are allowed.');
+        return;
+      }
   
-      reader.readAsDataURL(file);
+      // Validate file size (max 10MB)
+      const maxSizeInBytes = 10 * 1024 * 1024; // 10MB
+      if (file.size > maxSizeInBytes) {
+        alert('The file size must be less than 10MB.');
+        return;
+      }
+  
+      // Prepare FormData
+      const formData = new FormData();
+      formData.append('file', file);
+  
+      // Send file to backend
+      this.profileService.updateProfilePicture(formData).subscribe({
+        next: (response) => {
+          console.log('Profile picture updated:', response);
+          
+          // Update image preview
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            this.profilePicture = e.target?.result as string;
+          };
+          reader.readAsDataURL(file);
+        },
+        error: (error) => console.error('Update failed:', error),
+      });
     }
   }
+  onCvSelected(event: Event) {
+    const fileInput = event.target as HTMLInputElement;
+  
+    if (fileInput.files && fileInput.files[0]) {
+      const file = fileInput.files[0];
+  
+      // Validate file type (Only PDF)
+      if (file.type !== 'application/pdf') {
+        alert('Invalid file type. Please upload a PDF document.');
+        return;
+      }
+  
+      // Validate file size (max 10MB)
+      const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+      if (file.size > maxSize) {
+        alert('File size exceeds 10MB. Please choose a smaller file.');
+        return;
+      }
+  
+      // Prepare file for upload
+      const formData = new FormData();
+      formData.append('file', file);  // 'file' must match the backend expectation
+  
+      // Send file to backend
+      this.profileService.uploadCv(formData).subscribe({
+        next: (response) => console.log('CV uploaded successfully:', response),
+        error: (error) => console.error('CV upload failed:', error),
+      });
+    }
+  }
+  
+  
 
 }

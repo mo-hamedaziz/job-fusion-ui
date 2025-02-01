@@ -73,19 +73,14 @@ export class ProfileService {
 }*/
   }
 
-  updateProfilePicture(imageUrl: string) {
-    const updateData = { profilePicture: imageUrl };
-    
-    console.log('Mock API Call - Updating profile picture:', updateData);
-    return of({
-      status: 'success',
-      message: 'Profile picture updated successfully!',
-      data: updateData,
-    });
-
-    // return this.http.patch(this.apiUrl, updateData);
+  updateProfilePicture(formData: FormData) {
+    return this.http.patch(`${this.apiUrl}/profile-picture`, formData);
   }
 
+  uploadCv(fileData: FormData) {
+    return this.http.post(`${this.apiUrl}/upload-cv`, fileData);
+  }
+  
   /*
   
   getProfile() {
