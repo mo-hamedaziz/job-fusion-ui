@@ -15,13 +15,17 @@ import { SortJobOffersComponent } from './components/sort-job-offers/sort-job-of
 import { JobOffersStatsComponent } from './components/job-offers-stats/job-offers-stats.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { RecruiterComponent } from './pages/recruiter/recruiter.component';
 import { RecruiterJobFormComponent } from './components/recruiter-job-form/recruiter-job-form/recruiter-job-form.component';
 
 import { DefaultCompanyLogoPipe } from './pipes/default-company-logo.pipe';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
 import { ProfileMainComponent } from './components/profile-main/profile-main.component';
+import { RecruiterApgeComponent } from './pages/recruiter-apge/recruiter-apge.component';
+import { RecruiterJobListComponent } from './components/recruiter-job-list/recruiter-job-list.component';
+import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,17 +41,23 @@ import { ProfileMainComponent } from './components/profile-main/profile-main.com
     JobOffersSearchBarComponent,
     SortJobOffersComponent,
     JobOffersStatsComponent,
+    LandingPageComponent,
     SigninComponent,
     SignupComponent,
-    RecruiterComponent,
+    RecruiterApgeComponent,
     RecruiterJobFormComponent,
-    DefaultCompanyLogoPipe
+    DefaultCompanyLogoPipe,
+    RecruiterApgeComponent,
+    RecruiterJobListComponent,
+    ValidationPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
+    
 
   ],
   providers: [],
