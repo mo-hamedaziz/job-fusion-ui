@@ -43,7 +43,7 @@
     <input type="text" [(ngModel)]="job.industry" name="industry" />
 
     <label>Posted Date:</label>
-    <input type="date" [(ngModel)]="job.createdAt" name="createdAt" required />
+    <input type="date" [(ngModel)]="job.postedDate" name="postedDate" required />
 
     <label>Contact Email (Optional):</label>
     <input type="email" [(ngModel)]="job.contactEmail" name="contactEmail" />
@@ -93,4 +93,4 @@
 
     <button type="submit" [disabled]="!jobForm.valid">Submit Job Offer</button>
   </form>
-</div>
+</div>  

@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 
@@ -24,6 +23,8 @@ export interface JobOffer {
   companyLogoUrl?: string;
   active: boolean; 
   recruiterId: string;
+  postedDate: Date;
+
 }
 
 
