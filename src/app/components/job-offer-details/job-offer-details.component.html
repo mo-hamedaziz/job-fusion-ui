@@ -11,7 +11,7 @@
       <p><strong>Location:</strong> {{ jobOffer.location }}</p>
       <p><strong>Employment Type:</strong> {{ jobOffer.employmentType }}</p>
       <p><strong>Industry:</strong> {{ jobOffer.industry || 'N/A' }}</p>
-      <p><strong>Posted on:</strong> {{ jobOffer.postedDate | date:'longDate' }}</p>
+      <p><strong>Posted on:</strong> {{ jobOffer.createdAt | date:'longDate' }}</p>
       <p><strong>Application Deadline:</strong> {{ jobOffer.applicationDeadline ? (jobOffer.applicationDeadline | date:'longDate') : 'N/A' }}</p>
       <p><strong>Remote Option:</strong> {{ jobOffer.remoteOption ? 'Yes' : 'No' }}</p>
     </div>

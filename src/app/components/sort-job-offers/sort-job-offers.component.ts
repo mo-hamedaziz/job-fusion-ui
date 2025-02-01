@@ -6,8 +6,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./sort-job-offers.component.css']
 })
 export class SortJobOffersComponent {
-  sortFields = ['title', 'company', 'location', 'employmentType', 'experienceLevel', 'postedDate'];
-  selectedField: string = 'postedDate';
+  sortFields = ['title', 'company', 'location', 'employmentType', 'experienceLevel', 'createdAt'];
+  selectedField: string = 'createdAt';
   sortOrder: 'asc' | 'desc' = 'desc';
 
   @Output() sortChange = new EventEmitter<{ field: string, order: 'asc' | 'desc' }>();
@@ -23,7 +23,7 @@ export class SortJobOffersComponent {
       location: 'Location',
       employmentType: 'Employment Type',
       experienceLevel: 'Experience Level',
-      postedDate: 'Date of creation'
+      createdAt: 'Date of creation'
     };
     return fieldMap[field] || field;
   }

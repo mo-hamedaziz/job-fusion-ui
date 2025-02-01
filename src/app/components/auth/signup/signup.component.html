@@ -1,0 +1,122 @@
+<div class="signup" >
+  <form #signupForm="ngForm">
+
+    <label for="username">
+      Username
+    </label>
+    <input
+      required
+      minlength="3"
+      type="text"
+      ngModel
+      name="username"
+      class="form-control"
+      id="username"
+      #usernameInput="ngModel"
+    >
+    <div class="alert alert-danger" *ngIf="usernameInput.invalid && usernameInput.touched">
+      Username is required and must be at least 3 characters long.
+    </div>
+
+    <label for="firstname">
+      Firstname
+    </label>
+    <input
+      required
+      minlength="2"
+      type="text"
+      ngModel
+      name="firstname"
+      class="form-control"
+      id="firstname"
+      #firstnameInput="ngModel"
+    >
+    <div class="alert alert-danger" *ngIf="firstnameInput.invalid && firstnameInput.touched">
+      firstname is required and must be at least 2 characters long.
+    </div>
+
+    <label for="lastname">
+      Lastname
+    </label>
+    <input
+      required
+      minlength="2"
+      type="text"
+      ngModel
+      name="lastname"
+      class="form-control"
+      id="lastname"
+      #lastnameInput="ngModel"
+    >
+    <div class="alert alert-danger" *ngIf="lastnameInput.invalid && lastnameInput.touched">
+      lastname is required and must be at least 3 characters long.
+    </div>
+  
+    <label for="email">
+      Email
+    </label>
+    <input
+      email
+      required
+      type="email"
+      ngModel
+      name="email"
+      class="form-control"
+      id="email"
+      #emailInput="ngModel"
+    >
+    <div class="alert alert-danger" *ngIf="emailInput.invalid && emailInput.dirty">
+      Please enter a valid email address.
+    </div>
+  
+    <label for="password">
+      Password
+    </label>
+    <input
+      required
+      minlength="6"
+      type="password"
+      ngModel
+      name="password"
+      class="form-control"
+      id="password"
+      #passwordInput="ngModel"
+    >
+    <div class="alert alert-danger" *ngIf="passwordInput.invalid && passwordInput.touched">
+      Password must be at least 6 characters long.
+    </div>
+  
+    <label for="confirmPassword">
+      Confirm Password
+    </label>
+    <input
+      required
+      type="password"
+      ngModel
+      name="confirmPassword"
+      class="form-control"
+      id="confirmPassword"
+      #confirmPasswordInput="ngModel"
+    >
+    <div class="alert alert-danger" *ngIf="confirmPasswordInput.invalid && confirmPasswordInput.touched">
+      Please confirm your password.
+    </div>
+    <div class="alert alert-danger" *ngIf="passwordInput.value !== confirmPasswordInput.value && confirmPasswordInput.dirty">
+      Passwords do not match.
+    </div>
+  
+    <button
+      [disabled]="signupForm.invalid"
+      class="btn btn-primary"
+      (click)="signup(signupForm)"
+    >
+      Signup
+    </button>
+
+    <p class="mt-3 text-center">
+      Already have an account? 
+      <a routerLink="/signin" class="text-primary">Login</a>
+    </p>
+  </form>
+  
+</div>

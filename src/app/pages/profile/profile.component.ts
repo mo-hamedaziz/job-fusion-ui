@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileMainComponent } from '../profile-main/profile-main.component';
-import { ProfileSidebarComponent } from '../profile-sidebar/profile-sidebar.component';
-import { ProfileService } from '../service/profile.service';
 
 @Component({
   selector: 'app-profile',

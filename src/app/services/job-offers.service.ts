@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 export interface JobOffer {
   id: string; 
@@ -16,7 +17,6 @@ export interface JobOffer {
   applicationDeadline?: Date;
   remoteOption?: boolean;
   industry?: string;
-  postedDate: Date;
   responsibilities?: string[];
   keywords?: string[];
   contactEmail?: string;
