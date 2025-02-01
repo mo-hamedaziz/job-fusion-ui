@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProfileService {
 
 
-  private apiUrl = 'http://your-api-url/profile/update';
+  private apiUrl = 'http://loclahost:3000';
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class ProfileService {
       data: updateData,
     });
 
-    // return this.http.patch(this.apiUrl, updateData);
+    // return this.http.patch(`${this.apiUrl}/profile/update`, updateData);
   }
 
   addWorkExperience(newExperience: any) {
@@ -65,7 +65,7 @@ export class ProfileService {
       message: `Language ${language} deleted successfully`,
       data: language,
     });
-    // return this.http.delete(`${this.apiUrl}/profile/languages/${language}`);
+    // return this.http.delete(`${this.apiUrl}/profile/remove_language/${language}`);
     /*deleteLanguage(language: string) {
   return this.http.request('DELETE', `${this.apiUrl}/profile/languages`, {
     body: { language }
@@ -74,18 +74,21 @@ export class ProfileService {
   }
 
   updateProfilePicture(formData: FormData) {
-    return this.http.patch(`${this.apiUrl}/profile-picture`, formData);
+    return this.http.post(`${this.apiUrl}/profile/uplod_photo`, formData);
   }
 
   uploadCv(fileData: FormData) {
-    return this.http.post(`${this.apiUrl}/upload-cv`, fileData);
+    return this.http.post(`${this.apiUrl}/profile/cv_upload`, fileData);
   }
   
-  /*
-  
-  getProfile() {
-    // return this.http.get(`${this.apiUrl}`);
+  getProfile(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/profile/user_data`);
+  }
+  getPhoto(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/profile/photo`, { responseType: 'blob' });
   }
 
-  */ 
+  getCV(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/profile/cv`, { responseType: 'blob' });
+  }
 }

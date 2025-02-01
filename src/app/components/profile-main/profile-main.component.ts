@@ -9,17 +9,10 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class ProfileMainComponent {
   constructor(private profileService: ProfileService) {}
 
-  @Input() mainData: {
-    Summary: string;
-    WorkExperiences: { company: string; role: string; start: string; end: string }[];
-    Studies: { institution: string; degree: string; from: string; to: string }[];
-    Languages: string[];
-  } = {
-    Summary: '',
-    WorkExperiences: [],
-    Studies: [],
-    Languages: []
-  };
+  @Input() summary: string = '';
+  @Input() workExperiences: { company: string; role: string; start: string; end: string }[] = [];
+  @Input() studies: { institution: string; degree: string; from: string; to: string }[] = [];
+  @Input() languages: string[] = [];
 
   // Predefined list of languages
   availableLanguages: string[] = ['English', 'French', 'Spanish', 'German', 'Arabic', 'Chinese', 'Japanese'];
@@ -31,7 +24,7 @@ export class ProfileMainComponent {
   // Edit the summary
   editSummary() {
     this.isEditing = true;
-    this.editableSummary = this.mainData.Summary;
+    this.editableSummary = this.summary;
   }
 
   // Save summary to the server
@@ -39,7 +32,7 @@ export class ProfileMainComponent {
     this.profileService.updateProfile1({Summary : this.editableSummary}).subscribe((response) => {
       console.log('Summary update response:', response);
       if (response.status === 'success') {
-        this.mainData.Summary = this.editableSummary;
+        this.summary = this.editableSummary;
         this.isEditing = false;
       }
     });
@@ -61,7 +54,7 @@ export class ProfileMainComponent {
         next: (response) => {
           console.log('Response from server:', response);
           if (response.status === 'success') {
-            this.mainData.WorkExperiences.push({ ...this.newWorkExperience });
+            this.workExperiences.push({ ...this.newWorkExperience });
             this.newWorkExperience = { company: '', role: '', start: '', end: '' };
             this.isAddingWorkExperience = false;
           }
@@ -84,7 +77,7 @@ export class ProfileMainComponent {
         next: (response) => {
           console.log('Response from server:', response);
           if (response.status === 'success') {
-            this.mainData.Studies.push({ ...this.newStudy });
+            this.studies.push({ ...this.newStudy });
             this.newStudy = { institution: '', degree: '', from: '', to: '' };
             this.isAddingStudy = false;
           }
@@ -98,12 +91,12 @@ export class ProfileMainComponent {
 
   // Add a selected language
   addLanguage() {
-    if (this.selectedLanguage && !this.mainData.Languages.includes(this.selectedLanguage)) {
+    if (this.selectedLanguage && !this.languages.includes(this.selectedLanguage)) {
       this.profileService.addLanguage(this.selectedLanguage).subscribe({
         next: (response) => {
           console.log('Language added:', response);
           if (response.status === 'success') {
-            this.mainData.Languages.push(this.selectedLanguage);
+            this.languages.push(this.selectedLanguage);
             this.selectedLanguage = ''; // Clear the selected language
           }
         },
@@ -114,15 +107,13 @@ export class ProfileMainComponent {
     }
   }
 
-  // Update the selected language
   onLanguageChange() {
-    // Handle any additional actions when the language changes if needed
   }
   // Delete a language
 deleteLanguage(language: string) {
-  const index = this.mainData.Languages.indexOf(language);
+  const index = this.languages.indexOf(language);
   if (index !== -1) {
-    this.mainData.Languages.splice(index, 1); // Remove the language from the list
+    this.languages.splice(index, 1); // Remove the language from the list
     // Optionally, notify the server to update the profile with the new languages list
     this.profileService.deleteLanguage(language).subscribe({
       next: (response) => {

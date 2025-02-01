@@ -1,12 +1,17 @@
 <div class="profile-container">
-  <!-- Sidebar Component -->
+  <!-- Sidebar Component  + normalment nzid npassi il photo w cv kif haka [photo]="userData.sidebar.photo" [cv]="userData.sidebar.cv">-->
   <app-profile-sidebar 
-    [username]="userData.sidebar.username" 
-    [selectedOption]="userData.sidebar.selectedOption"
-    [info]="userData.sidebar.info"
-    [address]="userData.sidebar.address">
+    [username]="userData.username" 
+    [selectedOption]="userData.selectedOption"
+    [info]="{ birthdate: userData.birthdate, email: userData.email, nationality: userData.nationality }"
+    [address]="{ country: userData.country, region: userData.region, phone: userData.phone }">
   </app-profile-sidebar>
 
   <!-- Main Component -->
-  <app-profile-main [mainData]="userData.main"></app-profile-main>
+  <app-profile-main 
+    [summary]="userData.Summary" 
+    [workExperiences]="userData.WorkExperiences" 
+    [studies]="userData.Studies" 
+    [languages]="userData.Languages">
+  </app-profile-main>
 </div>

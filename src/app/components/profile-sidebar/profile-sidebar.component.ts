@@ -9,16 +9,20 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class ProfileSidebarComponent {
   @Input() username: string = '';
   @Input() selectedOption: string = '';
+
   @Input() info: { birthdate: string; email: string; nationality: string } = { 
     birthdate: '', 
     email: '', 
     nationality: '' 
   };
+
   @Input() address: { country: string; region: string; phone: number } = { 
     country: '', 
     region: '', 
     phone: 0 
   };
+  /*@Input() photo!: string; // Accept photo URL
+  @Input() cv!: string; // Accept CV URL*/ 
   countryList: string[] = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
     "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
@@ -107,7 +111,7 @@ export class ProfileSidebarComponent {
 
   updateInfo() {
     this.handleUpdate(
-      { personal_info: this.info },
+      { date_of_birth : this.info.birthdate, email: this.info.email, nationality: this.info.nationality },
       'Personal information updated successfully!'
     );
     this.isEditingInfo = false;
@@ -115,7 +119,7 @@ export class ProfileSidebarComponent {
 
   updateAddress() {
     this.handleUpdate(
-      { address: this.address },
+      { country: this.address.country, region: this.address.region , phoneNumber: this.address.phone },
       'Address updated successfully!'
     );
     this.isEditingAddress = false;
