@@ -1,0 +1,47 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #89CFF0;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar-left .app-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar-right .btn {
+/*   margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px; */
+  all: unset;
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0; 
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+/*   display: grid;  */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.navbar-right .btn:hover {
+  background-color: #0056b3;
+}
+

@@ -1,0 +1,27 @@
+<div class="job-offer-container">
+  <div class="job-offer-list" *ngIf="filteredJobOffers.length > 0; else noOffers">
+    <div *ngFor="let offer of filteredJobOffers" class="job-offer" (click)="openJobOfferDetails(offer)">
+      <div class="job-header">
+        <!-- <img *ngIf="offer.companyLogoUrl" [src]="offer.companyLogoUrl" alt="Company Logo" class="company-logo" /> -->
+        <div>
+          <h3 class="job-title">{{ offer.title }}</h3>
+          <p class="company-name">{{ offer.company }}</p>
+        </div>
+      </div>
+      <div class="job-info">
+        <p><strong>Location:</strong> {{ offer.location }}</p>
+        <p><strong>Type:</strong> {{ offer.employmentType }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noOffers>
+    <p class="no-offers">No job offers available.</p>
+  </ng-template>
+
+  <app-job-offer-details
+    *ngIf="selectedJobOffer"
+    [jobOffer]="selectedJobOffer"
+    (close)="closePopup()">
+  </app-job-offer-details>
+</div>

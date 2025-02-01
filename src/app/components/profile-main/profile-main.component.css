@@ -1,0 +1,217 @@
+/* Main Content */
+.main-content {
+  width: 1000px;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  border-radius: 12px;
+  margin-left: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for main content */
+.main-content:hover {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+/* Summary */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Summary Item */
+.summary-item {
+  background-color: #f4f7fa; /* Softer background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for summary items */
+.summary-item:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Summary Item Heading */
+.summary-item h3 {
+  margin: 0 0 12px 0;
+  color: #3a3a3a;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* Paragraph text */
+.summary-item p {
+  margin: 0;
+  color: #555;
+  white-space: pre-wrap;
+  font-size: 1rem;
+}
+
+/* Add Form */
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #e9f5ff; /* Light blue for a calming effect */
+  padding: 20px;
+  border: 1px solid #d0e7f0;
+  border-radius: 8px;
+}
+
+.add-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.add-form input {
+  border: 1px solid #d0e7f0;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-form input:focus {
+  border-color: #76b5c5; /* Blue highlight on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.add-form button {
+  align-self: flex-start;
+  background-color: #76b5c5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.add-form button:hover {
+  background-color: #0056b3; /* Darker blue for hover effect */
+}
+
+/* Edit Button */
+.edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 12px;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.edit-button:hover {
+  color: #0056b3;
+}
+
+/* Edit Textarea */
+.edit-textarea {
+  width: 100%;
+  height: 100px;
+  margin: 12px 0;
+  font-size: 1rem;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.edit-textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Save Button */
+.save-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Add Work Experience & Add Study Button */
+button {
+  background-color: #ff7f50; /* Coral button for action */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #b387b7; /* Darker coral on hover */
+}
+
+/* Select Dropdown for Languages */
+select {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #d0e7f0;
+  font-size: 1rem;
+  color: #333;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+option {
+  font-size: 1rem;
+  padding: 8px;
+}
+
+/* Language Add Button */
+button {
+  background-color: #76b5c5;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 15px;
+}
+
+button:hover {
+  background-color: #154c79;
+}
+
+/* Delete Language Button */
+.delete-language-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #ff4c4c;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.delete-language-button:hover {
+  color: #cc0000; /* Red color on hover */
+}

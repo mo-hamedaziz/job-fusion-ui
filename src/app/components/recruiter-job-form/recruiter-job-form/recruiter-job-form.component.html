@@ -1,0 +1,96 @@
+<div class="container">
+  <h2>Create/Edit Job Offer</h2>
+  <form #jobForm="ngForm" (ngSubmit)="submitForm(jobForm)">
+    
+    <label>Title:</label>
+    <input type="text" [(ngModel)]="job.title" name="title" required />
+
+    <label>Company:</label>
+    <input type="text" [(ngModel)]="job.company" name="company" required />
+
+    <label>Location:</label>
+    <input type="text" [(ngModel)]="job.location" name="location" required />
+
+    <label>Description:</label>
+    <textarea [(ngModel)]="job.description" name="description"></textarea>
+
+    <label>Employment Type:</label>
+    <select [(ngModel)]="job.employmentType" name="employmentType">
+      <option>Full-time</option>
+      <option>Part-time</option>
+      <option>Contract</option>
+      <option>Internship</option>
+      <option>Temporary</option>
+    </select>
+
+    <label>Experience Level:</label>
+    <select [(ngModel)]="job.experienceLevel" name="experienceLevel">
+      <option>Entry</option>
+      <option>Mid</option>
+      <option>Senior</option>
+    </select>
+
+    <label>Education Level (Optional):</label>
+    <input type="text" [(ngModel)]="job.educationLevel" name="educationLevel" />
+
+    <label>Application Deadline (Optional):</label>
+    <input type="date" [(ngModel)]="job.applicationDeadline" name="applicationDeadline" />
+
+    <label>Remote Option:</label>
+    <input type="checkbox" [(ngModel)]="job.remoteOption" name="remoteOption" />
+
+    <label>Industry (Optional):</label>
+    <input type="text" [(ngModel)]="job.industry" name="industry" />
+
+    <label>Posted Date:</label>
+    <input type="date" [(ngModel)]="job.createdAt" name="createdAt" required />
+
+    <label>Contact Email (Optional):</label>
+    <input type="email" [(ngModel)]="job.contactEmail" name="contactEmail" />
+
+    <label>Application URL (Optional):</label>
+    <input type="text" [(ngModel)]="job.applicationUrl" name="applicationUrl" />
+
+    <label>Company Logo URL (Optional):</label>
+    <input type="text" [(ngModel)]="job.companyLogoUrl" name="companyLogoUrl" />
+
+    <!-- Dynamic Lists -->
+    <div>
+      <label>Requirements:</label>
+      <div *ngFor="let req of job.requirements; let i = index">
+        <input type="text" [(ngModel)]="job.requirements[i]" name="requirement{{i}}" />
+        <button type="button" (click)="removeRequirement(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addRequirement()">+ Add Requirement</button>
+    </div>
+
+    <div>
+      <label>Benefits:</label>
+      <div *ngFor="let benefit of job.benefits; let i = index">
+        <input type="text" [(ngModel)]="job.benefits[i]" name="benefit{{i}}" />
+        <button type="button" (click)="removeBenefit(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addBenefit()">+ Add Benefit</button>
+    </div>
+
+    <div>
+      <label>Responsibilities:</label>
+      <div *ngFor="let resp of job.responsibilities; let i = index">
+        <input type="text" [(ngModel)]="job.responsibilities[i]" name="responsibility{{i}}" />
+        <button type="button" (click)="removeResponsibility(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addResponsibility()">+ Add Responsibility</button>
+    </div>
+
+    <div>
+      <label>Keywords:</label>
+      <div *ngFor="let keyword of job.keywords; let i = index">
+        <input type="text" [(ngModel)]="job.keywords[i]" name="keyword{{i}}" />
+        <button type="button" (click)="removeKeyword(i)">Remove</button>
+      </div>
+      <button type="button" (click)="addKeyword()">+ Add Keyword</button>
+    </div>
+
+    <button type="submit" [disabled]="!jobForm.valid">Submit Job Offer</button>
+  </form>
+</div>

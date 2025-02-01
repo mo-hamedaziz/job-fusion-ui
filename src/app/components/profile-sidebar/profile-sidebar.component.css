@@ -1,0 +1,262 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Sidebar Hover Effect */
+.sidebar:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* User Avatar Section */
+.user-avatar {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.change-pic-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-pic-btn span {
+  font-size: 18px;
+  color: #007bff;
+}
+
+/* User Info Section */
+.user-info h2 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.user-info p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.edit-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.edit-icon:hover {
+  color: #0056b3;
+}
+
+/* Edit Inputs and Buttons */
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #e28743;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #eab676;
+}
+
+/* CV Section */
+/* Ensure the parent container is a flexbox */
+.cv-section {
+  display: block; /* Default behavior for content, no global centering */
+}
+
+/* Center the button specifically */
+.cv-upload-button {
+  background-color: #e28743;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 80px;
+  margin-right: auto; /* This centers the button */
+}
+
+/* Ensuring the image preview is set */
+.cv-image-preview img {
+  width: 80%;
+  height: 200px;
+  /*margin-bottom: 15px;*/
+  margin-left: 20px;
+}
+
+/* Hover effect for button */
+.cv-upload-button:hover {
+  background-color: #eab676;
+}
+
+/* Icon next to the upload button */
+.cv-upload-button .upload-icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+
+/* Information Section */
+.information h3 {
+  color: #333;
+  font-size: 1.4rem;
+}
+
+.information p {
+  color: #666;
+}
+
+.information h4 {
+  margin-top: 25px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.section-divider {
+  border-top: 1px solid #dad9d9;
+  margin: 20px 0;
+}
+
+/* Dropdown Menu */
+.highlighted-text.dropdown {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.highlighted-text .selected-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  background-color: #e28743;
+  color: #333;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.highlighted-text .dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #eab676;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-top: 5px;
+}
+
+.highlighted-text .dropdown-options li {
+  padding: 10px 20px;
+  list-style: none;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.highlighted-text .dropdown-options li:hover {
+  background-color: #f4f4f4;
+}
+
+/* Username Section */
+.username-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.edit-username {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.edit-username input {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  width: 80%;
+}
+
+.edit-username button {
+  background-color: #e28743;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.edit-username button:hover {
+  background-color: #eab676;
+}
+
+/* Hover Effects */
+button:hover,
+.cv-upload-button:hover {
+  background-color: #eab676;
+}
+
+.edit-icon:hover {
+  color: #0056b3;
+}

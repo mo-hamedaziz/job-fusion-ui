@@ -1,0 +1,76 @@
+<div class="job-offers-filter-container">
+  <!-- <h3>Filter Job Offers</h3> -->
+
+  <div class="filter-group">
+    <label for="location">Location</label>
+    <input
+      type="text"
+      id="location"
+      [(ngModel)]="filter.location"
+      placeholder="Enter location"
+      (ngModelChange)="onFilterChange()"
+    />
+  </div>
+
+  <div class="filter-group">
+    <label for="employmentType">Employment Type</label>
+    <select
+      id="employmentType"
+      [(ngModel)]="filter.employmentType"
+      (ngModelChange)="onFilterChange()"
+    >
+      <option value="">Any</option>
+      <option value="Full-time">Full-time</option>
+      <option value="Part-time">Part-time</option>
+      <option value="Contract">Contract</option>
+      <option value="Internship">Internship</option>
+      <option value="Temporary">Temporary</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="experienceLevel">Experience Level</label>
+    <select
+      id="experienceLevel"
+      [(ngModel)]="filter.experienceLevel"
+      (ngModelChange)="onFilterChange()"
+    >
+      <option value="">Any</option>
+      <option value="Entry">Entry</option>
+      <option value="Mid">Mid</option>
+      <option value="Senior">Senior</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="requirements">Skills/Requirements</label>
+    <input
+      type="text"
+      id="requirements"
+      [(ngModel)]="filter.requirements"
+      placeholder="Enter skills (comma separated)"
+      (ngModelChange)="onFilterChange()"
+    />
+  </div>
+
+  <div class="filter-group">
+    <label for="dateOfCreation">Posted After</label>
+    <input
+      type="date"
+      id="dateOfCreation"
+      [(ngModel)]="filter.dateOfCreation"
+      (ngModelChange)="onFilterChange()"
+    />
+  </div>
+
+  <div class="filter-group remote-option">
+    <label>
+      <input type="checkbox" [(ngModel)]="filter.remoteOption" (change)="onFilterChange()" />
+      Remote Option
+    </label>
+  </div>
+
+  <div class="filter-buttons">
+    <button class="reset-btn" (click)="resetFilters()">Reset Filter</button>
+  </div>
+</div>

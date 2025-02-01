@@ -1,0 +1,57 @@
+<div class="overlay" (click)="onOverlayClick($event)">
+  <div class="popup">
+    <button class="close-btn" (click)="onClose()">✖</button>
+    <div class="header">
+      <img *ngIf="jobOffer.companyLogoUrl" [src]="jobOffer.companyLogoUrl" alt="Company Logo" class="company-logo" />
+      <h2 class="job-title">{{ jobOffer.title }}</h2>
+    </div>
+    
+    <div class="job-info">
+      <p><strong>Company:</strong> {{ jobOffer.company }}</p>
+      <p><strong>Location:</strong> {{ jobOffer.location }}</p>
+      <p><strong>Employment Type:</strong> {{ jobOffer.employmentType }}</p>
+      <p><strong>Industry:</strong> {{ jobOffer.industry || 'N/A' }}</p>
+      <p><strong>Posted on:</strong> {{ jobOffer.createdAt | date:'longDate' }}</p>
+      <p><strong>Application Deadline:</strong> {{ jobOffer.applicationDeadline ? (jobOffer.applicationDeadline | date:'longDate') : 'N/A' }}</p>
+      <p><strong>Remote Option:</strong> {{ jobOffer.remoteOption ? 'Yes' : 'No' }}</p>
+    </div>
+
+    <div class="job-description">
+      <h3>Description:</h3>
+      <p>{{ jobOffer.description }}</p>
+    </div>
+
+    <div class="job-requirements">
+      <h3>Requirements:</h3>
+      <ul>
+        <li *ngFor="let requirement of jobOffer.requirements">{{ requirement }}</li>
+      </ul>
+    </div>
+
+    <div class="job-responsibilities" *ngIf="jobOffer.responsibilities?.length">
+      <h3>Responsibilities:</h3>
+      <ul>
+        <li *ngFor="let responsibility of jobOffer.responsibilities">{{ responsibility }}</li>
+      </ul>
+    </div>
+
+    <div class="job-benefits" *ngIf="jobOffer.benefits?.length">
+      <h3>Benefits:</h3>
+      <ul>
+        <li *ngFor="let benefit of jobOffer.benefits">{{ benefit }}</li>
+      </ul>
+    </div>
+
+    <div class="job-details">
+      <p><strong>Experience Level:</strong> {{ jobOffer.experienceLevel }}</p>
+      <p><strong>Education Level:</strong> {{ jobOffer.educationLevel || 'N/A' }}</p>
+      <p><strong>Keywords:</strong> {{ jobOffer.keywords?.join(', ') || 'N/A' }}</p>
+      <p><strong>Contact Email:</strong> <a href="mailto:{{ jobOffer.contactEmail }}">{{ jobOffer.contactEmail || 'N/A' }}</a></p>
+      <p *ngIf="jobOffer.applicationUrl"><strong>Apply here:</strong> <a [href]="jobOffer.applicationUrl" target="_blank">Job Application Link</a></p>
+    </div>
+
+    <div class="actions">
+      <button class="apply-btn" (click)="onApply()">Apply Now</button>
+    </div>
+  </div>
+</div>
