@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 
 export interface JobOffer {
-  id: string;
+  id: string; 
   title: string;
   company: string;
   location: string;
@@ -21,9 +21,10 @@ export interface JobOffer {
   contactEmail?: string;
   applicationUrl?: string;
   companyLogoUrl?: string;
-  active: boolean;
-  // recruiter: Recruiter;
-  createdAt: Date;
+  active: boolean; 
+  recruiterId: string;
+  postedDate: Date;
+
 }
 
 
@@ -32,15 +33,23 @@ export interface JobOffer {
 })
 
 export class JobOfferService {
-  private apiUrl = 'http://localhost:3000/job-offer';
-
+  
   constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:3000/job-offer';
+  
+/*
+  getJobOffers(): Observable<JobOffer[]> {
+    return of(this.jobOffers.sort((a, b) => new Date(b.postedDate).getTime() - new Date(a.postedDate).getTime()));
+  }  
+    */
 
   getJobOffers(): Observable<JobOffer[]> {
-    return this.http.get<JobOffer[]>(this.apiUrl).pipe(
-      map((offers) => 
-        offers.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-      )
-    );
-  } 
+    return this.http.get<JobOffer[]>(this.apiUrl);
+  }
+
+  createJobOffer(jobOffer: JobOffer): Observable<JobOffer> {
+    return this.http.post<JobOffer>(this.apiUrl, jobOffer);
+  }
+
+
 }
