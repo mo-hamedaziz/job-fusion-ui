@@ -27,9 +27,14 @@
       <input
         [(ngModel)]="username"
         placeholder="Enter new username"
-        (keyup.enter)="updateUsername()"
+        #usernameInput="ngModel"
+        pattern="^[a-zA-Z0-9_-]{3,15}$"
+        required
       />
-      <button (click)="updateUsername()">Save</button>
+      <div class="alert alert-danger" *ngIf="usernameInput.invalid && usernameInput.touched">
+        Username must be 3-15 characters long and contain only letters, numbers, dashes, or underscores.
+      </div>
+      <button (click)="updateUsername()" [disabled]="usernameInput.invalid">Save</button>
     </div>
     <div class="highlighted-text dropdown">
       <div class="selected-option" (click)="toggleDropdown()">
@@ -74,15 +79,26 @@
     </div>
     <div *ngIf="isEditingInfo">
       <p>
-        📅 <input [(ngModel)]="info.birthdate" placeholder="Birthdate" />
+        📅
+        <input
+          type="date"
+          [(ngModel)]="info.birthdate"
+          required
+          #dobInput="ngModel"
+          class="form-control"
+        />
       </p>
+      <div class="alert alert-danger" *ngIf="dobInput.invalid && dobInput.touched">
+        Date of birth is required.
+      </div>
       <p>
-        📧 <input [(ngModel)]="info.email" placeholder="Email" />
+        📧 <input [(ngModel)]="info.email" placeholder="Email" #emailInput="ngModel" required email />
       </p>
+      <div class="alert alert-danger" *ngIf="emailInput.invalid && emailInput.touched">Enter a valid email.</div>
       <p>
-        🌍 <input [(ngModel)]="info.nationality" placeholder="Nationality" />
+        🌍 <input [(ngModel)]="info.nationality" placeholder="Nationality" required />
       </p>
-      <button (click)="updateInfo()">Save</button>
+      <button (click)="updateInfo()" [disabled]="emailInput.invalid">Save</button>
     </div>
     <div class="section-divider"></div>
 
@@ -98,17 +114,23 @@
     <div *ngIf="isEditingAddress">
       <p>
         Country:
-        <input [(ngModel)]="address.country" placeholder="Country" />
+        <select [(ngModel)]="address.country" required>
+          <option *ngFor="let country of countryList" [value]="country">
+            {{ country }}
+          </option>
+        </select>
       </p>
+      
       <p>
         Region:
-        <input [(ngModel)]="address.region" placeholder="Region" />
+        <input [(ngModel)]="address.region" placeholder="Region" required />
       </p>
       <p>
         Phone:
-        <input [(ngModel)]="address.phone" placeholder="Phone" />
+        <input [(ngModel)]="address.phone" placeholder="Phone" #phoneInput="ngModel" pattern="^[0-9]{8}$" required />
       </p>
-      <button (click)="updateAddress()">Save</button>
+      <div class="alert alert-danger" *ngIf="phoneInput.invalid && phoneInput.touched">Enter a valid phone number (8 digits).</div>
+      <button (click)="updateAddress()" [disabled]="phoneInput.invalid">Save</button>
     </div>
   </div>
 </aside>

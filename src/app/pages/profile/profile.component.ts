@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
       "address": {
         "country": "USA",
         "region": "California",
-        "phone": "123-456-7890"
+        "phone": 12345678
       }
     },
     "main":{
