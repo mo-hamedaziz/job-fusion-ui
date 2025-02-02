@@ -31,7 +31,7 @@ export interface JobOffer {
   jobApplications: {
     id: string;
   }[];
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 @Injectable({

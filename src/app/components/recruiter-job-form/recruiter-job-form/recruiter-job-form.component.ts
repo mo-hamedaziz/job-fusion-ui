@@ -5,7 +5,6 @@ import {
 } from '../../../services/job-offers.service';
 import { AuthService } from 'src/app/auth.service';
 import { FormGroup } from '@angular/forms';
-// import { Job } from 'src/app/mochData';
 @Component({
   selector: 'app-recruiter-job-form',
   templateUrl: './recruiter-job-form.component.html',
@@ -22,7 +21,7 @@ export class RecruiterJobFormComponent implements OnInit {
     benefits: [],
     experienceLevel: 'Entry',
     educationLevel: '',
-    applicationDeadline: undefined,
+    applicationDeadline: new Date(),
     remoteOption: false,
     industry: '',
     responsibilities: [],
@@ -33,7 +32,6 @@ export class RecruiterJobFormComponent implements OnInit {
     active: true,
     recruiterId: '',
     jobApplications: [],
-    createdAt: new Date(),
   };
 
   trackByIndex(index: number): number {
@@ -84,25 +82,18 @@ export class RecruiterJobFormComponent implements OnInit {
 
   submitForm(form: FormGroup) {
     if (form.valid) {
-      // Create a copy of job to prevent modifying the original object
       const jobToSubmit: JobOffer = { ...this.job };
 
-      // Convert applicationDeadline to Date only if it's provided
       if (jobToSubmit.applicationDeadline) {
         jobToSubmit.applicationDeadline = new Date(
           jobToSubmit.applicationDeadline
-        ); // Convert string to Date
+        );
       } else {
-        jobToSubmit.applicationDeadline = undefined; // Ensure it's undefined if empty
+        jobToSubmit.applicationDeadline = undefined;
       }
 
-      // jobToSubmit.createdAt = new Date().toISOString(); // Ensure createdAt is a string in ISO format
-
-      console.log('Job offer request payload:', jobToSubmit);
-
       this.jobOfferService.createJobOffer(jobToSubmit).subscribe(
-        (response) => {
-          console.log('Job Offer Created:', response);
+        () => {
           alert('Job offer created successfully!');
         },
         (error) => {
@@ -113,7 +104,6 @@ export class RecruiterJobFormComponent implements OnInit {
         }
       );
     } else {
-      console.log('Form is invalid');
       alert('Please fill all required fields correctly.');
     }
   }
