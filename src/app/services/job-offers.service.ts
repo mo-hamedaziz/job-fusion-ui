@@ -3,12 +3,17 @@ import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 
 export interface JobOffer {
-  id: string; 
+  id?: string;
   title: string;
   company: string;
   location: string;
   description: string;
-  employmentType: 'Full-time' | 'Part-time' | 'Contract' | 'Internship' | 'Temporary';
+  employmentType:
+    | 'Full-time'
+    | 'Part-time'
+    | 'Contract'
+    | 'Internship'
+    | 'Temporary';
   requirements: string[];
   benefits?: string[];
   experienceLevel: 'Entry' | 'Mid' | 'Senior';
@@ -21,25 +26,24 @@ export interface JobOffer {
   contactEmail?: string;
   applicationUrl?: string;
   companyLogoUrl?: string;
-  active: boolean; 
+  active: boolean;
   recruiterId: string;
-  postedDate: Date;
-
+  jobApplications: {
+    id: string;
+  }[];
+  createdAt: Date;
 }
-
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class JobOfferService {
-  
   constructor(private http: HttpClient) {}
   private apiUrl = 'http://localhost:3000/job-offer';
-  
-/*
+
+  /*
   getJobOffers(): Observable<JobOffer[]> {
-    return of(this.jobOffers.sort((a, b) => new Date(b.postedDate).getTime() - new Date(a.postedDate).getTime()));
+    return of(this.jobOffers.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
   }  
     */
 
@@ -50,6 +54,4 @@ export class JobOfferService {
   createJobOffer(jobOffer: JobOffer): Observable<JobOffer> {
     return this.http.post<JobOffer>(this.apiUrl, jobOffer);
   }
-
-
 }
