@@ -20,7 +20,7 @@ export class ValidationPageComponent {
     this.submitted = true;
     if (this.validationForm.valid) {
       console.log('Validation Code:', this.validationForm.value.code);
-      // Handle API call to verify code
+      
     }
   }
 }
