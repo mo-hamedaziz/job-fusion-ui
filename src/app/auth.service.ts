@@ -17,6 +17,6 @@ export class AuthService {
 
   // Login Method 
   login(credentials: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/sign`, credentials);
+    return this.http.post(`${this.apiUrl}/sign`, credentials, { withCredentials: true });
   }
 }
