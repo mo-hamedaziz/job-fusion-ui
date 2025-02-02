@@ -21,7 +21,7 @@ export class RecruiterJobFormComponent implements OnInit {
     benefits: [],
     experienceLevel: 'Entry',
     educationLevel: '',
-    applicationDeadline: undefined,
+    applicationDeadline: new Date(),
     remoteOption: false,
     industry: '',
     responsibilities: [],
@@ -32,7 +32,6 @@ export class RecruiterJobFormComponent implements OnInit {
     active: true,
     recruiterId: '',
     jobApplications: [],
-    createdAt: new Date(),
   };
 
   trackByIndex(index: number): number {
