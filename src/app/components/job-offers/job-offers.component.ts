@@ -36,7 +36,7 @@ export class JobOffersComponent {
         (!filter['experienceLevel'] || offer.experienceLevel === filter['experienceLevel']) &&
         (!filter['remoteOption'] || offer.remoteOption === filter['remoteOption']) &&
         (!filter['requirements'] || this.matchRequirements(offer.requirements, filter['requirements'])) &&
-        (!filter['dateOfCreation'] || offer.createdAt >= filter['dateOfCreation']) &&
+        //(!filter['dateOfCreation'] || offer.createdAt >= filter['dateOfCreation']) &&
         (!filter['title'] || offer.title.toLowerCase().includes(filter['title'].toLowerCase()))
       );
     });

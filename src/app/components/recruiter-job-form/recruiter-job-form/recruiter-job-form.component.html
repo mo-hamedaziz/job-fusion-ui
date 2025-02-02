@@ -43,7 +43,7 @@
     <input type="text" [(ngModel)]="job.industry" name="industry" />
 
     <label>Posted Date:</label>
-    <input type="date" [(ngModel)]="job.createdAt" name="createdAt" required />
+    <input type="date" [(ngModel)]="job.postedDate" name="postedDate" required />
 
     <label>Contact Email (Optional):</label>
     <input type="email" [(ngModel)]="job.contactEmail" name="contactEmail" />
@@ -57,34 +57,34 @@
     <!-- Dynamic Lists -->
     <div>
       <label>Requirements:</label>
-      <div *ngFor="let req of job.requirements; let i = index">
+      <div *ngFor="let req of job.requirements; let i = index; trackBy: trackByIndex">
         <input type="text" [(ngModel)]="job.requirements[i]" name="requirement{{i}}" />
         <button type="button" (click)="removeRequirement(i)">Remove</button>
       </div>
       <button type="button" (click)="addRequirement()">+ Add Requirement</button>
     </div>
 
-    <div>
+    <div *ngIf="job && job.benefits" >
       <label>Benefits:</label>
-      <div *ngFor="let benefit of job.benefits; let i = index">
+      <div *ngFor="let benefit of job.benefits; let i = index; trackBy: trackByIndex">
         <input type="text" [(ngModel)]="job.benefits[i]" name="benefit{{i}}" />
         <button type="button" (click)="removeBenefit(i)">Remove</button>
       </div>
       <button type="button" (click)="addBenefit()">+ Add Benefit</button>
     </div>
 
-    <div>
+    <div *ngIf="job && job.responsibilities" >
       <label>Responsibilities:</label>
-      <div *ngFor="let resp of job.responsibilities; let i = index">
+      <div *ngFor="let resp of job.responsibilities; let i = index; trackBy: trackByIndex">
         <input type="text" [(ngModel)]="job.responsibilities[i]" name="responsibility{{i}}" />
         <button type="button" (click)="removeResponsibility(i)">Remove</button>
       </div>
       <button type="button" (click)="addResponsibility()">+ Add Responsibility</button>
     </div>
 
-    <div>
+    <div *ngIf="job && job.keywords" >
       <label>Keywords:</label>
-      <div *ngFor="let keyword of job.keywords; let i = index">
+      <div *ngFor="let keyword of job.keywords; let i = index; trackBy: trackByIndex">
         <input type="text" [(ngModel)]="job.keywords[i]" name="keyword{{i}}" />
         <button type="button" (click)="removeKeyword(i)">Remove</button>
       </div>
@@ -93,4 +93,4 @@
 
     <button type="submit" [disabled]="!jobForm.valid">Submit Job Offer</button>
   </form>
-</div>
+</div>  

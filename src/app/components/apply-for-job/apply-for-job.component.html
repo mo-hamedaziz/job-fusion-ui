@@ -1,1 +1,25 @@
-<p>apply-for-job works!</p>
+<div class="job-application">
+  <h2>Apply for the Job</h2>
+
+  <form (ngSubmit)="onSubmit()" #jobForm="ngForm">
+    
+    <!-- File Uploads -->
+    <label for="cv">Upload CV:</label>
+    <input type="file" id="cv" (change)="onFileSelected($event, 'cv')" accept=".pdf,.doc,.docx" required>
+
+    <label for="coverLetter">Upload Cover Letter:</label>
+    <input type="file" id="coverLetter" (change)="onFileSelected($event, 'coverLetter')" accept=".pdf,.doc,.docx">
+
+
+    <!-- Motivation Paragraph -->
+    <label for="motivation">Motivation Paragraph:</label>
+    <textarea id="motivation" [(ngModel)]="motivation" name="motivation" required></textarea>
+
+    <!-- Comment -->
+    <label for="comment">Additional Comment:</label>
+    <textarea id="comment" [(ngModel)]="comment" name="comment"></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="jobForm.invalid">Submit Application</button>
+  </form>
+</div>
