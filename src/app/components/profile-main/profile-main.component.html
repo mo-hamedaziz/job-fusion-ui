@@ -6,17 +6,27 @@
         <button class="edit-button" (click)="editSummary()">✏️</button>
       </h3>
       <div *ngIf="isEditing">
-        <textarea [(ngModel)]="editableSummary" class="edit-textarea"></textarea>
-        <button class="save-button" (click)="saveSummary()">Save</button>
+        <textarea
+        class="edit-textarea"
+          [(ngModel)]="editableSummary"
+          placeholder="Enter your summary"
+          #summaryInput="ngModel"
+          required
+          [pattern]="'^.{50,500}$'" 
+        ></textarea>
+        <div class="alert alert-danger" *ngIf="summaryInput.invalid && summaryInput.touched">
+          Summary must be between 50 and 500 characters.
+        </div>
+        <button (click)="saveSummary()" [disabled]="summaryInput.invalid">Save</button>
       </div>
-      <p *ngIf="!isEditing" style="white-space: pre-wrap;">{{ mainData.Summary }}</p>
+      <p *ngIf="!isEditing" style="white-space: pre-wrap;">{{ summary }}</p>
     </div>
 
     <!-- Work Experiences Section -->
     <div class="summary-item">
       <h3>Work Experience</h3>
       <ul>
-        <li *ngFor="let experience of mainData.WorkExperiences">
+        <li *ngFor="let experience of workExperiences">
           <strong>{{ experience.company }}</strong> - {{ experience.role }} ({{ experience.start }} - {{ experience.end }})
         </li>
       </ul>
@@ -39,7 +49,7 @@
     <div class="summary-item">
       <h3>Studies</h3>
       <ul>
-        <li *ngFor="let study of mainData.Studies">
+        <li *ngFor="let study of studies">
           <strong>{{ study.institution }}</strong> - {{ study.degree }} ({{ study.from }} - {{ study.to }})
         </li>
       </ul>
@@ -59,28 +69,25 @@
     </div>
 
     <!-- Languages Section -->
-    <!-- Languages Section -->
-<div class="summary-item">
-  <h3>Languages</h3>
+    <div class="summary-item">
+      <h3>Languages</h3>
+      <ul>
+        <li *ngFor="let language of languages">
+          <strong>{{ language }}</strong>
+          <button class="delete-language-button" (click)="deleteLanguage(language)">
+            ⛔
+          </button>
+        </li>
+      </ul>
 
-  <ul>
-    <li *ngFor="let language of mainData.Languages">
-      <strong>{{ language }}</strong>
-      <button class="delete-language-button" (click)="deleteLanguage(language)">
-        ⛔
-      </button>
-    </li>
-  </ul>
-
-  <!-- Languages Dropdown -->
-  <div>
-    <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
-      <option value="" disabled selected>Select another language</option>
-      <option *ngFor="let language of availableLanguages" [value]="language">{{ language }}</option>
-    </select>
-    <button (click)="addLanguage()">➕ Add Language</button>
-  </div>
-</div>
-
+      <!-- Languages Dropdown -->
+      <div>
+        <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
+          <option value="" disabled selected>Select another language</option>
+          <option *ngFor="let language of availableLanguages" [value]="language">{{ language }}</option>
+        </select>
+        <button (click)="addLanguage()">➕ Add Language</button>
+      </div>
+    </div>
   </section>
 </main>
