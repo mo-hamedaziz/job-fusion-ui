@@ -1,12 +1,13 @@
-import { Component, TrackByFunction } from '@angular/core';
+import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { JobOfferService, JobOffer } from '../../../services/job-offers.service';
-
+import Cookies from 'js-cookie';
+import {jwtDecode} from 'jwt-decode';
 @Component({
   selector: 'app-recruiter-job-form',
   templateUrl: './recruiter-job-form.component.html',
   styleUrls: ['./recruiter-job-form.component.css']
 })
-export class RecruiterJobFormComponent {
+export class RecruiterJobFormComponent implements OnInit{
   job: JobOffer = {
     id: '', // Initialize as empty string
     title: '',
@@ -28,7 +29,7 @@ export class RecruiterJobFormComponent {
     keywords: [], // Initialize as an empty array
     active: true,
     postedDate: new Date(), 
-    recruiterId: 'some-recruiter-id', 
+    recruiterId: '', 
   };
 trackByIndex(index: number, obj: any): any {
   return index;
@@ -36,6 +37,25 @@ trackByIndex(index: number, obj: any): any {
 
 
   constructor(private jobOfferService: JobOfferService) {}
+
+  ngOnInit(): void {
+    const token = Cookies.get('token');
+    // console.log('JWT Token:', token);
+
+    if (token) {
+      try {
+        const decodedToken: any = jwtDecode(token);
+        const userId = decodedToken.userid;
+        console.log('User ID from decoded token:', userId);
+        
+        // Set recruiterId from decoded token
+        this.job.recruiterId = userId;
+
+      } catch (error) {
+        console.error('Error decoding JWT token:', error);
+      }
+    }
+  }
 
   addRequirement() {
     this.job.requirements.push('');
