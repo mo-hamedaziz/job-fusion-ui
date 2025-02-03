@@ -21,8 +21,9 @@ export class ProfileSidebarComponent {
     region: '', 
     phone: 0 
   };
-  /*@Input() photo!: string; // Accept photo URL
-  @Input() cv!: string; // Accept CV URL*/ 
+  @Input() photo: string = '';  // Accept photo URL
+  @Input() cv: string = '';     // Accept CV URL
+
   countryList: string[] = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
     "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
@@ -46,7 +47,15 @@ export class ProfileSidebarComponent {
     "Zimbabwe"
   ];
   
-  
+  profilePicture: string = '../../../assets/default.png'; // Default image
+  // Using ngOnChanges to check when photo changes
+ngOnChanges() {
+  if (this.photo) {
+    this.profilePicture = this.photo;  // Set to received photo
+  } else {
+    this.profilePicture = '../../../assets/default.png';  // Default image
+  }
+}
   isDropdownOpen = false;
   isEditingUsername = false;
   isEditingInfo = false;
@@ -135,8 +144,7 @@ export class ProfileSidebarComponent {
   }
 
 
-  profilePicture: string = '../../../assets/default.png'; // Default image
-
+  
   onFileSelected(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files[0]) {
