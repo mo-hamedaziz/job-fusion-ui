@@ -1,106 +1,65 @@
 <div class="signup">
   <form #signupForm="ngForm">
+    <label for="firstName">First Name</label>
+    <input required type="text" ngModel name="firstName" class="form-control" id="firstName" #firstNameInput="ngModel">
+    <div class="alert alert-danger" *ngIf="firstNameInput.invalid && firstNameInput.touched">
+      First Name is required.
+    </div>
+
+    <label for="lastName">Last Name</label>
+    <input required type="text" ngModel name="lastName" class="form-control" id="lastName" #lastNameInput="ngModel">
+    <div class="alert alert-danger" *ngIf="lastNameInput.invalid && lastNameInput.touched">
+      Last Name is required.
+    </div>
 
     <label for="username">Username</label>
-    <input
-      required
-      minlength="3"
-      type="text"
-      ngModel
-      name="username"
-      class="form-control"
-      id="username"
-      #usernameInput="ngModel"
-    >
+    <input required minlength="3" type="text" ngModel name="username" class="form-control" id="username" #usernameInput="ngModel">
     <div class="alert alert-danger" *ngIf="usernameInput.invalid && usernameInput.touched">
-      Username is required and must be at least 3 characters long.
+      Username must be at least 3 characters long.
     </div>
 
     <label for="email">Email</label>
-    <input
-      email
-      required
-      type="email"
-      ngModel
-      name="email"
-      class="form-control"
-      id="email"
-      #emailInput="ngModel"
-    >
+    <input required email type="email" ngModel name="email" class="form-control" id="email" #emailInput="ngModel">
     <div class="alert alert-danger" *ngIf="emailInput.invalid && emailInput.dirty">
       Please enter a valid email address.
     </div>
 
     <label for="password">Password</label>
-    <input
-      required
-      minlength="6"
-      type="password"
-      ngModel
-      name="password"
-      class="form-control"
-      id="password"
-      #passwordInput="ngModel"
-    >
+    <input required minlength="6" type="password" ngModel name="password" class="form-control" id="password" #passwordInput="ngModel">
     <div class="alert alert-danger" *ngIf="passwordInput.invalid && passwordInput.touched">
       Password must be at least 6 characters long.
     </div>
 
     <label for="confirmPassword">Confirm Password</label>
-    <input
-      required
-      type="password"
-      ngModel
-      name="confirmPassword"
-      class="form-control"
-      id="confirmPassword"
-      #confirmPasswordInput="ngModel"
-    >
-    <div class="alert alert-danger" *ngIf="confirmPasswordInput.invalid && confirmPasswordInput.touched">
-      Please confirm your password.
-    </div>
+    <input required type="password" ngModel name="confirmPassword" class="form-control" id="confirmPassword" #confirmPasswordInput="ngModel">
     <div class="alert alert-danger" *ngIf="passwordInput.value !== confirmPasswordInput.value && confirmPasswordInput.dirty">
       Passwords do not match.
     </div>
 
-    <label for="date_of_birth">Date of Birth</label>
-    <input
-      required
-      type="date"
-      ngModel
-      name="date_of_birth"
-      class="form-control"
-      id="date_of_birth"
-      #dobInput="ngModel"
-    >
+    <label for="dateOfBirth">Date of Birth</label>
+    <input required type="date" ngModel name="dateOfBirth" class="form-control" id="dateOfBirth" #dobInput="ngModel">
     <div class="alert alert-danger" *ngIf="dobInput.invalid && dobInput.touched">
       Date of birth is required.
     </div>
 
-    <label for="PhoneNumber">Phone Number</label>
-    <input
-      required
-      pattern="^[0-9]{8}$"
-      type="text"
-      ngModel
-      name="PhoneNumber"
-      class="form-control"
-      id="PhoneNumber"
-      #phoneInput="ngModel"
-    >
+    <label for="phoneNumber">Phone Number</label>
+    <input required pattern="^[0-9]{8}$" type="text" ngModel name="phoneNumber" class="form-control" id="phoneNumber" #phoneInput="ngModel">
     <div class="alert alert-danger" *ngIf="phoneInput.invalid && phoneInput.touched">
       Please enter a valid 8-digit phone number.
     </div>
 
-    <label for="Recruiter">Role</label>
-    <select
-      required
-      ngModel
-      name="Recruiter"
-      class="form-control"
-      id="Recruiter"
-      #roleInput="ngModel"
-    >
+    <label for="gender">Gender</label>
+    <select required ngModel name="gender" class="form-control" id="gender" #genderInput="ngModel">
+      <option value="" disabled selected>Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="genderInput.invalid && genderInput.touched">
+      Gender is required.
+    </div>
+
+    <label for="isRecruiter">Role</label>
+    <select required ngModel name="isRecruiter" class="form-control" id="isRecruiter" #roleInput="ngModel">
       <option value="" disabled selected>Select your role</option>
       <option [value]="true">Recruiter</option>
       <option [value]="false">User</option>
@@ -109,11 +68,7 @@
       Role is required.
     </div>
 
-    <button
-      [disabled]="signupForm.invalid"
-      class="btn btn-primary"
-      (click)="signup(signupForm)"
-    >
+    <button [disabled]="signupForm.invalid" class="btn btn-primary" (click)="signup(signupForm)">
       Signup
     </button>
 

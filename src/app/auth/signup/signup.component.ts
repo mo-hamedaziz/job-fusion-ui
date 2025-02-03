@@ -12,27 +12,30 @@ export class SignupComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   signup(signupForm: NgForm) {
-    
-    if (signupForm.invalid) {
+    if (signupForm.invalid || signupForm.value.password !== signupForm.value.confirmPassword) {
+      alert('Please ensure all fields are correctly filled and passwords match.');
       return;
     }
 
     const user = {
+      firstName: signupForm.value.firstName,
+      lastName: signupForm.value.lastName,
       username: signupForm.value.username,
       email: signupForm.value.email,
       password: signupForm.value.password,
-      date_of_birth: signupForm.value.date_of_birth,
-      Recruiter: signupForm.value.Recruiter === 'true', // Convert string to boolean
-      PhoneNumber: signupForm.value.PhoneNumber,
+      dateOfBirth: signupForm.value.dateOfBirth,
+      phoneNumber: signupForm.value.phoneNumber,
+      verified: false, // Defaulting to false
+      gender: signupForm.value.gender,
+      photo: '', // Optional, set empty or later filled
+      isRecruiter: signupForm.value.isRecruiter === 'true' // Convert string to boolean
     };
 
     this.authService.signup(user).subscribe({
       next: (response) => {
         console.log('Signup successful', response);
-        alert('Signup successful!'); 
-        //momkin il verif chtist7a9ilhom fil back!
+        alert('Signup successful!');
         sessionStorage.setItem('email', user.email);
-        sessionStorage.setItem('password', user.password);
         this.router.navigate(['/validation']);
       },
       error: (error) => {
