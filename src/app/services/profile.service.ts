@@ -47,7 +47,7 @@ export class ProfileService {
   }
 
   // Add language to profile
-  addLanguage(language: string) {
+  addLanguage(language: any) {
     console.log('Mock API Call - Adding language:', language);
     return of({
       status: 'success',
@@ -58,7 +58,7 @@ export class ProfileService {
   }
 
   // Delete language from profile
-  deleteLanguage(language: string) {
+  deleteLanguage(language: any) {
     console.log('Mock API Call - Deleting language:', language);
     return of({
       status: 'success',

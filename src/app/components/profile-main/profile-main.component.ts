@@ -50,21 +50,26 @@ export class ProfileMainComponent {
   // Save new work experience
   saveWorkExperience() {
     if (this.newWorkExperience.company && this.newWorkExperience.role) {
-      this.profileService.addWorkExperience(this.newWorkExperience).subscribe({
+      // Add the new experience to the local list
+      const updatedWorkExperiences = [...this.workExperiences, { ...this.newWorkExperience }];
+  
+      this.profileService.addWorkExperience(updatedWorkExperiences).subscribe({
         next: (response) => {
           console.log('Response from server:', response);
           if (response.status === 'success') {
-            this.workExperiences.push({ ...this.newWorkExperience });
+            // Update the local state after successful update
+            this.workExperiences = updatedWorkExperiences;
             this.newWorkExperience = { company: '', role: '', start: '', end: '' };
             this.isAddingWorkExperience = false;
           }
         },
         error: (err) => {
-          console.error('Error adding work experience:', err);
+          console.error('Error updating work experiences:', err);
         },
       });
     }
   }
+  
 
   // State for adding a new study
   newStudy = { institution: '', degree: '', from: '', to: '' };
@@ -73,57 +78,65 @@ export class ProfileMainComponent {
   // Save new study
   saveStudy() {
     if (this.newStudy.institution && this.newStudy.degree) {
-      this.profileService.addStudy(this.newStudy).subscribe({
+      // Add the new study to the local list
+      const updatedStudies = [...this.studies, { ...this.newStudy }];
+  
+      this.profileService.addStudy(updatedStudies).subscribe({
         next: (response) => {
           console.log('Response from server:', response);
           if (response.status === 'success') {
-            this.studies.push({ ...this.newStudy });
+            // Update the local state after a successful update
+            this.studies = updatedStudies;
             this.newStudy = { institution: '', degree: '', from: '', to: '' };
             this.isAddingStudy = false;
           }
         },
         error: (err) => {
-          console.error('Error adding study:', err);
+          console.error('Error updating studies:', err);
         },
       });
     }
   }
+  
 
   // Add a selected language
   addLanguage() {
     if (this.selectedLanguage && !this.languages.includes(this.selectedLanguage)) {
-      this.profileService.addLanguage(this.selectedLanguage).subscribe({
+      const updatedLanguages = [...this.languages, this.selectedLanguage];
+  
+      this.profileService.addLanguage(updatedLanguages).subscribe({
         next: (response) => {
-          console.log('Language added:', response);
+          console.log('Languages updated:', response);
           if (response.status === 'success') {
-            this.languages.push(this.selectedLanguage);
-            this.selectedLanguage = ''; // Clear the selected language
+            this.languages = updatedLanguages;
+            this.selectedLanguage = ''; // Clear selection
           }
         },
         error: (err) => {
-          console.error('Error adding language:', err);
+          console.error('Error updating languages:', err);
         },
       });
     }
   }
+  
 
   onLanguageChange() {
   }
   // Delete a language
-deleteLanguage(language: string) {
-  const index = this.languages.indexOf(language);
-  if (index !== -1) {
-    this.languages.splice(index, 1); // Remove the language from the list
-    // Optionally, notify the server to update the profile with the new languages list
-    this.profileService.deleteLanguage(language).subscribe({
+  deleteLanguage(language: string) {
+    const updatedLanguages = this.languages.filter(lang => lang !== language);
+  
+    this.profileService.deleteLanguage(updatedLanguages).subscribe({
       next: (response) => {
-        console.log('Language deleted:', response);
+        console.log('Languages updated:', response);
+        if (response.status === 'success') {
+          this.languages = updatedLanguages;
+        }
       },
       error: (err) => {
-        console.error('Error deleting language:', err);
+        console.error('Error updating languages:', err);
       },
     });
   }
-}
 
 }
