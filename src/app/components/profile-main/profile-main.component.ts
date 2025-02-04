@@ -29,12 +29,12 @@ export class ProfileMainComponent {
 
   // Save summary to the server
   saveSummary() {
-    this.profileService.updateProfile1({Summary : this.editableSummary}).subscribe((response) => {
+    this.profileService.updateProfile1({summary : this.editableSummary}).subscribe((response) => {
       console.log('Summary update response:', response);
-      if (response.status === 'success') {
+      
         this.summary = this.editableSummary;
         this.isEditing = false;
-      }
+      
     });
   }
 
@@ -51,17 +51,16 @@ export class ProfileMainComponent {
   saveWorkExperience() {
     if (this.newWorkExperience.company && this.newWorkExperience.role) {
       // Add the new experience to the local list
-      const updatedWorkExperiences = [...this.workExperiences, { ...this.newWorkExperience }];
+      const work_experiences = [...this.workExperiences, { ...this.newWorkExperience }];
   
-      this.profileService.addWorkExperience(updatedWorkExperiences).subscribe({
+      this.profileService.addWorkExperience({work_experiences}).subscribe({
         next: (response) => {
-          console.log('Response from server:', response);
-          if (response.status === 'success') {
+          
             // Update the local state after successful update
-            this.workExperiences = updatedWorkExperiences;
+            this.workExperiences = work_experiences;
             this.newWorkExperience = { company: '', role: '', start: '', end: '' };
             this.isAddingWorkExperience = false;
-          }
+          
         },
         error: (err) => {
           console.error('Error updating work experiences:', err);
@@ -81,15 +80,12 @@ export class ProfileMainComponent {
       // Add the new study to the local list
       const updatedStudies = [...this.studies, { ...this.newStudy }];
   
-      this.profileService.addStudy(updatedStudies).subscribe({
+      this.profileService.addStudy({studies:updatedStudies}).subscribe({
         next: (response) => {
-          console.log('Response from server:', response);
-          if (response.status === 'success') {
-            // Update the local state after a successful update
+      
             this.studies = updatedStudies;
             this.newStudy = { institution: '', degree: '', from: '', to: '' };
             this.isAddingStudy = false;
-          }
         },
         error: (err) => {
           console.error('Error updating studies:', err);
@@ -102,15 +98,14 @@ export class ProfileMainComponent {
   // Add a selected language
   addLanguage() {
     if (this.selectedLanguage && !this.languages.includes(this.selectedLanguage)) {
-      const updatedLanguages = [...this.languages, this.selectedLanguage];
+      const languages = [...this.languages, this.selectedLanguage];
   
-      this.profileService.addLanguage(updatedLanguages).subscribe({
+      this.profileService.updateProfile1({languages}).subscribe({
         next: (response) => {
-          console.log('Languages updated:', response);
-          if (response.status === 'success') {
-            this.languages = updatedLanguages;
+          
+            this.languages = languages;
             this.selectedLanguage = ''; // Clear selection
-          }
+          
         },
         error: (err) => {
           console.error('Error updating languages:', err);
@@ -126,12 +121,11 @@ export class ProfileMainComponent {
   deleteLanguage(language: string) {
     const updatedLanguages = this.languages.filter(lang => lang !== language);
   
-    this.profileService.deleteLanguage(updatedLanguages).subscribe({
+    this.profileService.updateProfile1({languages:updatedLanguages}).subscribe({
       next: (response) => {
-        console.log('Languages updated:', response);
-        if (response.status === 'success') {
+      
           this.languages = updatedLanguages;
-        }
+        
       },
       error: (err) => {
         console.error('Error updating languages:', err);

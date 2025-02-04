@@ -8,42 +8,38 @@ import { HttpClient } from '@angular/common/http';
 export class ProfileService {
 
 
-  private apiUrl = 'http://loclahost:3000';
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   updateProfile1(updateData: any) {
+    /*
     // Mock implementation
     console.log('Mock API Call - Would send:', updateData);
     return of({
       status: 'success',
       message: 'Update simulated',
       data: updateData,
-    });
+    });*/
 
-    // return this.http.patch(`${this.apiUrl}/profile/update`, updateData,{ withCredentials: true });
+     return this.http.patch(`${this.apiUrl}/profile/update`, updateData,{ withCredentials: true });
   }
 
-  addWorkExperience(newExperience: any) {
+  addWorkExperience(Experience: any) {
+    /*
     console.log('Mock API Call - Adding work experience:', newExperience);
     return of({
       status: 'success',
       message: 'Work experience added successfully',
       data: newExperience,
     });
-
-    // return this.http.post(`${this.apiUrl}/work-experience`, newExperience,{ withCredentials: true });
+*/
+    return this.http.patch(`${this.apiUrl}/profile/update`, Experience,{ withCredentials: true });
   }
 
-  addStudy(newStudy: any) {
-    console.log('Mock API Call - Adding study:', newStudy);
-    return of({
-      status: 'success',
-      message: 'Study added successfully',
-      data: newStudy,
-    });
-  
-    // return this.http.post(`${this.apiUrl}/studies`, newStudy,{ withCredentials: true });
+  addStudy(Study: any) {
+    
+    return this.http.patch(`${this.apiUrl}/profile/update`, Study,{ withCredentials: true });
   }
 
   // Add language to profile
@@ -74,7 +70,7 @@ export class ProfileService {
   }
 
   updateProfilePicture(formData: FormData) {
-    return this.http.post(`${this.apiUrl}/profile/uplod_photo`, formData,{ withCredentials: true });
+    return this.http.post(`${this.apiUrl}/profile/upload_photo`, formData,{ withCredentials: true });
   }
 
   uploadCv(fileData: FormData) {
@@ -82,7 +78,7 @@ export class ProfileService {
   }
   
   getProfile(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/profile/user_data`,{ withCredentials: true });
+    return this.http.get<any>(`${this.apiUrl}/profile/all_info`,{ withCredentials: true });
   }
   getPhoto(): Observable<Blob> {
     return this.http.get(`${this.apiUrl}/profile/photo`, { responseType: 'blob', withCredentials: true  });
