@@ -48,12 +48,16 @@ export class ProfileSidebarComponent {
   ];
   
   profilePicture: string = '../../../assets/default.png'; // Default image
+  cv_user:string='';
   // Using ngOnChanges to check when photo changes
 ngOnChanges() {
   if (this.photo) {
     this.profilePicture = this.photo;  // Set to received photo
   } else {
     this.profilePicture = '../../../assets/default.png';  // Default image
+  }
+  if(this.cv){
+    this.cv_user=this.cv
   }
 }
   isDropdownOpen = false;
@@ -142,7 +146,13 @@ ngOnChanges() {
       );
     }
   }
-
+  viewCv() {
+    if (this.cv_user) {
+      window.open(this.cv_user, '_blank');
+    } else {
+      alert('No CV uploaded yet.');
+    }
+  }
 
   
   onFileSelected(event: Event) {

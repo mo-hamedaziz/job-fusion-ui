@@ -10,15 +10,15 @@ class User {
   region: string | null;
   phone: string | null;
   Summary: string | null;
-  WorkExperiences: string | null;
-  Studies: string | null;
+  WorkExperiences: string[] | null;
+  Studies: string []| null;
   Languages: string | null;
   photo: string | null;
   cv: string | null;
 
   constructor() {
     this.username = '';
-    this.selectedOption = 'option1';
+    this.selectedOption = 'please select an option here';
     this.birthdate = null;
     this.email = '';
     this.country = "select a country";

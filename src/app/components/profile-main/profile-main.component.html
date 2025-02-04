@@ -27,7 +27,10 @@
       <h3>Work Experience</h3>
       <ul>
         <li *ngFor="let experience of workExperiences">
-          <strong>{{ experience.company }}</strong> - {{ experience.role }} ({{ experience.start }} - {{ experience.end }})
+          {{ experience }}
+          <button class="delete-work-button" (click)="deleteWorkExperience(experience)">
+            ⛔
+          </button>
         </li>
       </ul>
 
@@ -50,7 +53,10 @@
       <h3>Studies</h3>
       <ul>
         <li *ngFor="let study of studies">
-          <strong>{{ study.institution }}</strong> - {{ study.degree }} ({{ study.from }} - {{ study.to }})
+          {{ study }}
+          <button class="delete-study-button" (click)="deleteStudy(study)">
+            ⛔
+          </button>
         </li>
       </ul>
 
