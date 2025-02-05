@@ -26,6 +26,7 @@ import { RecruiterApgeComponent } from './pages/recruiter-apge/recruiter-apge.co
 import { RecruiterJobListComponent } from './components/recruiter-job-list/recruiter-job-list.component';
 import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecruiterApplicationsComponent } from './pages/recruiter-applications/recruiter-applications.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DefaultCompanyLogoPipe,
     RecruiterApgeComponent,
     RecruiterJobListComponent,
-    ValidationPageComponent
+    ValidationPageComponent,
+    RecruiterApplicationsComponent
   ],
   imports: [
     BrowserModule,

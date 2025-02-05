@@ -8,7 +8,7 @@ import { RecruiterApgeComponent } from './pages/recruiter-apge/recruiter-apge.co
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
-
+import { RecruiterApplicationsComponent } from './pages/recruiter-applications/recruiter-applications.component';
 const routes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'recruiter', component: RecruiterApgeComponent },
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   {path:'landing', component: LandingPageComponent},
   {path:'validation', component: ValidationPageComponent},
+  {path:'applications',component:RecruiterApplicationsComponent},
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: '**', redirectTo: '/landing' },
 ];
