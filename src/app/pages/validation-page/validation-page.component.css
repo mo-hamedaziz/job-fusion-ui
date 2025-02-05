@@ -1,10 +1,65 @@
 .validation-container {
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
-  }
-  .error {
-    color: red;
-    font-size: 14px;
-  }
-  
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-top: 10%;
+}
+
+h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* label {
+  font-size: 16px;
+  color: #555;
+  text-align: left;
+} */
+
+input {
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+button {
+  background: #007bff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: -8px;
+  text-align: left;
+}
