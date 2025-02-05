@@ -13,11 +13,11 @@
 
     <!-- Motivation Paragraph -->
     <label for="motivation">Motivation Paragraph:</label>
-    <textarea id="motivation" [(ngModel)]="motivation" name="motivation" required></textarea>
+    <textarea id="motivation" [(ngModel)]="motivationParagraph" name="motivation" required></textarea>
 
     <!-- Comment -->
     <label for="comment">Additional Comment:</label>
-    <textarea id="comment" [(ngModel)]="comment" name="comment"></textarea>
+    <textarea id="comment" [(ngModel)]="additionalComment" name="comment"></textarea>
 
     <!-- Submit Button -->
     <button type="submit" [disabled]="jobForm.invalid">Submit Application</button>
