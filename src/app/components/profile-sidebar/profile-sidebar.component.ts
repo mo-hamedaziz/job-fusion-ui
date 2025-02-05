@@ -21,8 +21,8 @@ export class ProfileSidebarComponent {
     country: '', 
     region: '', 
   };
-  @Input() photo: string = '';  // Accept photo URL
-  @Input() cv: string = '';     // Accept CV URL
+  @Input() photo: string = ''; 
+  @Input() cv: string = '';     
 
   countryList: string[] = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
@@ -47,14 +47,13 @@ export class ProfileSidebarComponent {
     "Zimbabwe"
   ];
   
-  profilePicture: string = '../../../assets/default.png'; // Default image
+  profilePicture: string = '../../../assets/default.png'; 
   cv_user:string='';
-  // Using ngOnChanges to check when photo changes
 ngOnChanges() {
   if (this.photo) {
-    this.profilePicture = this.photo;  // Set to received photo
+    this.profilePicture = this.photo;  
   } else {
-    this.profilePicture = '../../../assets/default.png';  // Default image
+    this.profilePicture = '../../../assets/default.png';  
   }
   if(this.cv){
     this.cv_user=this.cv
@@ -83,7 +82,6 @@ ngOnChanges() {
     this.updatePreference();
   }
 
-  // Update methods
   toggleEditUsername() {
     this.isEditingUsername = !this.isEditingUsername;
   }
@@ -96,7 +94,6 @@ ngOnChanges() {
     this.isEditingAddress = !this.isEditingAddress;
   }
 
-  // Common update handler
   private handleUpdate(updateData: any, successMessage: string) {
     console.log('Attempting update:', updateData);
     
@@ -160,30 +157,25 @@ ngOnChanges() {
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
   
-      // Validate file type (only PNG and JPG)
       const allowedTypes = ['image/png', 'image/jpeg'];
       if (!allowedTypes.includes(file.type)) {
         alert('Only PNG and JPG images are allowed.');
         return;
       }
   
-      // Validate file size (max 10MB)
-      const maxSizeInBytes = 10 * 1024 * 1024; // 10MB
+      const maxSizeInBytes = 10 * 1024 * 1024; 
       if (file.size > maxSizeInBytes) {
         alert('The file size must be less than 10MB.');
         return;
       }
   
-      // Prepare FormData
       const formData = new FormData();
       formData.append('file', file);
   
-      // Send file to backend
       this.profileService.updateProfilePicture(formData).subscribe({
         next: (response) => {
           console.log('Profile picture updated:', response);
           
-          // Update image preview
           const reader = new FileReader();
           reader.onload = (e) => {
             this.profilePicture = e.target?.result as string;
@@ -200,24 +192,20 @@ ngOnChanges() {
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
   
-      // Validate file type (Only PDF)
       if (file.type !== 'application/pdf') {
         alert('Invalid file type. Please upload a PDF document.');
         return;
       }
   
-      // Validate file size (max 10MB)
-      const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+      const maxSize = 10 * 1024 * 1024; 
       if (file.size > maxSize) {
         alert('File size exceeds 10MB. Please choose a smaller file.');
         return;
       }
   
-      // Prepare file for upload
       const formData = new FormData();
-      formData.append('file', file);  // 'file' must match the backend expectation
+      formData.append('file', file);  
   
-      // Send file to backend
       this.profileService.uploadCv(formData).subscribe({
         next: (response) =>{ 
           console.log('CV uploaded successfully:', response);

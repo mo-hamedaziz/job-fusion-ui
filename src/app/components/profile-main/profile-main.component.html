@@ -1,6 +1,5 @@
 <main class="main-content">
   <section class="summary">
-    <!-- Summary Section -->
     <div class="summary-item">
       <h3>Summary 
         <button class="edit-button" (click)="editSummary()">✏️</button>
@@ -22,7 +21,6 @@
       <p *ngIf="!isEditing" style="white-space: pre-wrap;">{{ summary }}</p>
     </div>
 
-    <!-- Work Experiences Section -->
     <div class="summary-item">
       <h3>Work Experience</h3>
       <ul>
@@ -34,10 +32,8 @@
         </li>
       </ul>
 
-      <!-- Add Work Experience Button -->
       <button (click)="addWorkExperience()">➕ Add Work Experience</button>
 
-      <!-- Work Experience Input Form -->
       <div *ngIf="isAddingWorkExperience">
         <input type="text" placeholder="Company" [(ngModel)]="newWorkExperience.company" required />
         <input type="text" placeholder="Role" [(ngModel)]="newWorkExperience.role" required />
@@ -48,7 +44,6 @@
       </div>
     </div>
 
-    <!-- Studies Section -->
     <div class="summary-item">
       <h3>Studies</h3>
       <ul>
@@ -60,7 +55,6 @@
         </li>
       </ul>
 
-      <!-- Add Study Form -->
       <div *ngIf="isAddingStudy" class="add-study-form">
         <input type="text" placeholder="Institution" [(ngModel)]="newStudy.institution" />
         <input type="text" placeholder="Degree" [(ngModel)]="newStudy.degree" />
@@ -70,11 +64,9 @@
         <button (click)="isAddingStudy = false">Cancel</button>
       </div>
 
-      <!-- Add Study Button -->
       <button *ngIf="!isAddingStudy" (click)="isAddingStudy = true">➕ Add Study</button>
     </div>
 
-    <!-- Languages Section -->
     <div class="summary-item">
       <h3>Languages</h3>
       <ul>
@@ -86,7 +78,6 @@
         </li>
       </ul>
 
-      <!-- Languages Dropdown -->
       <div>
         <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
           <option value="" disabled selected>Select another language</option>
