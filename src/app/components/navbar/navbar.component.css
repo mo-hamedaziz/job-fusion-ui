@@ -2,46 +2,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #89CFF0;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
+  background-color: #0077b6;
+  padding: 12px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .navbar-left .app-name {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
+  color: white;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 15px;
 }
 
 .navbar-right .btn {
-/*   margin-left: 10px;
-  padding: 5px 10px;
-  background-color: #007bff;
+  background: none;
+  border: none;
   color: white;
-  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
   border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px; */
-  all: unset;
-  width: 100px;
-  height: 30px;
-  font-size: 20px;
-  background: transparent;
-  border: none;
-  position: relative;
-  color: #f0f0f0; 
-  cursor: pointer;
-  z-index: 1;
-  padding: 10px 20px;
-/*   display: grid;  */
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
 }
 
 .navbar-right .btn:hover {
-  background-color: #0056b3;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
+.navbar-right .btn:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
