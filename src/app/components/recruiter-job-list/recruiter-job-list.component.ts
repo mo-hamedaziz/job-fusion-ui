@@ -28,7 +28,7 @@ export class RecruiterJobListComponent implements OnInit {
   }
   
   fetchJobOffers(): void {
-    this.jobOfferService.getJobOffers().subscribe(
+    this.jobOfferService.getRecruiterJobOffers().subscribe(
       (data: any) => {
         this.jobs = data;
       },

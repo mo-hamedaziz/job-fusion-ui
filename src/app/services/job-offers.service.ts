@@ -51,6 +51,10 @@ export class JobOfferService {
     return this.http.get<JobOffer[]>(this.apiUrl,{ withCredentials: true });
   }
 
+  getRecruiterJobOffers(): Observable<JobOffer[]> {
+    return this.http.get<JobOffer[]>(`${this.apiUrl}/recruiter`,{ withCredentials: true });
+  }
+
   createJobOffer(jobOffer: JobOffer): Observable<JobOffer> {
     return this.http.post<JobOffer>(this.apiUrl, jobOffer, { withCredentials: true });
   }

@@ -1,45 +1,73 @@
 .landing-container {
-    text-align: center;
-    padding: 50px;
-    font-family: cursive;
-   
-  }
-  
-  header {
-    background: #b8afe9;
-    padding: 5%;
-    opacity: 90%;
-    border-radius: 10px;
-    border-color: black;
-    border-width: 2%;
-  }
+  text-align: center;
+  padding: 50px;
+  font-family: 'Arial', sans-serif; /* Modern font */
+  background-color: #f4f8fc; /* Soft light blue background */
+}
 
-  h1{
-    color: white;
-    -webkit-text-stroke: 2px black;
-    
-    
-  }
-  
-  button {
-    background: white;
-    color: #10163e;
-    padding: 10px 20px;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-  }
-  
+header {
+  background: #4a90e2; /* Soft blue */
+  padding: 4% 6%;
+  opacity: 95%;
+  border-radius: 15px;
+  border: 2px solid #3d6f9f; /* Slightly darker blue border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h1 {
+  color: white;
+  font-size: 36px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px #3d6f9f; /* Softer stroke for modern feel */
+}
+
+button {
+  background: #e1f5fe; /* Very light blue */
+  color: #3d6f9f; /* Dark blue text */
+  padding: 12px 24px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 30px; /* Rounded corners for a modern look */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for button */
+}
+
+button:hover {
+  background: #80bfff; /* Medium blue on hover */
+  transform: translateY(-2px); /* Subtle hover effect */
+}
+
+.features {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  gap: 20px;
+}
+
+.feature {
+  width: 32%;
+  padding: 20px;
+  background: #a3c8f7; /* Soft, muted blue */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadows for depth */
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  background: #80bfff; /* Medium blue on hover */
+  transform: translateY(-4px); /* Slight lift effect */
+}
+
+@media (max-width: 768px) {
   .features {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 60px;
+      flex-direction: column;
+      align-items: center;
   }
-  
   .feature {
-    width: 30%;
-    padding: 20px;
-    background: #948bcf ;
-    border-radius: 8px;
+      width: 80%;
+      margin-bottom: 20px;
   }
-  
+}

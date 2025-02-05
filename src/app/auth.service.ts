@@ -10,18 +10,25 @@ export interface decodedToken {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth'; // Replace with your API URL
+  private apiUrl = 'http://localhost:3000/auth';
+
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+
+  private isRecruiterSubject = new BehaviorSubject<boolean>(false);
+  isRecruiter$ = this.isRecruiterSubject.asObservable();
 
   constructor(private http: HttpClient) {
     this.checkAuthentication();
   }
 
   checkAuthentication() {
-    this.http.get<{ authenticated: boolean }>('http://localhost:3000/auth/is_authenticated', { withCredentials: true })
+    this.http.get<{ recruiter: boolean }>('http://localhost:3000/auth/is_authenticated', { withCredentials: true })
       .subscribe({
-        next: () => this.isAuthenticatedSubject.next(true),
+        next: (response) => {
+          this.isAuthenticatedSubject.next(true);
+          this.isRecruiterSubject.next(response.recruiter === true);
+        },
         error: () => this.isAuthenticatedSubject.next(false)
       });
   }
