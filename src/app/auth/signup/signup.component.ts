@@ -36,6 +36,7 @@ export class SignupComponent {
         console.log('Signup successful', response);
         alert('Signup successful!');
         sessionStorage.setItem('email', user.email);
+        sessionStorage.setItem('password', user.password);
         this.router.navigate(['/validation']);
       },
       error: (error) => {
