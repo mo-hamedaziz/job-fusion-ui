@@ -3,7 +3,7 @@
     <span routerLink="/" class="app-name">Job Fusion</span>
   </div>
   <div class="navbar-right">
-    <ng-container *ngIf="(isAuthenticated$ | async); else unauthenticated">
+    <ng-container *ngIf="isAuthenticated$ | async; else unauthenticated">
       <button routerLink="/dashboard" class="btn">Look for a Job</button>
       <button routerLink="/dashboard" class="btn">Profile</button>
       <button (click)="logout()" class="btn">Logout</button>
