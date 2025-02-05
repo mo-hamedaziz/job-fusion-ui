@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { JobService, Job } from '../../services/job.service';
 import { EmploymentType } from 'src/app/services/employmentType';
 import { ExperienceLevel } from 'src/app/services/experiencelvl';
+import { JobOfferService } from 'src/app/services/job-offers.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recruiter-job-list',
@@ -12,14 +14,28 @@ export class RecruiterJobListComponent implements OnInit {
   jobs: Job[] = [];
   selectedJob?: Job;
 
-  constructor(private jobService: JobService) {}
+  constructor(private jobService: JobService, private jobOfferService: JobOfferService, private router:Router) {}
 
   ngOnInit(): void {
     this.loadJobs();
+    console.log("hola");
+    this.fetchJobOffers();
+
   }
 
   loadJobs(): void {
     this.jobService.getJobs().subscribe((data) => (this.jobs = data));
+  }
+  
+  fetchJobOffers(): void {
+    this.jobOfferService.getJobOffers().subscribe(
+      (data: any) => {
+        this.jobs = data;
+      },
+      (error) => {
+        console.error('Error fetching job offers:', error);
+      }
+    );
   }
 
   // Select a job for editing
@@ -44,7 +60,11 @@ export class RecruiterJobListComponent implements OnInit {
       active: true,
       recruiterId: '12345' 
     };
-    this.jobService.addJob(newJob).subscribe(() => this.loadJobs());
+    this.jobService.addJob(newJob).subscribe(() => {
+      this.loadJobs();
+     
+    });
+    
   }
 
   // Edit an existing job
