@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApplyForJobService, JobApplicationDtO } from 'src/app/services/apply-for-job.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ApplyForJobService, JobApplicationDtO } from 'src/app/services/apply-fo
 
 export class ApplyForJobComponent implements OnInit {
 
-  constructor(private jobApplicationService: ApplyForJobService, private route: ActivatedRoute) {}
+  constructor(private jobApplicationService: ApplyForJobService, private route: ActivatedRoute,private router: Router) {}
   selectedJobOfferId: string = '';  
   motivationParagraph: string = '';
   additionalComment: string = '';
@@ -40,7 +40,6 @@ export class ApplyForJobComponent implements OnInit {
     console.log('Selected files:', this.files);
 
     const jobApplication: JobApplicationDtO = {
-      //id: this.selectedJobOfferId, 
       cvPath: this.files['cv']?.name || '',
       coverLetterPath: this.files['coverLetter']?.name || '',
       motivationParagraph: this.motivationParagraph,
@@ -54,6 +53,7 @@ export class ApplyForJobComponent implements OnInit {
       (response) => {
         console.log('Application submitted:', response);
         alert('Application Submitted Successfully!');
+        this.router.navigate(['/welcome']);
       },
       (error) => {
         console.error('Error submitting application:', error);

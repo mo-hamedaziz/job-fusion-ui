@@ -33,7 +33,6 @@ export class SigninComponent {
           alert('Your account is not verified. Redirecting to verification page.');
           this.router.navigate(['/validation']);
         } else {
-          alert('Login successful! Redirecting to welcome page.');
           this.router.navigate(['/welcome']);
         }
       },
