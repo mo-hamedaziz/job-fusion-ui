@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class NavbarComponent implements OnInit {
   isAuthenticated$ = this.authService.isAuthenticated$;
+  isRecruiter$ = this.authService.isRecruiter$;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -20,6 +21,10 @@ export class NavbarComponent implements OnInit {
     ).subscribe(() => {
       this.authService.checkAuthentication();
     });
+    
+    /*this.isRecruiter$.subscribe(value => {
+      console.log(value); // Logs the value of isRecruiter$
+    });*/
   }
 
   login() {
