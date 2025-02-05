@@ -1,0 +1,83 @@
+/* Container for all applications */
+.applications-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Style for each application card */
+  .application-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for application info */
+  .application-info {
+    margin-bottom: 15px;
+  }
+  
+  .application-info p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .application-info strong {
+    color: #333;
+  }
+  
+  /* Style for action buttons */
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 10px; /* Add space between buttons */
+  }
+  
+  .accept-button, .reject-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .accept-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+  
+  .accept-button:hover {
+    background-color: #45a049;
+  }
+  
+  .reject-button {
+    background-color: #f44336; /* Red */
+    color: white;
+  }
+  
+  .reject-button:hover {
+    background-color: #e53935;
+  }
+  
+  /* Style for the View CV button (placed under the action buttons) */
+  .view-cv-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #2196F3; /* Blue */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .view-cv-button:hover {
+    background-color: #1976D2;
+  }
+  
