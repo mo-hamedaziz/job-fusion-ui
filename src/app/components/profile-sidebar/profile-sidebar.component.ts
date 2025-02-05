@@ -104,7 +104,7 @@ ngOnChanges() {
       },
       error: (error) => {
         console.error('Update error:', error);
-        alert('Update failed - check console for details');
+      
       }
     });
   }
