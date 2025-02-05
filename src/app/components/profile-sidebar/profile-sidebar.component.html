@@ -62,6 +62,8 @@
   <label for="cv-upload" class="cv-upload-button">
     <span class="upload-icon">⬆</span> Upload File
   </label>
+  <button *ngIf="cv_user" (click)="viewCv()">View</button>
+
 </div>
 
 
@@ -77,7 +79,7 @@
     <div *ngIf="!isEditingInfo">
       <p>📅 {{info.birthdate }}</p>
       <p>📧 {{info.email }}</p>
-      <p>🌍 {{info.nationality }}</p>
+      <p>📞 {{info.phone }}</p>
     </div>
     <div *ngIf="isEditingInfo">
       <p>
@@ -98,9 +100,10 @@
       </p>
       <div class="alert alert-danger" *ngIf="emailInput.invalid && emailInput.touched">Enter a valid email.</div>
       <p>
-        🌍 <input [(ngModel)]="info.nationality" placeholder="Nationality" required />
+        📞 <input [(ngModel)]="info.phone" placeholder="Phone" #phoneInput="ngModel" pattern="^[0-9]{8}$" required phone />
       </p>
-      <button (click)="updateInfo()" [disabled]="emailInput.invalid">Save</button>
+      <div class="alert alert-danger" *ngIf="phoneInput.invalid && phoneInput.touched">Enter a valid phone number (8 digits).</div>
+      <button (click)="updateInfo()" [disabled]="emailInput.invalid" [disabled]="phoneInput.invalid">Save</button>
     </div>
     <div class="section-divider"></div>
 
@@ -111,7 +114,6 @@
     <div *ngIf="!isEditingAddress">
       <p>Country: {{ address.country }}</p>
       <p>Region: {{ address.region }}</p>
-      <p>Phone: {{ address.phone }}</p>
     </div>
     <div *ngIf="isEditingAddress">
       <p>
@@ -127,12 +129,7 @@
         Region:
         <input [(ngModel)]="address.region" placeholder="Region" required />
       </p>
-      <p>
-        Phone:
-        <input [(ngModel)]="address.phone" placeholder="Phone" #phoneInput="ngModel" pattern="^[0-9]{8}$" required />
-      </p>
-      <div class="alert alert-danger" *ngIf="phoneInput.invalid && phoneInput.touched">Enter a valid phone number (8 digits).</div>
-      <button (click)="updateAddress()" [disabled]="phoneInput.invalid">Save</button>
+      <button (click)="updateAddress()" >Save</button>
     </div>
   </div>
 </aside>

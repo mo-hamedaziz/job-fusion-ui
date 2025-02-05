@@ -10,8 +10,8 @@ export class ProfileMainComponent {
   constructor(private profileService: ProfileService) {}
 
   @Input() summary: string = '';
-  @Input() workExperiences: { company: string; role: string; start: string; end: string }[] = [];
-  @Input() studies: { institution: string; degree: string; from: string; to: string }[] = [];
+  @Input() workExperiences: string[] = [];
+  @Input() studies: string[] = [];
   @Input() languages: string[] = [];
 
   // Predefined list of languages
@@ -29,12 +29,12 @@ export class ProfileMainComponent {
 
   // Save summary to the server
   saveSummary() {
-    this.profileService.updateProfile1({Summary : this.editableSummary}).subscribe((response) => {
+    this.profileService.updateProfile1({summary : this.editableSummary}).subscribe((response) => {
       console.log('Summary update response:', response);
-      if (response.status === 'success') {
+      
         this.summary = this.editableSummary;
         this.isEditing = false;
-      }
+      
     });
   }
 
@@ -50,20 +50,47 @@ export class ProfileMainComponent {
   // Save new work experience
   saveWorkExperience() {
     if (this.newWorkExperience.company && this.newWorkExperience.role) {
-      this.profileService.addWorkExperience(this.newWorkExperience).subscribe({
+      const newExperience = `${this.newWorkExperience.company} - ${this.newWorkExperience.role} (${this.newWorkExperience.start} to ${this.newWorkExperience.end})`;
+
+    // Check if the experience already exists
+    if (this.workExperiences.includes(newExperience)) {
+      console.warn('This work experience already exists!');
+      this.newWorkExperience = { company: '', role: '', start: '', end: '' };
+      this.isAddingWorkExperience = false;
+      return; // Stop execution if it's a duplicate
+    }
+
+    // Add the new experience to the local list
+    const work_experiences = [...this.workExperiences, newExperience];
+      this.profileService.addWorkExperience({work_experiences}).subscribe({
         next: (response) => {
-          console.log('Response from server:', response);
-          if (response.status === 'success') {
-            this.workExperiences.push({ ...this.newWorkExperience });
+          
+            // Update the local state after successful update
+            this.workExperiences = work_experiences;
             this.newWorkExperience = { company: '', role: '', start: '', end: '' };
             this.isAddingWorkExperience = false;
-          }
+          
         },
         error: (err) => {
-          console.error('Error adding work experience:', err);
+          console.error('Error updating work experiences:', err);
         },
       });
     }
+  }
+  deleteWorkExperience(experience:string) {
+    // const updatedLanguages = this.languages.filter(lang => lang !== language);
+    const updatedWorkExperiences = this.workExperiences.filter(exp=> exp!==experience);
+  
+    // Send the updated array to the backend
+    this.profileService.updateProfile1({ work_experiences: updatedWorkExperiences }).subscribe({
+      next: (response) => {
+        // Update the local state after successful update
+        this.workExperiences = updatedWorkExperiences;
+      },
+      error: (err) => {
+        console.error('Error updating work experiences:', err);
+      },
+    });
   }
 
   // State for adding a new study
@@ -73,57 +100,82 @@ export class ProfileMainComponent {
   // Save new study
   saveStudy() {
     if (this.newStudy.institution && this.newStudy.degree) {
-      this.profileService.addStudy(this.newStudy).subscribe({
+      const newStudy = `${this.newStudy.institution} - ${this.newStudy.degree} (${this.newStudy.from} to ${this.newStudy.to})`;
+
+    // Check if the experience already exists
+    if (this.studies.includes(newStudy)) {
+      console.warn('This work experience already exists!');
+      this.newStudy = { institution: '', degree: '', from: '', to: '' };
+      this.isAddingStudy = false;
+      return; // Stop execution if it's a duplicate
+    }
+    const updatedStudies = [...this.studies, newStudy];
+
+      this.profileService.addStudy({studies:updatedStudies}).subscribe({
         next: (response) => {
-          console.log('Response from server:', response);
-          if (response.status === 'success') {
-            this.studies.push({ ...this.newStudy });
+      
+            this.studies = updatedStudies;
             this.newStudy = { institution: '', degree: '', from: '', to: '' };
             this.isAddingStudy = false;
-          }
         },
         error: (err) => {
-          console.error('Error adding study:', err);
+          console.error('Error updating studies:', err);
         },
       });
     }
   }
+  deleteStudy(study: string) {
+    const updatedStudies = this.studies.filter(st => st !== study);
+  
+    // Send the updated array to the backend
+    this.profileService.updateProfile1({ studies: updatedStudies }).subscribe({
+      next: (response) => {
+        // Update the local state after successful update
+        this.studies = updatedStudies;
+      },
+      error: (err) => {
+        console.error('Error updating studies:', err);
+      },
+    });
+  }
+  
 
   // Add a selected language
   addLanguage() {
     if (this.selectedLanguage && !this.languages.includes(this.selectedLanguage)) {
-      this.profileService.addLanguage(this.selectedLanguage).subscribe({
+      const languages = [...this.languages, this.selectedLanguage];
+  
+      this.profileService.updateProfile1({languages}).subscribe({
         next: (response) => {
-          console.log('Language added:', response);
-          if (response.status === 'success') {
-            this.languages.push(this.selectedLanguage);
-            this.selectedLanguage = ''; // Clear the selected language
-          }
+          
+            this.languages = languages;
+            this.selectedLanguage = ''; // Clear selection
+          
         },
         error: (err) => {
-          console.error('Error adding language:', err);
+          console.error('Error updating languages:', err);
         },
       });
     }
   }
+  
 
   onLanguageChange() {
   }
   // Delete a language
-deleteLanguage(language: string) {
-  const index = this.languages.indexOf(language);
-  if (index !== -1) {
-    this.languages.splice(index, 1); // Remove the language from the list
-    // Optionally, notify the server to update the profile with the new languages list
-    this.profileService.deleteLanguage(language).subscribe({
+  deleteLanguage(language: string) {
+    const updatedLanguages = this.languages.filter(lang => lang !== language);
+  
+    this.profileService.updateProfile1({languages:updatedLanguages}).subscribe({
       next: (response) => {
-        console.log('Language deleted:', response);
+      
+          this.languages = updatedLanguages;
+        
       },
       error: (err) => {
-        console.error('Error deleting language:', err);
+        console.error('Error updating languages:', err);
       },
     });
   }
-}
 
 }

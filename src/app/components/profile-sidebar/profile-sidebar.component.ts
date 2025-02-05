@@ -10,19 +10,20 @@ export class ProfileSidebarComponent {
   @Input() username: string = '';
   @Input() selectedOption: string = '';
 
-  @Input() info: { birthdate: string; email: string; nationality: string } = { 
+  @Input() info: { birthdate: string; email: string ;phone: string} = { 
     birthdate: '', 
     email: '', 
-    nationality: '' 
+    phone: ''
+
   };
 
-  @Input() address: { country: string; region: string; phone: number } = { 
+  @Input() address: { country: string; region: string } = { 
     country: '', 
     region: '', 
-    phone: 0 
   };
-  /*@Input() photo!: string; // Accept photo URL
-  @Input() cv!: string; // Accept CV URL*/ 
+  @Input() photo: string = '';  // Accept photo URL
+  @Input() cv: string = '';     // Accept CV URL
+
   countryList: string[] = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
     "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
@@ -46,7 +47,19 @@ export class ProfileSidebarComponent {
     "Zimbabwe"
   ];
   
-  
+  profilePicture: string = '../../../assets/default.png'; // Default image
+  cv_user:string='';
+  // Using ngOnChanges to check when photo changes
+ngOnChanges() {
+  if (this.photo) {
+    this.profilePicture = this.photo;  // Set to received photo
+  } else {
+    this.profilePicture = '../../../assets/default.png';  // Default image
+  }
+  if(this.cv){
+    this.cv_user=this.cv
+  }
+}
   isDropdownOpen = false;
   isEditingUsername = false;
   isEditingInfo = false;
@@ -111,7 +124,7 @@ export class ProfileSidebarComponent {
 
   updateInfo() {
     this.handleUpdate(
-      { date_of_birth : this.info.birthdate, email: this.info.email, nationality: this.info.nationality },
+      { dateOfBirth : this.info.birthdate, email: this.info.email , phoneNumber: this.info.phone},
       'Personal information updated successfully!'
     );
     this.isEditingInfo = false;
@@ -119,7 +132,7 @@ export class ProfileSidebarComponent {
 
   updateAddress() {
     this.handleUpdate(
-      { country: this.address.country, region: this.address.region , phoneNumber: this.address.phone },
+      { country: this.address.country, region: this.address.region  },
       'Address updated successfully!'
     );
     this.isEditingAddress = false;
@@ -133,10 +146,15 @@ export class ProfileSidebarComponent {
       );
     }
   }
+  viewCv() {
+    if (this.cv_user) {
+      window.open(this.cv_user, '_blank');
+    } else {
+      alert('No CV uploaded yet.');
+    }
+  }
 
-
-  profilePicture: string = '../../../assets/default.png'; // Default image
-
+  
   onFileSelected(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files[0]) {

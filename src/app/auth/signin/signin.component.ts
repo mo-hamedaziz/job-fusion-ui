@@ -34,7 +34,7 @@ export class SigninComponent {
           this.router.navigate(['/verif-page']);
         } else {
           alert('Login successful! Redirecting to dashboard.');
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/profile']);
         }
       },
       error: (error) => {

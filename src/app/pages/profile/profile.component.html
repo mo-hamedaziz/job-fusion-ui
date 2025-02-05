@@ -3,8 +3,10 @@
   <app-profile-sidebar 
     [username]="userData.username" 
     [selectedOption]="userData.selectedOption"
-    [info]="{ birthdate: userData.birthdate, email: userData.email, nationality: userData.nationality }"
-    [address]="{ country: userData.country, region: userData.region, phone: userData.phone }">
+    [info]="{ birthdate: userData.birthdate, email: userData.email, phone:userData.phone  }"
+    [address]="{ country: userData.country, region: userData.region }"
+    [photo]="userData.photo" 
+    [cv]="userData.cv">
   </app-profile-sidebar>
 
   <!-- Main Component -->
