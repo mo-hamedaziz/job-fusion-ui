@@ -55,7 +55,6 @@ export class ProfileComponent implements OnInit {
   }
 
   loadUserProfile(): void {
-    // Fetch profile data
     this.profileService.getProfile().subscribe(
       (data) => {
         this.userData = {
@@ -84,7 +83,6 @@ export class ProfileComponent implements OnInit {
   }
 
   loadProfilePhoto(): void {
-    // Fetch profile photo
     this.profileService.getPhoto().subscribe(
       (blob) => {
         if (blob.size > 0) {
@@ -97,7 +95,6 @@ export class ProfileComponent implements OnInit {
   }
 
   loadCV(): void {
-    // Fetch CV
     this.profileService.getCV().subscribe(
       (blob) => {
         if (blob.size > 0) {

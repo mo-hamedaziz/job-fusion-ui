@@ -31,10 +31,9 @@ export class SigninComponent {
           sessionStorage.setItem('email', credentials.email);
           sessionStorage.setItem('password', credentials.password);
           alert('Your account is not verified. Redirecting to verification page.');
-          this.router.navigate(['/verif-page']);
+          this.router.navigate(['/validation']);
         } else {
-          alert('Login successful! Redirecting to dashboard.');
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/welcome']);
         }
       },
       error: (error) => {

@@ -5,6 +5,7 @@ import {
 } from '../../../services/job-offers.service';
 import { AuthService } from 'src/app/auth.service';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-recruiter-job-form',
   templateUrl: './recruiter-job-form.component.html',
@@ -40,7 +41,8 @@ export class RecruiterJobFormComponent implements OnInit {
 
   constructor(
     private jobOfferService: JobOfferService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -95,6 +97,7 @@ export class RecruiterJobFormComponent implements OnInit {
       this.jobOfferService.createJobOffer(jobToSubmit).subscribe(
         () => {
           alert('Job offer created successfully!');
+          window.location.reload();
         },
         (error) => {
           console.error('Error creating job offer:', error);

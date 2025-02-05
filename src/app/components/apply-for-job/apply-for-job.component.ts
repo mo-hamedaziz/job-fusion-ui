@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApplyForJobService, JobApplicationDtO } from 'src/app/services/apply-for-job.service';
 
 @Component({
   selector: 'app-apply-for-job',
@@ -7,10 +9,19 @@ import { Component } from '@angular/core';
 })
 
 
-export class ApplyForJobComponent {
-  motivation: string = '';
-  comment: string = '';
-  files: { [key: string]: File | null } = { cv: null, coverLetter: null, motivationLetter: null };
+export class ApplyForJobComponent implements OnInit {
+
+  constructor(private jobApplicationService: ApplyForJobService, private route: ActivatedRoute,private router: Router) {}
+  selectedJobOfferId: string = '';  
+  motivationParagraph: string = '';
+  additionalComment: string = '';
+  files: { [key: string]: File | null } = { cv: null, coverLetter: null };
+  ngOnInit(): void {
+      this.selectedJobOfferId = this.route.snapshot.params['job_offer_id'] || '';
+  console.log('Selected Job Offer ID:', this.selectedJobOfferId);
+      
+    }
+
 
   onFileSelected(event: Event, fileType: string) {
     const input = event.target as HTMLInputElement;
@@ -20,24 +31,37 @@ export class ApplyForJobComponent {
   }
 
   onSubmit() {
+  
     if (!this.files['cv']) {
       alert('Please upload your CV!');
       return;
     }
 
-    const formData = new FormData();
-    Object.keys(this.files).forEach((key) => {
-      if (this.files[key]) {
-        formData.append(key, this.files[key] as File);
+    console.log('Selected files:', this.files);
+
+    const jobApplication: JobApplicationDtO = {
+      cvPath: this.files['cv']?.name || '',
+      coverLetterPath: this.files['coverLetter']?.name || '',
+      motivationParagraph: this.motivationParagraph,
+      additionalComment: this.additionalComment,
+      jobOfferId: this.selectedJobOfferId
+    };
+    
+    console.log(jobApplication);
+  
+    this.jobApplicationService.createJobApplication(jobApplication).subscribe(
+      (response) => {
+        console.log('Application submitted:', response);
+        alert('Application Submitted Successfully!');
+        this.router.navigate(['/welcome']);
+      },
+      (error) => {
+        console.error('Error submitting application:', error);
+        alert('Failed to submit application.');
       }
-    });
-
-    formData.append('motivation', this.motivation);
-    formData.append('comment', this.comment);
-
-    // Simulating submission - replace this with an actual API call
-    console.log('Submitting Job Application:', this.files, this.motivation, this.comment);
-    alert('Application Submitted Successfully!');
+    );
   }
-
 }
+
+
+
