@@ -10,19 +10,20 @@ export class ProfileSidebarComponent {
   @Input() username: string = '';
   @Input() selectedOption: string = '';
 
-  @Input() info: { birthdate: string; email: string; nationality: string } = { 
+  @Input() info: { birthdate: string; email: string ;phone: string} = { 
     birthdate: '', 
     email: '', 
-    nationality: '' 
+    phone: ''
+
   };
 
-  @Input() address: { country: string; region: string; phone: number } = { 
+  @Input() address: { country: string; region: string } = { 
     country: '', 
     region: '', 
-    phone: 0 
   };
-  /*@Input() photo!: string; // Accept photo URL
-  @Input() cv!: string; // Accept CV URL*/ 
+  @Input() photo: string = ''; 
+  @Input() cv: string = '';     
+
   countryList: string[] = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
     "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
@@ -46,7 +47,18 @@ export class ProfileSidebarComponent {
     "Zimbabwe"
   ];
   
-  
+  profilePicture: string = '../../../assets/default.png'; 
+  cv_user:string='';
+ngOnChanges() {
+  if (this.photo) {
+    this.profilePicture = this.photo;  
+  } else {
+    this.profilePicture = '../../../assets/default.png';  
+  }
+  if(this.cv){
+    this.cv_user=this.cv
+  }
+}
   isDropdownOpen = false;
   isEditingUsername = false;
   isEditingInfo = false;
@@ -70,7 +82,6 @@ export class ProfileSidebarComponent {
     this.updatePreference();
   }
 
-  // Update methods
   toggleEditUsername() {
     this.isEditingUsername = !this.isEditingUsername;
   }
@@ -83,7 +94,6 @@ export class ProfileSidebarComponent {
     this.isEditingAddress = !this.isEditingAddress;
   }
 
-  // Common update handler
   private handleUpdate(updateData: any, successMessage: string) {
     console.log('Attempting update:', updateData);
     
@@ -111,7 +121,7 @@ export class ProfileSidebarComponent {
 
   updateInfo() {
     this.handleUpdate(
-      { date_of_birth : this.info.birthdate, email: this.info.email, nationality: this.info.nationality },
+      { dateOfBirth : this.info.birthdate, email: this.info.email , phoneNumber: this.info.phone},
       'Personal information updated successfully!'
     );
     this.isEditingInfo = false;
@@ -119,7 +129,7 @@ export class ProfileSidebarComponent {
 
   updateAddress() {
     this.handleUpdate(
-      { country: this.address.country, region: this.address.region , phoneNumber: this.address.phone },
+      { country: this.address.country, region: this.address.region  },
       'Address updated successfully!'
     );
     this.isEditingAddress = false;
@@ -133,39 +143,39 @@ export class ProfileSidebarComponent {
       );
     }
   }
+  viewCv() {
+    if (this.cv_user) {
+      window.open(this.cv_user, '_blank');
+    } else {
+      alert('No CV uploaded yet.');
+    }
+  }
 
-
-  profilePicture: string = '../../../assets/default.png'; // Default image
-
+  
   onFileSelected(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
   
-      // Validate file type (only PNG and JPG)
       const allowedTypes = ['image/png', 'image/jpeg'];
       if (!allowedTypes.includes(file.type)) {
         alert('Only PNG and JPG images are allowed.');
         return;
       }
   
-      // Validate file size (max 10MB)
-      const maxSizeInBytes = 10 * 1024 * 1024; // 10MB
+      const maxSizeInBytes = 10 * 1024 * 1024; 
       if (file.size > maxSizeInBytes) {
         alert('The file size must be less than 10MB.');
         return;
       }
   
-      // Prepare FormData
       const formData = new FormData();
       formData.append('file', file);
   
-      // Send file to backend
       this.profileService.updateProfilePicture(formData).subscribe({
         next: (response) => {
           console.log('Profile picture updated:', response);
           
-          // Update image preview
           const reader = new FileReader();
           reader.onload = (e) => {
             this.profilePicture = e.target?.result as string;
@@ -182,26 +192,34 @@ export class ProfileSidebarComponent {
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
   
-      // Validate file type (Only PDF)
       if (file.type !== 'application/pdf') {
         alert('Invalid file type. Please upload a PDF document.');
         return;
       }
   
-      // Validate file size (max 10MB)
-      const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+      const maxSize = 10 * 1024 * 1024; 
       if (file.size > maxSize) {
         alert('File size exceeds 10MB. Please choose a smaller file.');
         return;
       }
   
-      // Prepare file for upload
       const formData = new FormData();
-      formData.append('file', file);  // 'file' must match the backend expectation
+      formData.append('file', file);  
   
-      // Send file to backend
       this.profileService.uploadCv(formData).subscribe({
-        next: (response) => console.log('CV uploaded successfully:', response),
+        next: (response) =>{ 
+          console.log('CV uploaded successfully:', response);
+          this.profileService.getCV().subscribe(
+            (blob) => {
+              if (blob.size > 0) {
+                const objectURL = URL.createObjectURL(blob);
+                this.cv_user = objectURL;
+              }
+            },
+            (error) => console.warn('No CV found.')
+          );
+        
+        },
         error: (error) => console.error('CV upload failed:', error),
       });
     }
