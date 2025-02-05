@@ -33,8 +33,8 @@ export class ValidationPageComponent {
       const code = Number(this.validationForm.value.code); // Ensure it's a number
       this.validationService.validateAccount(code).subscribe({
         next: (response) => {
-          console.log('Account validated:', response);
-          this.router.navigate(['/welcome']); // Redirect to welcome page
+          alert('Account validated, you\'ll be redirected to the login page ...');
+          this.router.navigate(['/signin']); // Redirect to welcome page
         },
         error: (err) => console.error('Validation failed:', err)
       });
