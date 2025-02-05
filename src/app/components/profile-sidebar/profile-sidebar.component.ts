@@ -219,7 +219,19 @@ ngOnChanges() {
   
       // Send file to backend
       this.profileService.uploadCv(formData).subscribe({
-        next: (response) => console.log('CV uploaded successfully:', response),
+        next: (response) =>{ 
+          console.log('CV uploaded successfully:', response);
+          this.profileService.getCV().subscribe(
+            (blob) => {
+              if (blob.size > 0) {
+                const objectURL = URL.createObjectURL(blob);
+                this.cv_user = objectURL;
+              }
+            },
+            (error) => console.warn('No CV found.')
+          );
+        
+        },
         error: (error) => console.error('CV upload failed:', error),
       });
     }
