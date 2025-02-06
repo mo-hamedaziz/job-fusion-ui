@@ -38,22 +38,20 @@ export class RecruiterJobListComponent implements OnInit {
     );
   }
 
-  // Select a job for editing
   selectJob(job: Job): void {
     this.selectedJob = job;
   }
 
-  // Add a new job
   addJob(): void {
     const newJob: Job = {
       title: 'Software Engineer',
       company: 'TechCorp',
       location: 'San Francisco',
       description: 'Develop and maintain web applications.',
-      employmentType: EmploymentType.FullTime,  // Assuming EmploymentType is an enum with a value FullTime
+      employmentType: EmploymentType.FullTime, 
       requirements: ['JavaScript', 'TypeScript', 'Angular'],
       benefits: ['Health Insurance', 'Stock Options'],
-      experiencelevel: ExperienceLevel.Mid,  // Assuming ExperienceLevel is a union type like 'Entry', 'Mid', 'Senior'
+      experiencelevel: ExperienceLevel.Mid,
       educationLevel: 'Bachelor\'s',
       status: 'Open',
       PostedDate: new Date().toISOString(),
@@ -67,13 +65,11 @@ export class RecruiterJobListComponent implements OnInit {
     
   }
 
-  // Edit an existing job
   editJob(job: Job): void {
     job.title = 'Updated Job'; 
     this.jobService.updateJob(job).subscribe(() => this.loadJobs());
   }
 
-  // Delete a job
   deleteJob(id: number): void {
     this.jobService.deleteJob(id).subscribe(() => this.loadJobs());
   }

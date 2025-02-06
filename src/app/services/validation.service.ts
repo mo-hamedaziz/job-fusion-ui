@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ValidationService {
-  private apiUrl = 'http://localhost:3000/auth'; // Replace with your actual backend URL
+  private apiUrl = 'http://localhost:3000/auth';
   
   constructor(private http: HttpClient) {}
   
@@ -19,6 +19,6 @@ export class ValidationService {
     }
 
     const body = { email, password };
-    return this.http.post(`${this.apiUrl}/verify/${code}`, body, {withCredentials: true}); // Send an empty body
+    return this.http.post(`${this.apiUrl}/verify/${code}`, body, {withCredentials: true});
   }
 }

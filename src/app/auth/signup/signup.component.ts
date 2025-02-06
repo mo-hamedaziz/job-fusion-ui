@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,10 +25,10 @@ export class SignupComponent {
       password: signupForm.value.password,
       dateOfBirth: signupForm.value.dateOfBirth,
       phoneNumber: signupForm.value.phoneNumber,
-      verified: false, // Defaulting to false
+      verified: false,
       gender: signupForm.value.gender,
-      photo: '', // Optional, set empty or later filled
-      isRecruiter: signupForm.value.isRecruiter === 'true' // Convert string to boolean
+      photo: '',
+      isRecruiter: signupForm.value.isRecruiter === 'true'
     };
 
     this.authService.signup(user).subscribe({

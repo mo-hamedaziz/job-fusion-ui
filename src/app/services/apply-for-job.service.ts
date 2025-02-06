@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface JobApplicationDtO {
-  //id: string,
   cvPath: string,
   coverLetterPath:string,
   motivationParagraph: string,

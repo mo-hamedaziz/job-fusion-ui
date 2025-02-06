@@ -1,6 +1,4 @@
-// recruiter-applications.component.ts
-import { Component, OnInit } from '@angular/core';
-import { JobApplicationService } from '../../services/job-application.service';
+import { Component } from '@angular/core';
 
 interface JobApplication {
   id: string;
@@ -13,7 +11,7 @@ interface JobApplication {
   templateUrl: './recruiter-applications.component.html',
   styleUrls: ['./recruiter-applications.component.css']
 })
-export class RecruiterApplicationsComponent /*implements OnInit*/ {
+export class RecruiterApplicationsComponent {
 
 
 
@@ -35,17 +33,4 @@ export class RecruiterApplicationsComponent /*implements OnInit*/ {
       motivationParagraph: 'My strong technical skills and passion for solving complex problems make me a great fit.'
     }
   ];
-
-  /*
-  constructor(private jobApplicationService: JobApplicationService) {}
-
-  ngOnInit(): void {
-    this.jobApplicationService.getPendingApplications().subscribe((data: any[]) => {
-      this.applications = data.map((app) => ({
-        id: app.id,
-        username: app.user.name,  
-        motivationParagraph: app.motivationParagraph
-      }));
-    });
-  }*/
 }

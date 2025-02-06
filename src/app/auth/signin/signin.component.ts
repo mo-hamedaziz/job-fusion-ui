@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../../auth.service'; 
+import { AuthService } from '../../services/auth.service'; 
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class SigninComponent {
 
   signin(signinForm: NgForm) {
     if (signinForm.invalid) {
-      return; // Prevent submission if the form is invalid
+      return;
     }
 
     const credentials = {
@@ -23,7 +23,7 @@ export class SigninComponent {
 
     this.authService.login(credentials).subscribe({
       next: (response) => {
-        console.log('Full Login response:', response); // Debugging
+        console.log('Full Login response:', response);
     
         if (response?.message === 'Auhtentifcation failed') { 
           alert('Invalid credentials. Please try again.');

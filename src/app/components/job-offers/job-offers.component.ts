@@ -36,7 +36,6 @@ export class JobOffersComponent {
         (!filter['experienceLevel'] || offer.experienceLevel === filter['experienceLevel']) &&
         (!filter['remoteOption'] || offer.remoteOption === filter['remoteOption']) &&
         (!filter['requirements'] || this.matchRequirements(offer.requirements, filter['requirements'])) &&
-        //(!filter['dateOfCreation'] || offer.createdAt >= filter['dateOfCreation']) &&
         (!filter['title'] || offer.title.toLowerCase().includes(filter['title'].toLowerCase()))
       );
     });
@@ -56,27 +55,22 @@ export class JobOffersComponent {
       const valueA = a[field as keyof JobOffer];
       const valueB = b[field as keyof JobOffer];
   
-      // Handle case when the values are undefined
       if (valueA === undefined || valueB === undefined) {
-        return 0;  // Return 0 if any value is undefined, meaning no sorting will happen for that entry
+        return 0;
       }
   
-      // Handle string comparison
       if (typeof valueA === 'string' && typeof valueB === 'string') {
         return order === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
       }
   
-      // Handle date comparison (make sure they are dates)
       if (valueA instanceof Date && valueB instanceof Date) {
         return order === 'asc' ? valueA.getTime() - valueB.getTime() : valueB.getTime() - valueA.getTime();
       }
   
-      // Handle numeric comparison (ensure values are numbers)
       if (typeof valueA === 'number' && typeof valueB === 'number') {
         return order === 'asc' ? valueA - valueB : valueB - valueA;
       }
   
-      // Default case if the value types are unsupported
       return 0;
     });
   }
