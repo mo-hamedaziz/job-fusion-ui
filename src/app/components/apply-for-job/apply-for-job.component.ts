@@ -12,6 +12,7 @@ export class ApplyForJobComponent implements OnInit {
   applicationForm!: FormGroup;
   selectedCV: File | null = null;
   selectedCoverLetter: File | null = null;
+  jobOfferId: string = '';
   isLoading = false;
 
   constructor(
@@ -25,12 +26,12 @@ export class ApplyForJobComponent implements OnInit {
     this.applicationForm = this.fb.group({
       motivation: [''],
       comment: [''],
-      jobOfferId: [''],
+      // jobOfferId: [''],
     });
 
     this.route.paramMap.subscribe((params) => {
-      const jobOfferId = params.get('job_offer_id') || '';
-      this.applicationForm.patchValue({ jobOfferId });
+      this.jobOfferId = params.get('job_offer_id') || '';
+      // this.applicationForm.patchValue({ jobOfferId });
     });
   }
 
@@ -56,9 +57,9 @@ export class ApplyForJobComponent implements OnInit {
     formData.append('cover_letter', this.selectedCoverLetter);
     formData.append('motivationParagraph', this.applicationForm.get('motivation')?.value);
     formData.append('additionalComment', this.applicationForm.get('comment')?.value);
-    formData.append('jobOfferId', this.applicationForm.get('jobOfferId')?.value);
+    // formData.append('jobOfferId', this.applicationForm.get('jobOfferId')?.value);
 
-    this.applyForJobService.createJobApplication(formData).subscribe({
+    this.applyForJobService.createJobApplication(formData, this.jobOfferId).subscribe({
       next: () => {
         this.isLoading = false;
         alert('Application submitted successfully! Redirecting to welcome page ...');

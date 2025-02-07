@@ -33,16 +33,6 @@
       </div>
       <button (click)="updateUsername()" [disabled]="usernameInput.invalid">Save</button>
     </div>
-    <div class="highlighted-text dropdown">
-      <div class="selected-option" (click)="toggleDropdown()">
-        {{ selectedOption }}
-      </div>
-      <ul class="dropdown-options" *ngIf="isDropdownOpen">
-        <li *ngFor="let option of options" (click)="selectOption(option)">
-          {{ option }}
-        </li>
-      </ul>
-    </div>
   </div>
 
   <div class="section-divider"></div>
