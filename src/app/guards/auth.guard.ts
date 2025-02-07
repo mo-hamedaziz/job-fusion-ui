@@ -1,16 +1,17 @@
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { inject } from '@angular/core';
+import { filter, map } from 'rxjs';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
-  if (authService.isAuthenticated()) {
-    return true;
-  } else {
-    return router.createUrlTree(['/signin'], {
-      queryParams: { returnUrl: state.url }, 
-    });
-  }
+  return authService.isAuthenticated$.pipe(
+    filter((isAuthenticated) => isAuthenticated !== null),
+    map((isAuthenticated) => {
+      // console.log("GUARD: " + isAuthenticated);
+      return isAuthenticated ? true : router.createUrlTree(['/landing']);
+    })
+  );
 };
