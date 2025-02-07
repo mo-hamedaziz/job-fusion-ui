@@ -1,20 +1,22 @@
 <div class="applications-container">
-    <h2>Pending Job Applications</h2>
-    
-    <div *ngFor="let application of applications" class="application-card">
-      <div class="application-info">
-        <p><strong>Applicant:</strong> {{ application.username }}</p>
-        <p><strong>Motivation:</strong> {{ application.motivationParagraph || 'No motivation provided' }}</p>
-      </div>
+  <h2>Pending Job Applications</h2>
   
-      <!-- Action buttons section (Accept and Reject) -->
-      <div class="action-buttons">
-        <button class="reject-button">Reject</button>
-        <button class="accept-button">Accept</button>
-      </div>
-  
-      <!-- View CV button section -->
-      <button class="view-cv-button">View CV</button>
+  <div *ngFor="let application of applications" class="application-card">
+    <div class="application-info">
+      <p><strong>Motivation:</strong> {{ application.motivationParagraph }}</p>
+      <p><strong>Additional Comment:</strong> {{ application.additionalComment }}</p>
     </div>
+
+    <!-- Accept/Reject Buttons: Only shown if status is 'pending' -->
+    <div class="action-buttons" *ngIf="application.status === 'pending'">
+      <button class="reject-button" (click)="rejectApplication(application.id)">Reject</button>
+      <button class="accept-button" (click)="acceptApplication(application.id)">Accept</button>
+    </div>
+
+    <!-- Status Message: Displayed after decision -->
+    <p *ngIf="application.status === 'accepted'" class="status accepted">✅ Accepted</p>
+    <p *ngIf="application.status === 'rejected'" class="status rejected">❌ Rejected</p>
+
+    <button class="view-cv-button">View CV</button>
   </div>
-  
+</div>

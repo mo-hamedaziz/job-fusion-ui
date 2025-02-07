@@ -1,22 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BASE_URL } from '../constants';
+
 
 interface JobApplicationResponse {
   id: string;
-  user: { name: string };
   motivationParagraph?: string;
+  additionalComment?: string;
+  status: 'pending' | 'accepted' | 'rejected';
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobApplicationService {
-  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
-  getPendingApplications(): Observable<JobApplicationResponse[]> {
-    return this.http.get<JobApplicationResponse[]>(`${this.apiUrl}/job-applications/all_applications`, { withCredentials: true });
+  getAllApplications(): Observable<JobApplicationResponse[]> {
+    return this.http.get<JobApplicationResponse[]>(`${BASE_URL}/job-application`, { withCredentials: true });
+  }
+
+  acceptApplication(applicationId: string): Observable<any> {
+    return this.http.patch(`${BASE_URL}/job-application/${applicationId}/accept`, {}, { withCredentials: true });
+  }
+
+  rejectApplication(applicationId: string): Observable<any> {
+    return this.http.patch(`${BASE_URL}/job-application/${applicationId}/reject`, {}, { withCredentials: true });
   }
 }

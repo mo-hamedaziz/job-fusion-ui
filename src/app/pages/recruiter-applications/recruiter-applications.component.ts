@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { JobApplicationService } from 'src/app/services/job-application.service';
 
 interface JobApplication {
   id: string;
-  username: string;  
   motivationParagraph?: string;
+  additionalComment?: string;
+  status: 'pending' | 'accepted' | 'rejected';
 }
 
 @Component({
@@ -11,26 +13,42 @@ interface JobApplication {
   templateUrl: './recruiter-applications.component.html',
   styleUrls: ['./recruiter-applications.component.css']
 })
-export class RecruiterApplicationsComponent {
+export class RecruiterApplicationsComponent implements OnInit {
 
+  applications: JobApplication[] = [];
 
+  constructor(private jobApplicationService: JobApplicationService) {}
 
+  ngOnInit(): void {
+    this.fetchApplications();
+  }
 
-  applications: JobApplication[] = [
-    {
-      id: '1',
-      username: 'JohnDoe123',
-      motivationParagraph: 'I am passionate about software development and eager to contribute to your team.'
-    },
-    {
-      id: '2',
-      username: 'JaneSmith456',
-      motivationParagraph: 'I have 5 years of experience in web development and am confident in my skills.'
-    },
-    {
-      id: '3',
-      username: 'BobJohnson789',
-      motivationParagraph: 'My strong technical skills and passion for solving complex problems make me a great fit.'
-    }
-  ];
+  fetchApplications(): void {
+    this.jobApplicationService.getAllApplications().subscribe((data) => {
+      this.applications = data.map((app) => ({
+        id: app.id,
+        additionalComment: app.additionalComment || 'No comments provided',
+        motivationParagraph: app.motivationParagraph || 'No motivation provided',
+        status: app.status
+      }));
+    });
+  }
+
+  acceptApplication(applicationId: string): void {
+    this.jobApplicationService.acceptApplication(applicationId).subscribe(() => {
+      this.updateApplicationStatus(applicationId, 'accepted');
+    });
+  }
+
+  rejectApplication(applicationId: string): void {
+    this.jobApplicationService.rejectApplication(applicationId).subscribe(() => {
+      this.updateApplicationStatus(applicationId, 'rejected');
+    });
+  }
+
+  private updateApplicationStatus(applicationId: string, status: 'accepted' | 'rejected'): void {
+    this.applications = this.applications.map(app =>
+      app.id === applicationId ? { ...app, status } : app
+    );
+  }
 }
