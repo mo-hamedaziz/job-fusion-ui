@@ -8,7 +8,6 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class ProfileSidebarComponent {
   @Input() username: string = '';
-  @Input() selectedOption: string = '';
 
   @Input() info: { birthdate: string; email: string ;phone: string} = { 
     birthdate: '', 
@@ -59,28 +58,17 @@ ngOnChanges() {
     this.cv_user=this.cv
   }
 }
-  isDropdownOpen = false;
   isEditingUsername = false;
   isEditingInfo = false;
   isEditingAddress = false;
   
-  options = [
-    'Looking for an internship',
-    'Looking for a new opportunity',
-    'Looking for training',
-  ];
+  
 
   constructor(private profileService: ProfileService) {}
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
+  
 
-  selectOption(option: string) {
-    this.selectedOption = option;
-    this.isDropdownOpen = false;
-    this.updatePreference();
-  }
+  
 
   toggleEditUsername() {
     this.isEditingUsername = !this.isEditingUsername;
@@ -135,14 +123,6 @@ ngOnChanges() {
     this.isEditingAddress = false;
   }
 
-  updatePreference() {
-    if (this.selectedOption) {
-      this.handleUpdate(
-        { employment_preference: this.selectedOption },
-        'Employment preference updated successfully!'
-      );
-    }
-  }
   viewCv() {
     if (this.cv_user) {
       window.open(this.cv_user, '_blank');
@@ -224,7 +204,4 @@ ngOnChanges() {
       });
     }
   }
-  
-  
-
 }

@@ -56,6 +56,7 @@ export class RecruiterJobFormComponent implements OnInit {
     });
   }
 
+
   addRequirement() {
     this.job.requirements.push('');
   }
