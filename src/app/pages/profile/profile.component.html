@@ -7,11 +7,15 @@
     [photo]="userData.photo" 
     [cv]="userData.cv">
   </app-profile-sidebar>
-
-  <app-profile-main 
+  <div class="section-divider">
+    <app-profile-main 
     [summary]="userData.Summary" 
     [workExperiences]="userData.WorkExperiences" 
     [studies]="userData.Studies" 
     [languages]="userData.Languages">
   </app-profile-main>
-</div>
+  <app-applicant-applications>  
+  </app-applicant-applications>
+  </div>
+ 
+</div>  

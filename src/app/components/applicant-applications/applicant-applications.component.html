@@ -1,0 +1,10 @@
+<div class="applicant-applications-container">
+  <h1 class="title">Applicant's Applications</h1>
+  <div class="application-card" *ngFor="let application of applications; let i = index">
+    <h2 class="job-title">{{ application.jobTitle }}</h2>
+    <p class="application-date">Date Applied: {{ application.dateApplied | date }}</p>
+    <p class="application-status">Status: {{ application.status }}</p>
+    <button class="details-button" (click)="viewApplicationDetails(application.id)">View Details</button>
+    <button class="delete-button" (click)="deleteApplication(i)">Delete</button>
+  </div>
+</div>

@@ -1,6 +1,70 @@
-.profile-container {
+/*.profile-container {
     display: flex;
     padding: 20px;
     font-family: Arial, sans-serif;
     background-color: #eeeee4;
+    height: 100vh;
   }
+
+.app-profile-sidebar {
+  flex: 1; 
+  background-color: #f4f4f4; 
+  padding: 20px; 
+}
+
+.section-divider {
+  flex: 3; 
+  display: flex;
+  flex-direction: row; 
+}
+
+.app-profile-main {
+  flex: 1; 
+  background-color: #e0e0e0; 
+}
+
+.app-job-applications {
+  flex: 1; 
+  background-color: #d0d0d0; 
+  padding: 20px;
+}*/
+
+/* Make the profile container a flex container */
+.profile-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+}
+
+/* Sidebar takes up the left side */
+app-profile-sidebar {
+  flex: 1; /* Takes up 1 part of the available space */
+  background-color: #f4f4f4; /* Example background color */
+  padding: 20px; /* Optional padding */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for separation */
+}
+
+/* Right section divider holds the main content and job applications */
+.section-divider {
+  flex: 3; /* Takes up 3 parts of the available space */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  padding: 20px; /* Optional padding */
+}
+
+/* Profile main content */
+app-profile-main {
+  flex: 1; /* Takes up 1 part of the available space */
+  background-color: #ffffff; /* Example background color */
+  margin-bottom: 20px; /* Space between components */
+  padding: 20px; /* Optional padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+/* Job applications section */
+app-job-applications {
+  flex: 1; /* Takes up 1 part of the available space */
+  background-color: #ffffff; /* Example background color */
+  padding: 20px; /* Optional padding */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
