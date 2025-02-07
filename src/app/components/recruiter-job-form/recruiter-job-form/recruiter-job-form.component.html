@@ -51,7 +51,7 @@
     <label for="companyLogoUrl">Company Logo URL (Optional):</label>
     <input type="text" [(ngModel)]="job.companyLogoUrl" name="companyLogoUrl" id="companyLogoUrl" />
 
-    <!-- Dynamic Lists -->
+    
     <div>
       <label for="requirements">Requirements:</label>
       <div *ngFor="let req of job.requirements; let i = index; trackBy: trackByIndex">
