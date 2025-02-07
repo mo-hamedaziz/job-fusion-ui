@@ -17,7 +17,7 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean | null>(null);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  private isRecruiterSubject = new BehaviorSubject<boolean>(false);
+  private isRecruiterSubject = new BehaviorSubject<boolean | null>(null);
   isRecruiter$ = this.isRecruiterSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {
