@@ -16,9 +16,9 @@ import { roleGuard } from './guards/role.guard';
 const routes: Routes = [
   { path: 'welcome', component: WelcomePageComponent, canActivate: [authGuard] },
   { path: 'recruiter', component: RecruiterApgeComponent, canActivate: [authGuard, roleGuard], data: { expectedRole: 'recruiter' } },
-  { path: 'candidate/apply/:job_offer_id', component: ApplyForJobComponent, canActivate: [authGuard] },
+  { path: 'candidate/apply/:job_offer_id', component: ApplyForJobComponent, canActivate: [authGuard, roleGuard], data: { expectedRole: 'candidate' } },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard, roleGuard], data: { expectedRole: 'candidate' } },
-  { path: 'applications', component: RecruiterApplicationsComponent, canActivate: [authGuard] },
+  { path: 'applications', component: RecruiterApplicationsComponent, canActivate: [authGuard, roleGuard], data: { expectedRole: 'candidate' } },
   
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
