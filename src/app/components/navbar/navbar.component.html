@@ -7,7 +7,7 @@
       <button *ngIf="(isRecruiter$ | async)" routerLink="/recruiter" class="btn">Add a new job offer</button>
       <button *ngIf="(isRecruiter$ | async)" routerLink="/welcome" class="btn">See all job offers</button>
       <button *ngIf="!(isRecruiter$ | async)" routerLink="/welcome" class="btn">Look for a Job</button>
-      <button routerLink="/profile" class="btn">Profile</button>
+      <button *ngIf="!(isRecruiter$ | async)" routerLink="/profile" class="btn">Profile</button>
       <button (click)="logout()" class="btn">Logout</button>
     </ng-container>
     <ng-template #unauthenticated>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { BASE_URL } from '../constants';
+import { Router } from '@angular/router';
 
 export interface decodedToken {
   userId: string;
@@ -13,13 +14,13 @@ export interface decodedToken {
 export class AuthService {
   private apiUrl = `${BASE_URL}/auth`;
 
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  private isAuthenticatedSubject = new BehaviorSubject<boolean | null>(null);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  private isRecruiterSubject = new BehaviorSubject<boolean>(false);
+  private isRecruiterSubject = new BehaviorSubject<boolean | null>(null);
   isRecruiter$ = this.isRecruiterSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.checkAuthentication();
   }
 
@@ -33,7 +34,10 @@ export class AuthService {
           this.isAuthenticatedSubject.next(true);
           this.isRecruiterSubject.next(response.recruiter === true);
         },
-        error: () => this.isAuthenticatedSubject.next(false),
+        error: () => {
+          this.isAuthenticatedSubject.next(false);
+          this.isRecruiterSubject.next(false);
+        },
       });
   }
 
@@ -42,9 +46,16 @@ export class AuthService {
   }
 
   login(credentials: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/sign`, credentials, {
-      withCredentials: true,
-    });
+    return this.http
+      .post(`${this.apiUrl}/sign`, credentials, {
+        withCredentials: true,
+      })
+      .pipe(
+        tap(() => {
+          this.isAuthenticatedSubject.next(true);
+          this.checkAuthentication();
+        })
+      );
   }
 
   logout() {
@@ -54,6 +65,7 @@ export class AuthService {
         tap(() => {
           this.isAuthenticatedSubject.next(false);
           document.cookie = 'token=; Max-Age=0; path=/; domain=localhost';
+          this.router.navigate(['/signin']);
         })
       );
   }

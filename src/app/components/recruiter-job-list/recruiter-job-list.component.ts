@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { JobService, Job } from '../../services/job.service';
 import { EmploymentType } from 'src/app/services/employmentType';
 import { ExperienceLevel } from 'src/app/services/experiencelvl';
-import { JobOfferService } from 'src/app/services/job-offers.service';
+import { JobOffer, JobOfferService } from 'src/app/services/job-offers.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,20 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./recruiter-job-list.component.css']
 })
 export class RecruiterJobListComponent implements OnInit {
-  jobs: Job[] = [];
-  selectedJob?: Job;
+  jobs: JobOffer[] = [];
+  selectedJob?: JobOffer;
 
-  constructor(private jobService: JobService, private jobOfferService: JobOfferService, private router:Router) {}
+  constructor( private jobOfferService: JobOfferService, private router:Router) {}
 
   ngOnInit(): void {
-    this.loadJobs();
-    console.log("hola");
+    //this.loadJobs();
+  
     this.fetchJobOffers();
 
-  }
-
-  loadJobs(): void {
-    this.jobService.getJobs().subscribe((data) => (this.jobs = data));
   }
   
   fetchJobOffers(): void {
@@ -38,39 +33,36 @@ export class RecruiterJobListComponent implements OnInit {
     );
   }
 
-  selectJob(job: Job): void {
+  selectJob(job: JobOffer): void {
     this.selectedJob = job;
   }
 
   addJob(): void {
-    const newJob: Job = {
+    const newJob: JobOffer = {
       title: 'Software Engineer',
       company: 'TechCorp',
       location: 'San Francisco',
       description: 'Develop and maintain web applications.',
-      employmentType: EmploymentType.FullTime, 
+      employmentType: 'Full-time', 
       requirements: ['JavaScript', 'TypeScript', 'Angular'],
       benefits: ['Health Insurance', 'Stock Options'],
-      experiencelevel: ExperienceLevel.Mid,
+      experienceLevel: ExperienceLevel.Mid,
       educationLevel: 'Bachelor\'s',
-      status: 'Open',
-      PostedDate: new Date().toISOString(),
       active: true,
-      recruiterId: '12345' 
     };
-    this.jobService.addJob(newJob).subscribe(() => {
-      this.loadJobs();
+    this.jobOfferService.createJobOffer(newJob).subscribe(() => {
+      this.fetchJobOffers();
      
     });
     
   }
 
-  editJob(job: Job): void {
+  editJob(job: JobOffer): void {
     job.title = 'Updated Job'; 
-    this.jobService.updateJob(job).subscribe(() => this.loadJobs());
+    this.jobOfferService.updateJobOffer(job).subscribe(() => this.fetchJobOffers());
   }
 
-  deleteJob(id: number): void {
-    this.jobService.deleteJob(id).subscribe(() => this.loadJobs());
+  deleteJob(id: string): void {
+    this.jobOfferService.deleteJobOffer(id).subscribe(() => this.fetchJobOffers());
   }
 }
