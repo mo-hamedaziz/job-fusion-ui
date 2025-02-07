@@ -46,7 +46,7 @@ export class ApplyForJobComponent implements OnInit {
 
   submitApplication() {
     if (!this.selectedCV || !this.selectedCoverLetter) {
-      alert('Please upload both CV and Cover Letter.');
+      alert('both CV and cover letter are required.');
       return;
     }
 
@@ -59,7 +59,7 @@ export class ApplyForJobComponent implements OnInit {
     formData.append('additionalComment', this.applicationForm.get('comment')?.value);
     // formData.append('jobOfferId', this.applicationForm.get('jobOfferId')?.value);
 
-    this.applyForJobService.createJobApplication(formData).subscribe({
+    this.applyForJobService.createJobApplication(formData, this.jobOfferId).subscribe({
       next: () => {
         this.isLoading = false;
         alert('Application submitted successfully! Redirecting to welcome page ...');
