@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { JobOffer } from 'src/app/services/job-offers.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { JobOffer } from 'src/app/services/job-offers.service';
   styleUrls: ['./job-offer-details.component.css']
 })
 export class JobOfferDetailsComponent {
-  constructor (private router: Router) {}
+  isRecruiter$ = this.authService.isRecruiter$;
+
+  constructor (private router: Router, private authService: AuthService) {}
 
   @Input() jobOffer!: JobOffer;
   @Output() close = new EventEmitter<void>();

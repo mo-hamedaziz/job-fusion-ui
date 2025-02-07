@@ -1,25 +1,48 @@
 <div class="job-application">
   <h2>Apply for the Job</h2>
 
-  <form (ngSubmit)="onSubmit()" #jobForm="ngForm">
-    
-    <!-- File Uploads -->
-    <label for="cv">Upload CV:</label>
-    <input type="file" id="cv" (change)="onFileSelected($event, 'cv')" accept=".pdf,.doc,.docx" required>
+  <div *ngIf="isLoading" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p>Uploading your files, please wait...</p>
+  </div>
 
-    <label for="coverLetter">Upload Cover Letter:</label>
-    <input type="file" id="coverLetter" (change)="onFileSelected($event, 'coverLetter')" accept=".pdf,.doc,.docx">
+  <form [formGroup]="applicationForm" (ngSubmit)="submitApplication()">
+    <div class="form-group">
+      <label for="cv">Upload CV:</label>
+      <input 
+        type="file" 
+        id="cv" 
+        (change)="onFileChange($event, 'cv')" 
+        accept=".pdf,.doc,.docx" 
+        required
+      >
+    </div>
 
+    <div class="form-group">
+      <label for="coverLetter">Upload Cover Letter:</label>
+      <input 
+        type="file" 
+        id="coverLetter" 
+        (change)="onFileChange($event, 'coverLetter')" 
+        accept=".pdf,.doc,.docx"
+      >
+    </div>
 
-    <!-- Motivation Paragraph -->
-    <label for="motivation">Motivation Paragraph:</label>
-    <textarea id="motivation" [(ngModel)]="motivationParagraph" name="motivation" required></textarea>
+    <div class="form-group">
+      <label for="motivation">Motivation Paragraph:</label>
+      <textarea id="motivation" formControlName="motivation"></textarea>
+    </div>
 
-    <!-- Comment -->
-    <label for="comment">Additional Comment:</label>
-    <textarea id="comment" [(ngModel)]="additionalComment" name="comment"></textarea>
+    <div class="form-group">
+      <label for="comment">Additional Comment:</label>
+      <textarea id="comment" formControlName="comment"></textarea>
+    </div>
 
-    <!-- Submit Button -->
-    <button type="submit" [disabled]="jobForm.invalid">Submit Application</button>
+    <button 
+      type="submit" 
+      [disabled]="applicationForm.invalid || !selectedCV || !selectedCoverLetter"
+    >
+      Submit Application
+    </button>
   </form>
 </div>

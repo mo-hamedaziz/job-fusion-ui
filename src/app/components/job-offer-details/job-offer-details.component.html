@@ -50,7 +50,7 @@
       <p *ngIf="jobOffer.applicationUrl"><strong>Apply here:</strong> <a [href]="jobOffer.applicationUrl" target="_blank">Job Application Link</a></p>
     </div>
 
-    <div class="actions">
+    <div *ngIf="!(isRecruiter$ | async)" class="actions">
       <button class="apply-btn" (click)="onApply()">Apply Now</button>
     </div>
   </div>
