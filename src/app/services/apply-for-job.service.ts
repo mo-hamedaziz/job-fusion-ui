@@ -11,6 +11,12 @@ export interface JobApplicationDtO {
   jobOfferId: string
 }
 
+interface JobApplicationResponse {
+  id: string;
+  user: { name: string };
+  motivationParagraph?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,11 +25,15 @@ export class ApplyForJobService {
 
   private API_URL = `${BASE_URL}/job-application`;
 
-  createJobApplication(formData: FormData): Observable<any> {
-    return this.http.post(this.API_URL, formData, { withCredentials: true });
+  createJobApplication(formData: FormData): Observable<JobApplicationResponse> {
+    return this.http.post<JobApplicationResponse>(this.API_URL, formData, { withCredentials: true });
   }
 
   getJobApplications(): Observable<JobApplicationDtO[]> {
     return this.http.get<JobApplicationDtO[]>(this.API_URL, { withCredentials: true });
   }
+
+  getPendingApplications(): Observable<JobApplicationResponse[]> {
+      return this.http.get<JobApplicationResponse[]>(`${this.API_URL}/all_applications`, { withCredentials: true });
+    }
 }
