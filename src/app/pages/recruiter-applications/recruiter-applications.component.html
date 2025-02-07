@@ -7,16 +7,14 @@
       <p><strong>Additional Comment:</strong> {{ application.additionalComment }}</p>
     </div>
 
-    <!-- Accept/Reject Buttons: Only shown if status is 'pending' -->
     <div class="action-buttons" *ngIf="application.status === 'pending'">
       <button class="reject-button" (click)="rejectApplication(application.id)">Reject</button>
       <button class="accept-button" (click)="acceptApplication(application.id)">Accept</button>
     </div>
 
-    <!-- Status Message: Displayed after decision -->
     <p *ngIf="application.status === 'accepted'" class="status accepted">✅ Accepted</p>
     <p *ngIf="application.status === 'rejected'" class="status rejected">❌ Rejected</p>
 
-    <button class="view-cv-button">View CV</button>
-  </div>
+    <button class="view-cv-button" (click)="viewCV(application.id)">View CV</button>
+    <button class="view-cover-button" (click)="viewCoverLetter(application.id)">View Cover Letter</button>
 </div>
