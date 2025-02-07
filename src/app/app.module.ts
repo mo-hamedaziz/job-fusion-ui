@@ -27,6 +27,7 @@ import { RecruiterJobListComponent } from './components/recruiter-job-list/recru
 import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecruiterApplicationsComponent } from './pages/recruiter-applications/recruiter-applications.component';
+import { ApplicantApplicationsComponent } from './components/applicant-applications/applicant-applications.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { RecruiterApplicationsComponent } from './pages/recruiter-applications/r
     RecruiterApgeComponent,
     RecruiterJobListComponent,
     ValidationPageComponent,
-    RecruiterApplicationsComponent
+    RecruiterApplicationsComponent,
+    ApplicantApplicationsComponent
   ],
   imports: [
     BrowserModule,
