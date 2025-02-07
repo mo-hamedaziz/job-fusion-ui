@@ -19,8 +19,8 @@ export class ApplyForJobService {
 
   private API_URL = `${BASE_URL}/job-application`;
 
-  createJobApplication(formData: FormData): Observable<any> {
-    return this.http.post(this.API_URL, formData, { withCredentials: true });
+  createJobApplication(formData: FormData, jobOfferId: string): Observable<any> {
+    return this.http.post(`${this.API_URL}?jobOfferId=${jobOfferId}`, formData, { withCredentials: true });
   }
 
   getJobApplications(): Observable<JobApplicationDtO[]> {
