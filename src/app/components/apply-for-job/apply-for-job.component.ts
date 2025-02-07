@@ -1,67 +1,80 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApplyForJobService, JobApplicationDtO } from 'src/app/services/apply-for-job.service';
+import { ApplyForJobService } from 'src/app/services/apply-for-job.service';
 
 @Component({
   selector: 'app-apply-for-job',
   templateUrl: './apply-for-job.component.html',
-  styleUrls: ['./apply-for-job.component.css']
+  styleUrls: ['./apply-for-job.component.css'],
 })
-
-
 export class ApplyForJobComponent implements OnInit {
+  applicationForm!: FormGroup;
+  selectedCV: File | null = null;
+  selectedCoverLetter: File | null = null;
+  isLoading = false;
 
-  constructor(private jobApplicationService: ApplyForJobService, private route: ActivatedRoute,private router: Router) {}
-  selectedJobOfferId: string = '';  
-  motivationParagraph: string = '';
-  additionalComment: string = '';
-  files: { [key: string]: File | null } = { cv: null, coverLetter: null };
-  ngOnInit(): void {
-      this.selectedJobOfferId = this.route.snapshot.params['job_offer_id'] || '';
-  console.log('Selected Job Offer ID:', this.selectedJobOfferId);
-      
-    }
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private applyForJobService: ApplyForJobService,
+    private router: Router,
+  ) {}
 
+  ngOnInit() {
+    this.applicationForm = this.fb.group({
+      motivation: [''],
+      comment: [''],
+      jobOfferId: [''],
+    });
 
-  onFileSelected(event: Event, fileType: string) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      this.files[fileType] = input.files[0];
+    this.route.paramMap.subscribe((params) => {
+      const jobOfferId = params.get('job_offer_id') || '';
+      this.applicationForm.patchValue({ jobOfferId });
+    });
+  }
+
+  onFileChange(event: Event, type: 'cv' | 'coverLetter') {
+    const file = (event.target as HTMLInputElement).files?.[0] || null;
+    if (type === 'cv') {
+      this.selectedCV = file;
+    } else {
+      this.selectedCoverLetter = file;
     }
   }
 
-  onSubmit() {
-  
-    if (!this.files['cv']) {
-      alert('Please upload your CV!');
+  submitApplication() {
+    if (!this.selectedCV || !this.selectedCoverLetter) {
+      alert('Please upload both CV and Cover Letter.');
       return;
     }
 
-    console.log('Selected files:', this.files);
+    this.isLoading = true;
 
-    const jobApplication: JobApplicationDtO = {
-      cvPath: this.files['cv']?.name || '',
-      coverLetterPath: this.files['coverLetter']?.name || '',
-      motivationParagraph: this.motivationParagraph,
-      additionalComment: this.additionalComment,
-      jobOfferId: this.selectedJobOfferId
-    };
-    
-    console.log(jobApplication);
-  
-    this.jobApplicationService.createJobApplication(jobApplication).subscribe(
-      (response) => {
-        console.log('Application submitted:', response);
-        alert('Application Submitted Successfully!');
+    const formData = new FormData();
+    formData.append('cv', this.selectedCV);
+    formData.append('cover_letter', this.selectedCoverLetter);
+    formData.append('motivationParagraph', this.applicationForm.get('motivation')?.value);
+    formData.append('additionalComment', this.applicationForm.get('comment')?.value);
+    formData.append('jobOfferId', this.applicationForm.get('jobOfferId')?.value);
+
+    this.applyForJobService.createJobApplication(formData).subscribe({
+      next: () => {
+        this.isLoading = false;
+        alert('Application submitted successfully! Redirecting to welcome page ...');
+        this.resetForm();
         this.router.navigate(['/welcome']);
       },
-      (error) => {
-        console.error('Error submitting application:', error);
-        alert('Failed to submit application.');
-      }
-    );
+      error: () => {
+        this.isLoading = false;
+        alert('Error submitting application.');
+      },
+    });
+  }
+
+  private resetForm() {
+    this.applicationForm.reset();
+    this.selectedCV = null;
+    this.selectedCoverLetter = null;
   }
 }
-
-
-
