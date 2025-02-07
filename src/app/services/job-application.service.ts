@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { BASE_URL } from '../constants';
 
@@ -17,13 +16,8 @@ interface JobApplicationResponse {
 })
 export class JobApplicationService {
 
-  private apiUrl = 'http://localhost:3000/job-applications'; 
+  //private apiUrl = 'http://localhost:3000'; 
 
-  constructor(private http: HttpClient) {}
-
-  getApplicationsByApplicant(applicantId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/user/${applicantId}`);
-  }
 
   constructor(private http: HttpClient) {}
 
@@ -45,6 +39,10 @@ export class JobApplicationService {
 
   rejectApplication(applicationId: string): Observable<any> {
     return this.http.patch(`${BASE_URL}/job-application/${applicationId}/reject`, {}, { withCredentials: true });
+  }
+
+  getApplicationsByApplicant(): Observable<any[]> {
+    return this.http.get<any[]>(`${BASE_URL}/job-application/user`);
   }
 /*
   getCV(applicationId: string): Observable<Blob> {

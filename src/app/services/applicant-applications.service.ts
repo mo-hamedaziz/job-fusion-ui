@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root' // Makes this service available everywhere
 })
 export class ApplicationsService {
-  private apiUrl = 'http://localhost:3000/applications'; // Replace with your NestJS API URL
+  private apiUrl = 'http://localhost:3000/job-application'; // Replace with your NestJS API URL
 
   constructor(private http: HttpClient) {}
 

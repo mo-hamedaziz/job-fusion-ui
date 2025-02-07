@@ -6,6 +6,7 @@
     <ng-container *ngIf="isAuthenticated$ | async; else unauthenticated">
       <button *ngIf="(isRecruiter$ | async)" routerLink="/recruiter" class="btn">Add a new job offer</button>
       <button *ngIf="(isRecruiter$ | async)" routerLink="/welcome" class="btn">See all job offers</button>
+      <button *ngIf="(isRecruiter$ | async)" routerLink="/applications" class="btn">See applications</button>
       <button *ngIf="!(isRecruiter$ | async)" routerLink="/welcome" class="btn">Look for a Job</button>
       <button *ngIf="!(isRecruiter$ | async)" routerLink="/profile" class="btn">Profile</button>
       <button (click)="logout()" class="btn">Logout</button>
