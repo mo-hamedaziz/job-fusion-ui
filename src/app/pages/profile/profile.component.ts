@@ -3,7 +3,6 @@ import { ProfileService } from 'src/app/services/profile.service';
 
 class User {
   username: string;
-  selectedOption: string;
   birthdate: string | null;
   email: string;
   country: string | null;
@@ -18,7 +17,6 @@ class User {
 
   constructor() {
     this.username = '';
-    this.selectedOption = 'please select an option here';
     this.birthdate = null;
     this.email = '';
     this.country = "select a country";
@@ -60,7 +58,6 @@ export class ProfileComponent implements OnInit {
         this.userData = {
           ...this.userData,
           username: data.username || "",
-          selectedOption: data.selectedOption || "option1",
           birthdate: data.dateOfBirth || "",
           email: data.email || "",
           country: data.country || this.userData.country,
