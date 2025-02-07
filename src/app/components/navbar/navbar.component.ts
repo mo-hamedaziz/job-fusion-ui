@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    // Refresh authentication status on every route change
     this.router.events.pipe(
       filter(event => event instanceof NavigationStart)
     ).subscribe(() => {
@@ -23,22 +22,21 @@ export class NavbarComponent implements OnInit {
     });
     
     /*this.isRecruiter$.subscribe(value => {
-      console.log(value); // Logs the value of isRecruiter$
+      console.log(value);
     });*/
   }
 
   login() {
-    // this.authService.login();
     this.router.navigate(['/signin']);
   }
 
   logout() {
     this.authService.logout().subscribe({
       next: () => {
-        this.router.navigate(['/landing']); // Redirect to landing or any other page
+        this.router.navigate(['/landing']);
       },
       error: (err) => {
-        console.error('Logout failed', err); // Handle error if any
+        console.error('Logout failed', err);
       }
     });
   }

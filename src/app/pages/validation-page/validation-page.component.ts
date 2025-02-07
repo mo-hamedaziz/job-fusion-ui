@@ -20,7 +20,7 @@ export class ValidationPageComponent {
         '',
         [
           Validators.required,
-          Validators.pattern('^[0-9]{3}$') // Only 3-digit numbers allowed
+          Validators.pattern('^[0-9]{3}$')
         ]
       ]
     });
@@ -30,11 +30,11 @@ export class ValidationPageComponent {
     this.submitted = true;
     
     if (this.validationForm.valid) {
-      const code = Number(this.validationForm.value.code); // Ensure it's a number
+      const code = Number(this.validationForm.value.code);
       this.validationService.validateAccount(code).subscribe({
         next: (response) => {
           alert('Account validated, you\'ll be redirected to the login page ...');
-          this.router.navigate(['/signin']); // Redirect to welcome page
+          this.router.navigate(['/signin']);
         },
         error: (err) => console.error('Validation failed:', err)
       });

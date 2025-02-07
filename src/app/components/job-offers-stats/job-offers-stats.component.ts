@@ -40,21 +40,18 @@ export class JobOffersStatsComponent {
   calculateStats(): void {
     this.stats.totalOffers = this.jobOffers.length;
 
-    // Employment Type Distribution
     this.jobOffers.forEach(offer => {
       if (offer.employmentType in this.stats.byEmploymentType) {
         this.stats.byEmploymentType[offer.employmentType]++;
       }
     });
 
-    // Experience Level Distribution
     this.jobOffers.forEach(offer => {
       if (offer.experienceLevel in this.stats.byExperienceLevel) {
         this.stats.byExperienceLevel[offer.experienceLevel]++;
       }
     });
 
-    // Remote Option Distribution
     this.jobOffers.forEach(offer => {
       if (offer.remoteOption) {
         this.stats.remoteOption.yes++;

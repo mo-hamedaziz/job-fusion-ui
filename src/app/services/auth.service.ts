@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BASE_URL } from '../constants';
 
 export interface decodedToken {
-  userId: string,
-  isRecruiter: boolean,
+  userId: string;
+  isRecruiter: boolean;
 }
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth';
+  private apiUrl = `${BASE_URL}/auth`;
 
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
@@ -23,38 +24,43 @@ export class AuthService {
   }
 
   checkAuthentication() {
-    this.http.get<{ recruiter: boolean }>('http://localhost:3000/auth/is_authenticated', { withCredentials: true })
+    this.http
+      .get<{ recruiter: boolean }>(`${this.apiUrl}/is_authenticated`, {
+        withCredentials: true,
+      })
       .subscribe({
         next: (response) => {
           this.isAuthenticatedSubject.next(true);
           this.isRecruiterSubject.next(response.recruiter === true);
         },
-        error: () => this.isAuthenticatedSubject.next(false)
+        error: () => this.isAuthenticatedSubject.next(false),
       });
   }
 
-  // Signup Method
   signup(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/signup`, user);
   }
 
-  // Login Method 
   login(credentials: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/sign`, credentials, { withCredentials: true });
+    return this.http.post(`${this.apiUrl}/sign`, credentials, {
+      withCredentials: true,
+    });
   }
 
   logout() {
-    return this.http.get(`${this.apiUrl}/logout`, { withCredentials: true }).pipe(
-      // After logging out, update the authentication state
-      tap(() => {
-        this.isAuthenticatedSubject.next(false); // Update the state
-        // Optionally, clear cookies here
-        document.cookie = 'token=; Max-Age=0; path=/; domain=localhost'; // Adjust the cookie name if needed
-      })
-    );
+    return this.http
+      .get(`${this.apiUrl}/logout`, { withCredentials: true })
+      .pipe(
+        tap(() => {
+          this.isAuthenticatedSubject.next(false);
+          document.cookie = 'token=; Max-Age=0; path=/; domain=localhost';
+        })
+      );
   }
 
   getUserId(): Observable<decodedToken> {
-    return this.http.get<decodedToken>(`http://localhost:3000/user/me`, { withCredentials: true });
+    return this.http.get<decodedToken>(`${BASE_URL}/user/me`, {
+      withCredentials: true,
+    });
   }
 }

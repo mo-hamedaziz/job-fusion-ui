@@ -3,7 +3,7 @@ import {
   JobOfferService,
   JobOffer,
 } from '../../../services/job-offers.service';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
