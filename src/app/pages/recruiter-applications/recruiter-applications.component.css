@@ -64,7 +64,7 @@
   }
   
   /* Style for the View CV button (placed under the action buttons) */
-  .view-cv-button {
+  .view-cv-button,.view-cover-button {
     margin-top: 10px;
     padding: 8px 15px;
     border: none;
@@ -75,9 +75,12 @@
     font-size: 14px;
     font-weight: bold;
     transition: background-color 0.3s;
+    margin-right: 30px;
   }
   
   .view-cv-button:hover {
     background-color: #1976D2;
   }
-  
+  .view-cover-button:hover {
+    background-color: #1976D2;
+  }  

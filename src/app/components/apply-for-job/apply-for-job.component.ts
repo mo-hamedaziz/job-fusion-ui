@@ -59,7 +59,7 @@ export class ApplyForJobComponent implements OnInit {
     formData.append('additionalComment', this.applicationForm.get('comment')?.value);
     // formData.append('jobOfferId', this.applicationForm.get('jobOfferId')?.value);
 
-    this.applyForJobService.createJobApplication(formData, this.jobOfferId).subscribe({
+    this.applyForJobService.createJobApplication(formData).subscribe({
       next: () => {
         this.isLoading = false;
         alert('Application submitted successfully! Redirecting to welcome page ...');
