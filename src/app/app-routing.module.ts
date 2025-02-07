@@ -11,13 +11,13 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { ValidationPageComponent } from './pages/validation-page/validation-page.component';
 import { RecruiterApplicationsComponent } from './pages/recruiter-applications/recruiter-applications.component';
 import { ApplyForJobComponent } from './components/apply-for-job/apply-for-job.component';
-import { recruiterGuard } from './guards/recruiter.guard';
+import { roleGuard } from './guards/role.guard';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomePageComponent, canActivate: [authGuard] },
-  { path: 'recruiter', component: RecruiterApgeComponent, canActivate: [authGuard, recruiterGuard] },
+  { path: 'recruiter', component: RecruiterApgeComponent, canActivate: [authGuard, roleGuard], data: { expectedRole: 'recruiter' } },
   { path: 'candidate/apply/:job_offer_id', component: ApplyForJobComponent, canActivate: [authGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard, roleGuard], data: { expectedRole: 'candidate' } },
   { path: 'applications', component: RecruiterApplicationsComponent, canActivate: [authGuard] },
   
   { path: 'signin', component: SigninComponent },
