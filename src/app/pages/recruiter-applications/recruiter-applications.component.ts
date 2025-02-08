@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JobApplicationService } from 'src/app/services/job-application.service';
 
 interface JobApplication {
@@ -17,7 +17,7 @@ export class RecruiterApplicationsComponent implements OnInit {
 
   applications: JobApplication[] = [];
 
-  constructor(private jobApplicationService: JobApplicationService, private cdr: ChangeDetectorRef) {}
+  constructor(private jobApplicationService: JobApplicationService) {}
 
   ngOnInit(): void {
     this.fetchApplications();
@@ -48,7 +48,6 @@ viewCoverLetter(applicationId: string): void {
   );
 }
 
-// Function to create a file URL and open in a new tab
 private openFile(blob: Blob): void {
   if (blob.size > 0) {
     const fileURL = URL.createObjectURL(blob);
@@ -62,11 +61,11 @@ private openFile(blob: Blob): void {
   acceptApplication(applicationId: string): any {
     this.jobApplicationService.acceptApplication(applicationId).subscribe({
       next: () => {
-        console.log("testtt"); // ✅ Should print if request succeeds
+        console.log("testtt");
         this.updateApplicationStatus(applicationId, 'accepted');
       },
       error: (err) => {
-        console.error("❌ Error accepting application:", err); // Debugging errors
+        console.error(" Error accepting application:", err); 
       }
     });
   }
@@ -74,7 +73,6 @@ private openFile(blob: Blob): void {
   rejectApplication(applicationId: string): void {
     this.jobApplicationService.rejectApplication(applicationId).subscribe({
       next: () => {
-        console.log("testtt"); // Should print if request succeeds
         this.updateApplicationStatus(applicationId, 'rejected');
       },
       error: (err) => {
@@ -84,14 +82,11 @@ private openFile(blob: Blob): void {
   }
 
   private updateApplicationStatus(applicationId: string, status: 'accepted' | 'rejected'): void {
-    console.log("hethi update")
     this.applications = this.applications.map(app =>
       app.id === applicationId ? { ...app, status } : app
     );
 
-    // **Ensure UI updates** by forcing Angular to detect changes.
-    this.applications = [...this.applications]; // Trigger change detection
-    this.cdr.detectChanges(); // Manually detect changes (optional)
-    console.log("hethi changed")
+    this.applications = [...this.applications]; 
+    
   }
 }
