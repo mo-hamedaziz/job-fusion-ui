@@ -66,7 +66,6 @@ export class ProfileComponent implements OnInit {
           WorkExperiences: data.work_experiences ||"",
           Studies: data.studies || "",
           Languages: data.languages || "",
-         
           cv: data.cv||""
         };
         console.log('User profile fetched:', this.userData);
